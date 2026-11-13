@@ -46,6 +46,4 @@ Why the system is built as it is. When a decision changes, update its row and th
 
 - **Parallel parsing.** Only needed if one core of parsing turns out to limit the whole pipeline. If so: parse numbered chunks of the file in parallel and send them on in their original order.
 - **Engine restarts.** Engine state is not saved. The simplest fix is to re-read a partition from the beginning when an engine takes it over. Postgres absorbs the duplicate results, but live WebSocket clients would see repeated alerts. Is that acceptable?
-- **Quiet periods in real-time replay.** The watermark only moves when events arrive, so at 1× speed the last windows of a day close when the next morning's first event arrives. That matches the assignment's rule, but is it acceptable for the demo?
 - **New WebSocket clients.** How a client combines history (REST) with the live stream without gaps or duplicates.
-- **UI.** Which framework, and what the "smart visualization" for bonus points looks like.

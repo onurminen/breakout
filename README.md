@@ -24,8 +24,9 @@ Results are shown live in a web UI, and the system measures its own throughput a
 |---|---|
 | Data checks (`tools/datacheck`) | Done for all 7 days |
 | CSV parser (`internal/csvparse`) | Done: 0 allocations per line, all 7 days parse cleanly |
-| Protobuf messages (`proto/`) | Next |
-| Ingestion → Kafka, Docker Compose | Planned |
+| Protobuf messages (`proto/`) | Done |
+| Docker Compose infrastructure (`deploy/`) | Done: Kafka, Postgres, Prometheus, Grafana, cAdvisor |
+| Ingestion → Kafka | Next |
 | Engine (windows, EMA, crossovers) | Planned |
 | Sink + Postgres, API + UI | Planned |
 | Metrics, dashboards, experiments | Planned |
@@ -60,6 +61,18 @@ go run ./tools/datacheck/order data/debs2022-gc-trading-day-*.csv
 
 ```bash
 go run ./tools/datacheck/windows data/debs2022-gc-trading-day-*.csv
+```
+
+Start the infrastructure (Docker with Compose). Grafana is then at http://localhost:3000 and Prometheus at http://localhost:9090:
+
+```bash
+docker compose -f deploy/docker-compose.yml up -d
+```
+
+Regenerate the Go code after changing a `.proto` file ([buf](https://buf.build/docs/installation/)):
+
+```bash
+buf generate
 ```
 
 Build the report (Typst 0.14 or newer):

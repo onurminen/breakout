@@ -62,7 +62,7 @@ flowchart LR
 | Metrics | Prometheus client, Prometheus, Grafana, cAdvisor | |
 | WebSocket | `coder/websocket` | |
 | HTTP | Go standard library `net/http` | |
-| UI | TypeScript | Framework not chosen yet |
+| UI | TypeScript, React, Vite | |
 | Orchestration | Docker Compose | |
 
 ## The path of one price
@@ -87,55 +87,12 @@ flowchart LR
 
 ## Messages
 
-All messages between services are Protobuf, defined in `proto/`. The browser gets JSON.
+All messages between services are Protobuf. The schemas are the source of truth:
 
-```proto
-// proto/ticks/v1/ticks.proto — what ingestion sends to the engine
-enum SecType { SEC_TYPE_UNSPECIFIED = 0; EQUITY = 1; INDEX = 2; }
+- [`ticks.proto`](../proto/breakout/ticks/v1/ticks.proto): `PriceEvent` and `Watermark`, wrapped in `TickMessage`, on `ticks`.
+- [`results.proto`](../proto/breakout/results/v1/results.proto): `EmaResult` on `ema-results` and `Advisory` on `advisories`.
 
-message PriceEvent {
-  string  symbol         = 1; // "RDSA.NL", exchange included
-  SecType sec_type       = 2;
-  double  price          = 3; // the Last column
-  int64   event_time_ms  = 4; // Date + Trading time as epoch ms
-  int64   ingest_time_ns = 5; // wall clock when sent, for latency
-}
-
-message Watermark {
-  int64  event_time_ms  = 1; // highest event time sent so far
-  int64  ingest_time_ns = 2; // wall clock when sent, for latency
-  uint32 source_id      = 3; // which producer; the engine uses the minimum over producers
-}
-
-message TickMessage { oneof payload { PriceEvent price = 1; Watermark watermark = 2; } }
-```
-
-```proto
-// proto/results/v1/results.proto — what the engine publishes
-message EmaResult {
-  string symbol                      = 1;
-  int64  window_start_ms             = 2;
-  double last_price                  = 3;
-  double ema38                       = 4;
-  double ema100                      = 5;
-  int64  closing_watermark_ingest_ns = 6; // for window-result latency
-  int64  published_ns                = 7;
-}
-
-enum Side { SIDE_UNSPECIFIED = 0; BUY = 1; SELL = 2; }
-
-message Advisory {
-  string symbol                      = 1;
-  int64  window_start_ms             = 2;
-  Side   side                        = 3;
-  double ema38                       = 4;
-  double ema100                      = 5;
-  bool   warmup                      = 6; // true for the artificial first-window advisory, see windowing.md
-  int64  closing_watermark_ingest_ns = 7;
-  int64  published_ns                = 8;
-}
-```
-
+`buf generate` writes the Go code to `gen/go/`; it is committed, so building needs no buf. The browser gets JSON.
 
 ## Kafka topics
 
@@ -151,52 +108,45 @@ message Advisory {
 
 ## Storage
 
-Postgres holds the history for the charts. Only the sink writes to it.
-
-```sql
-CREATE TABLE ema_results (
-    symbol          text             NOT NULL,
-    window_start_ms bigint           NOT NULL,
-    last_price      double precision NOT NULL,
-    ema38           double precision NOT NULL,
-    ema100          double precision NOT NULL,
-    PRIMARY KEY (symbol, window_start_ms)
-);
-
-CREATE TABLE advisories (
-    symbol          text             NOT NULL,
-    window_start_ms bigint           NOT NULL,
-    side            smallint         NOT NULL, -- 1 = buy, 2 = sell
-    ema38           double precision NOT NULL,
-    ema100          double precision NOT NULL,
-    warmup          boolean          NOT NULL,
-    PRIMARY KEY (symbol, window_start_ms)
-);
-```
+Postgres holds the history for the charts. Only the sink writes to it. [`deploy/postgres/init.sql`](../deploy/postgres/init.sql) creates the tables `ema_results` and `advisories`, both keyed by `(symbol, window_start_ms)`.
 
 - The sink writes each batch with one multi-row `INSERT … ON CONFLICT DO NOTHING`.
 - Only after that insert succeeds does the sink commit its offset (its read position) to Kafka, which stores it per consumer group. After a crash, the sink resumes from the last committed offset and writes the uncommitted batch again; the primary key makes the repeated rows no-ops.
+
+## Deployment
+
+Everything runs on one machine with Docker Compose ([`deploy/docker-compose.yml`](../deploy/docker-compose.yml)).
+
+| Container | Image | Host port | Role |
+|---|---|---|---|
+| `kafka` | `apache/kafka` | 9094 | Single broker in KRaft mode; containers reach it at `kafka:9092` |
+| `kafka-init` | `apache/kafka` | — | Creates the three topics, then exits |
+| `postgres` | `postgres` | 5432 | Result history; tables from `init.sql` |
+| `prometheus` | `prom/prometheus` | 9090 | Scrapes cAdvisor, later every service's `/metrics` |
+| `grafana` | `grafana/grafana` | 3000 | Dashboards, Prometheus preconfigured, no login |
+| `cadvisor` | `ghcr.io/google/cadvisor` | — | CPU and memory per container |
+
+Topic auto-creation is off, so a typo in a topic name fails loudly instead of creating a new topic.
 
 ## Repository layout
 
 ```
 breakout/
-├── README.md, go.mod
+├── README.md, go.mod, buf.yaml, buf.gen.yaml
 ├── docs/                    # this documentation
+├── proto/                   # Protobuf schemas (done)
+├── gen/go/                  # generated code, never edited by hand (done)
 ├── internal/
 │   └── csvparse/            # CSV line → price event (done)
 ├── tools/
 │   └── datacheck/{grace,order,windows}/   # data checks behind the constants (done)
+├── deploy/                  # Compose file, Postgres, Prometheus and Grafana config (infrastructure done)
+├── report/                  # Typst report
 ├── data/                    # the CSV files, ignored by git
 │
 │   planned:
-├── proto/                   # Protobuf schemas
-├── gen/go/                  # generated code, never edited by hand
 ├── cmd/{ingestion,engine,sink,api}/   # one folder per service binary
 ├── internal/{replay,window,indicator,stream,store,metrics,config}/
 ├── tools/experiments/
-├── ui/                      # web UI
-└── deploy/                  # Dockerfile, docker-compose.yml, Prometheus and Grafana config
+└── ui/                      # web UI
 ```
-
-`indicator` and `window` do not import Kafka or Postgres code, so they are tested without infrastructure.
