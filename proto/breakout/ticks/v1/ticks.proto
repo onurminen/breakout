@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+// What ingestion sends to the engine on the `ticks` topic
+package breakout.ticks.v1;
+
+enum SecType {
+  SEC_TYPE_UNSPECIFIED = 0;
+  SEC_TYPE_EQUITY = 1;
+  SEC_TYPE_INDEX = 2;
+}
+
+message PriceEvent {
+  string symbol = 1; // "RDSA.NL", exchange included
+  SecType sec_type = 2;
+  double price = 3; // the `Last` column
+  int64 event_time_ms = 4; // `Date` + `Trading time` as epoch ms
+  int64 ingest_time_ns = 5; // wall clock when sent, for latency
+}
+
+// Everything up to event_time_ms has been sent. Sent to every partition.
+message Watermark {
+  int64 event_time_ms = 1;
+  int64 ingest_time_ns = 2; // wall clock when sent, for latency measurements
+}
+
+message TickMessage {
+  oneof payload {
+    PriceEvent price = 1;
+    Watermark watermark = 2;
+  }
+}

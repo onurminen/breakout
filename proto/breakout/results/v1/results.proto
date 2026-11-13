@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+// What the engine publishes on the `ema-results` and `advisories` topics
+package breakout.results.v1;
+
+import "breakout/ticks/v1/ticks.proto";
+
+// One per symbol and window with a price.
+message EmaResult {
+  string symbol = 1;
+  breakout.ticks.v1.SecType sec_type = 2;
+  int64 window_start_ms = 3;
+  double last_price = 4;
+  double ema38 = 5;
+  double ema100 = 6;
+  int64 closing_watermark_ingest_ns = 7; // for window-result latency measurements
+  int64 published_ns = 8;
+}
+
+enum Side {
+  SIDE_UNSPECIFIED = 0;
+  SIDE_BUY = 1;
+  SIDE_SELL = 2;
+}
+
+message Advisory {
+  string symbol = 1;
+  breakout.ticks.v1.SecType sec_type = 2;
+  int64 window_start_ms = 3;
+  Side side = 4;
+  double ema38 = 5;
+  double ema100 = 6;
+  bool warmup = 7; // true for the artificial first-window advisory, see docs/windowing.md
+  int64 closing_watermark_ingest_ns = 8;
+  int64 published_ns = 9;
+}
