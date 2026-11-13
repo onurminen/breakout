@@ -137,16 +137,18 @@ breakout/
 ├── proto/                   # Protobuf schemas (done)
 ├── gen/go/                  # generated code, never edited by hand (done)
 ├── internal/
-│   └── csvparse/            # CSV line → price event (done)
+│   ├── csvparse/            # CSV line → price event (done)
+│   └── engine/              # windows, EMAs and crossovers, without Kafka (done)
 ├── tools/
-│   └── datacheck/{grace,order,windows}/   # data checks behind the constants (done)
+│   ├── datacheck/{grace,order,windows}/   # data checks behind the constants (done)
+│   └── enginecheck/         # runs day files through the engine core (done)
 ├── deploy/                  # Compose file, Postgres, Prometheus and Grafana config (infrastructure done)
 ├── report/                  # Typst report
 ├── data/                    # the CSV files, ignored by git
 │
 │   planned:
 ├── cmd/{ingestion,engine,sink,api}/   # one folder per service binary
-├── internal/{replay,window,indicator,stream,store,metrics,config}/
+├── internal/{replay,stream,store,metrics,config}/
 ├── tools/experiments/
 └── ui/                      # web UI
 ```

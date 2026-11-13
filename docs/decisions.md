@@ -29,7 +29,7 @@ Why the system is built as it is. When a decision changes, update its row and th
 | Filter and shrink events in ingestion | Filter in the engine or in Kafka | 78% of lines are dropped before any serialization or network cost |
 | Send events in file order | Sort by event time first | Each symbol is already in order ([order check](data.md#order-within-each-symbol-order)); sorting 5 GB is batch processing; sorting would put Wednesday's 01:00 events into a 01:00 window and change later EMAs |
 | Keep repeated prices | Drop them | A repeat still means "the price is X now" and keeps a window from being empty |
-| Hand-written parser with zero allocations per line | Go's `encoding/csv` | `encoding/csv` allocates for every line. Not yet benchmarked against it (E1) |
+| Hand-written parser with zero allocations per line | Go's `encoding/csv` | `encoding/csv` allocates for every line |
 
 ## Windowing
 

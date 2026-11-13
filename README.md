@@ -26,8 +26,9 @@ Results are shown live in a web UI, and the system measures its own throughput a
 | CSV parser (`internal/csvparse`) | Done: 0 allocations per line, all 7 days parse cleanly |
 | Protobuf messages (`proto/`) | Done |
 | Docker Compose infrastructure (`deploy/`) | Done: Kafka, Postgres, Prometheus, Grafana, cAdvisor |
+| Engine core (`internal/engine`) | Done: windows, EMAs, crossovers; whole week checked with `tools/enginecheck` |
 | Ingestion → Kafka | Next |
-| Engine (windows, EMA, crossovers) | Planned |
+| Engine service (Kafka in and out) | Planned |
 | Sink + Postgres, API + UI | Planned |
 | Metrics, dashboards, experiments | Planned |
 
@@ -61,6 +62,12 @@ go run ./tools/datacheck/order data/debs2022-gc-trading-day-*.csv
 
 ```bash
 go run ./tools/datacheck/windows data/debs2022-gc-trading-day-*.csv
+```
+
+Run the whole week through the engine core without Kafka and count results, advisories and late events:
+
+```bash
+go run ./tools/enginecheck data/debs2022-gc-trading-day-*.csv
 ```
 
 Start the infrastructure (Docker with Compose). Grafana is then at http://localhost:3000 and Prometheus at http://localhost:9090:

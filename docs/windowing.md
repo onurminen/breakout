@@ -23,7 +23,7 @@ An event belongs to the window its event time (`Date` + `Trading time`) falls in
 
 - Ingestion remembers the highest event time it has sent. Each time it advances by one second, ingestion sends it as a watermark to **every** partition of `ticks`: "everything up to T has been sent".
 - Watermarks travel behind the events they cover, in the same partitions.
-- An engine reading several partitions uses the **smallest** of their watermarks.
+- One goroutine owns each partition and its symbols, so it uses that partition's watermarks directly.
 - At the end of the input, ingestion sends a final watermark with the largest possible value, closing all remaining windows.
 
 A window from `t` to `t + 5 min` closes when
