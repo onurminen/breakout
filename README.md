@@ -27,8 +27,8 @@ Results are shown live in a web UI, and the system measures its own throughput a
 | Protobuf messages (`proto/`) | Done |
 | Docker Compose infrastructure (`deploy/`) | Done: Kafka, Postgres, Prometheus, Grafana, cAdvisor |
 | Engine core (`internal/engine`) | Done: windows, EMAs, crossovers; whole week checked with `tools/enginecheck` |
-| Ingestion → Kafka | Next |
-| Engine service (Kafka in and out) | Planned |
+| Ingestion → Kafka (`cmd/ingestion`) | Done: events and watermarks to `ticks`, optional pacing |
+| Engine service (Kafka in and out) | Next |
 | Sink + Postgres, API + UI | Planned |
 | Metrics, dashboards, experiments | Planned |
 
@@ -74,6 +74,18 @@ Start the infrastructure (Docker with Compose). Grafana is then at http://localh
 
 ```bash
 docker compose -f deploy/docker-compose.yml up -d
+```
+
+Replay one day into Kafka as fast as possible, from the host (files in date order; `REPLAY_SPEED=60` replays an hour per minute):
+
+```bash
+go run ./cmd/ingestion data/debs2022-gc-trading-day-08-11-21.csv
+```
+
+Or inside Compose, which replays the files listed under `command:` in the `ingestion` service:
+
+```bash
+docker compose -f deploy/docker-compose.yml up -d ingestion
 ```
 
 Regenerate the Go code after changing a `.proto` file ([buf](https://buf.build/docs/installation/)):
