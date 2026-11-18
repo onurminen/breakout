@@ -125,6 +125,21 @@ Everything runs on one machine with Docker Compose ([`deploy/docker-compose.yml`
 | `prometheus` | `prom/prometheus` | 9090 | Scrapes cAdvisor, later every service's `/metrics` |
 | `grafana` | `grafana/grafana` | 3000 | Dashboards, Prometheus preconfigured, no login |
 | `cadvisor` | `ghcr.io/google/cadvisor` | — | CPU and memory per container |
+| `ingestion` | built from `Dockerfile` | — | Replays the files in `data/`, mounted read-only; started only by `up ingestion` |
+
+The root `Dockerfile` builds any service in `cmd/` (`--build-arg SERVICE=…`) into a small static image.
+
+## Configuration
+
+Services read environment variables; the defaults suit running on the host, and Compose sets the values for inside it.
+
+| Variable | Default | Used by | Meaning |
+|---|---|---|---|
+| `KAFKA_BROKERS` | `localhost:9094` | all | Comma-separated seed brokers; `kafka:9092` inside Compose |
+| `METRICS_ADDR` | `:2112` | all | Address of `/metrics` |
+| `REPLAY_SPEED` | `0` | ingestion | Event-time seconds per wall-clock second; `0` = as fast as possible |
+
+Ingestion takes the day files as arguments, in date order. At a set speed, pacing starts at the first event; quiet periods such as nights replay at that speed too. After the last file, ingestion keeps serving `/metrics` until stopped, so the final counts can be scraped.
 
 Topic auto-creation is off, so a typo in a topic name fails loudly instead of creating a new topic.
 
@@ -132,13 +147,16 @@ Topic auto-creation is off, so a typo in a topic name fails loudly instead of cr
 
 ```
 breakout/
-├── README.md, go.mod, buf.yaml, buf.gen.yaml
+├── README.md, go.mod, buf.yaml, buf.gen.yaml, Dockerfile
 ├── docs/                    # this documentation
 ├── proto/                   # Protobuf schemas (done)
 ├── gen/go/                  # generated code, never edited by hand (done)
+├── cmd/
+│   └── ingestion/           # CSV files → ticks (done)
 ├── internal/
 │   ├── csvparse/            # CSV line → price event (done)
-│   └── engine/              # windows, EMAs and crossovers, without Kafka (done)
+│   ├── engine/              # windows, EMAs and crossovers, without Kafka (done)
+│   └── stream/              # topic names, partition function, Kafka client (done)
 ├── tools/
 │   ├── datacheck/{grace,order,windows}/   # data checks behind the constants (done)
 │   └── enginecheck/         # runs day files through the engine core (done)
@@ -147,8 +165,8 @@ breakout/
 ├── data/                    # the CSV files, ignored by git
 │
 │   planned:
-├── cmd/{ingestion,engine,sink,api}/   # one folder per service binary
-├── internal/{replay,stream,store,metrics,config}/
+├── cmd/{engine,sink,api}/            # one folder per service binary
+├── internal/{store,metrics}/
 ├── tools/experiments/
 └── ui/                      # web UI
 ```
