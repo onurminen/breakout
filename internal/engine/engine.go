@@ -31,7 +31,7 @@ const (
 // Result is one closed window that had at least one price.
 type Result struct {
 	Symbol        string
-	SecType       byte // 'E' or 'I', as received
+	SecType       byte // passed through unchanged; the engine does not interpret it
 	WindowStartMs int64
 	LastPrice     float64
 	EMA38         float64

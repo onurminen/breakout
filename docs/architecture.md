@@ -103,7 +103,8 @@ All messages between services are Protobuf. The schemas are the source of truth:
 | `advisories` | 1 | symbol | `Advisory`, rare and latency-critical |
 
 - Ingestion picks the partition itself: `hash(symbol) % 12`, so a symbol's events stay in one ordered partition. Watermarks go to every partition.
-- Each partition is read by one engine instance; inside it, one goroutine owns the partition and its symbols' state, so no locks are needed.
+- The engine instances form the consumer group `engine`, and Kafka divides the partitions among them. Inside an instance, one goroutine owns each partition and its symbols' state, so no locks are needed.
+- The engine commits no offsets and saves no state: an instance that is assigned a partition reads it from the beginning and rebuilds the state. So engines are started before ingestion, and each run starts with empty topics.
 - The partition count must not change while data flows: it would move symbols to other partitions.
 
 ## Storage
@@ -122,10 +123,11 @@ Everything runs on one machine with Docker Compose ([`deploy/docker-compose.yml`
 | `kafka` | `apache/kafka` | 9094 | Single broker in KRaft mode; containers reach it at `kafka:9092` |
 | `kafka-init` | `apache/kafka` | — | Creates the three topics, then exits |
 | `postgres` | `postgres` | 5432 | Result history; tables from `init.sql` |
-| `prometheus` | `prom/prometheus` | 9090 | Scrapes cAdvisor, later every service's `/metrics` |
+| `prometheus` | `prom/prometheus` | 9090 | Scrapes cAdvisor, ingestion and every engine replica (found by DNS), later the other services |
 | `grafana` | `grafana/grafana` | 3000 | Dashboards, Prometheus preconfigured, no login |
 | `cadvisor` | `ghcr.io/google/cadvisor` | — | CPU and memory per container |
 | `ingestion` | built from `Dockerfile` | — | Replays the files in `data/`, mounted read-only; started only by `up ingestion` |
+| `engine` | built from `Dockerfile` | — | Any number of replicas (`up --scale engine=N engine`); started only when named |
 
 The root `Dockerfile` builds any service in `cmd/` (`--build-arg SERVICE=…`) into a small static image.
 
@@ -138,6 +140,7 @@ Services read environment variables; the defaults suit running on the host, and 
 | `KAFKA_BROKERS` | `localhost:9094` | all | Comma-separated seed brokers; `kafka:9092` inside Compose |
 | `METRICS_ADDR` | `:2112` | all | Address of `/metrics` |
 | `REPLAY_SPEED` | `0` | ingestion | Event-time seconds per wall-clock second; `0` = as fast as possible |
+| `GRACE_MS` | `1000` | engine | Grace period after a window's end before it closes |
 
 Ingestion takes the day files as arguments, in date order. At a set speed, pacing starts at the first event; quiet periods such as nights replay at that speed too. After the last file, ingestion keeps serving `/metrics` until stopped, so the final counts can be scraped.
 
@@ -152,7 +155,8 @@ breakout/
 ├── proto/                   # Protobuf schemas (done)
 ├── gen/go/                  # generated code, never edited by hand (done)
 ├── cmd/
-│   └── ingestion/           # CSV files → ticks (done)
+│   ├── ingestion/           # CSV files → ticks (done)
+│   └── engine/              # ticks → ema-results, advisories (done)
 ├── internal/
 │   ├── csvparse/            # CSV line → price event (done)
 │   ├── engine/              # windows, EMAs and crossovers, without Kafka (done)
@@ -165,7 +169,7 @@ breakout/
 ├── data/                    # the CSV files, ignored by git
 │
 │   planned:
-├── cmd/{engine,sink,api}/            # one folder per service binary
+├── cmd/{sink,api}/                   # one folder per service binary
 ├── internal/{store,metrics}/
 ├── tools/experiments/
 └── ui/                      # web UI
