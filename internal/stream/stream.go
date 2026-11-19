@@ -9,7 +9,10 @@ import (
 )
 
 const (
-	TicksTopic = "ticks"
+	TicksTopic      = "ticks"
+	EmaResultsTopic = "ema-results"
+	AdvisoriesTopic = "advisories"
+
 	// TicksPartitions must match the topic created in deploy/docker-compose.yml and
 	// must not change while data flows, or symbols would move to other partitions.
 	TicksPartitions = 12

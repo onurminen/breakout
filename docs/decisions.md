@@ -8,6 +8,7 @@ Why the system is built as it is. When a decision changes, update its row and th
 |---|---|---|
 | Go for all backend services | Rust, TypeScript, Python, Java/Scala | Fast, simple concurrency with goroutines, single static binaries; new to the team, which was a goal |
 | Kafka between services | Go channels in one process, NATS, Redis Streams, Redpanda | Durable log that can be replayed, consumer groups for scaling, several independent readers per topic. |
+| Engine commits no offsets; a newly assigned partition is re-read from the start | Commit offsets and save engine state | No state store needed; partitions only move when instances join or leave, and the experiments start all engines before ingestion |
 | Partition by symbol | Partition by time | The EMA is a step-by-step calculation per symbol, while different symbols are independent |
 | 12 partitions | Any other fixed number | More than the largest engine count planned to be tested (8); divides evenly among 1, 2, 3, 4 and 6 engines |
 | 1 partition for `ema-results` and `advisories` | 3 or 12 partitions | Partitions only let several sinks share the work, and ~1.9M results per week ([windows check](data.md#empty-windows-windows)) need one sink; each API instance reads every partition anyway. One partition also gives one global order |
@@ -45,5 +46,5 @@ Why the system is built as it is. When a decision changes, update its row and th
 ## Open questions
 
 - **Parallel parsing.** Only needed if one core of parsing turns out to limit the whole pipeline. If so: parse numbered chunks of the file in parallel and send them on in their original order.
-- **Engine restarts.** Engine state is not saved. The simplest fix is to re-read a partition from the beginning when an engine takes it over. Postgres absorbs the duplicate results, but live WebSocket clients would see repeated alerts. Is that acceptable?
+- **Engine restarts.** A partition taken over mid-run is re-read from the beginning, so its results are published again. Postgres absorbs the duplicates, but live WebSocket clients would see repeated alerts. Is that acceptable?
 - **New WebSocket clients.** How a client combines history (REST) with the live stream without gaps or duplicates.

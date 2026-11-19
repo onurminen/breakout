@@ -28,8 +28,9 @@ Results are shown live in a web UI, and the system measures its own throughput a
 | Docker Compose infrastructure (`deploy/`) | Done: Kafka, Postgres, Prometheus, Grafana, cAdvisor |
 | Engine core (`internal/engine`) | Done: windows, EMAs, crossovers; whole week checked with `tools/enginecheck` |
 | Ingestion → Kafka (`cmd/ingestion`) | Done: events and watermarks to `ticks`, optional pacing |
-| Engine service (Kafka in and out) | Next |
-| Sink + Postgres, API + UI | Planned |
+| Engine service (`cmd/engine`) | Done: one goroutine per partition, results and advisories to Kafka, latency histograms |
+| Sink + Postgres | Next |
+| API + UI | Planned |
 | Metrics, dashboards, experiments | Planned |
 
 ## Getting started
@@ -74,6 +75,12 @@ Start the infrastructure (Docker with Compose). Grafana is then at http://localh
 
 ```bash
 docker compose -f deploy/docker-compose.yml up -d
+```
+
+Start the engine inside Compose, with as many instances as wanted. Start it before ingestion: an instance that takes over a partition later re-reads it from the beginning and publishes its results again ([architecture.md](docs/architecture.md#kafka-topics)):
+
+```bash
+docker compose -f deploy/docker-compose.yml up -d --scale engine=4 engine
 ```
 
 Replay one day into Kafka as fast as possible, from the host (files in date order; `REPLAY_SPEED=60` replays an hour per minute):
