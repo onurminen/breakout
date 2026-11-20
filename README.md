@@ -33,7 +33,7 @@ Results are shown live in a web UI, and the system measures its own throughput a
 | API | Next |
 | UI | Planned |
 | Metrics and dashboard (`deploy/`) | Done: every service scraped, consumer lag from `kafka-exporter`, Grafana dashboard provisioned |
-| Experiments | Planned |
+| Experiments (`tools/experiments`) | Tooling done: E1–E3 and the end-to-end check, one command each |
 
 ## Getting started
 
@@ -101,6 +101,12 @@ Or inside Compose, which replays the files listed under `command:` in the `inges
 
 ```bash
 docker compose -f deploy/docker-compose.yml up -d ingestion
+```
+
+Run an experiment from a clean stack (all containers are recreated); results go to `report/data/` ([evaluation.md](docs/evaluation.md#experiments)). `e2e` is the end-to-end check, which compares Postgres with `tools/enginecheck`:
+
+```bash
+go run ./tools/experiments e1    # also e2, e3, e2e
 ```
 
 Regenerate the Go code after changing a `.proto` file ([buf](https://buf.build/docs/installation/)):

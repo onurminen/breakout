@@ -4,11 +4,20 @@
 // advanced by a second, and a final one at the end.
 //
 //	go run ./tools/enginecheck data/debs2022-gc-trading-day-*.csv
+//
+// -symbols replays only some symbols, like ingestion's SYMBOLS. -db then
+// compares every result with the Postgres tables the pipeline filled, for the
+// end-to-end check (docs/evaluation.md#correctness):
+//
+//	go run ./tools/enginecheck -symbols PX1.FR,RDSA.NL -db postgres://breakout:breakout@localhost:5432/breakout data/debs2022-gc-trading-day-08-11-21.csv
 package main
 
 import (
+	"flag"
 	"fmt"
 	"math"
+	"os"
+	"strings"
 
 	"github.com/onurminen/breakout/internal/csvparse"
 	"github.com/onurminen/breakout/internal/engine"
@@ -35,17 +44,43 @@ func (c *counts) add(results []engine.Result) {
 }
 
 func main() {
+	symbolList := flag.String("symbols", "", "comma-separated symbols to replay; empty: all")
+	databaseURL := flag.String("db", "", "Postgres URL; compare the results with its tables")
+	flag.Parse()
+	if flag.NArg() == 0 {
+		fmt.Fprintf(os.Stderr, "usage: %s [-symbols A,B] [-db URL] DAY.csv [DAY.csv ...]\n", os.Args[0])
+		os.Exit(2)
+	}
+	var symbols map[string]bool // nil: all symbols
+	if *symbolList != "" {
+		symbols = map[string]bool{}
+		for _, symbol := range strings.Split(*symbolList, ",") {
+			symbols[symbol] = true
+		}
+	}
+
 	core := engine.New(1000)
 	highest, lastWatermark := int64(math.MinInt64), int64(math.MinInt64)
 	var total counts
-	for _, path := range datacheck.Paths() {
+	var all []engine.Result // kept only for -db
+	closeWindows := func(watermarkMs int64) []engine.Result {
+		results := core.OnWatermark(watermarkMs)
+		if *databaseURL != "" {
+			all = append(all, results...)
+		}
+		return results
+	}
+	for _, path := range flag.Args() {
 		var day counts
 		lateBefore := core.Late
 		datacheck.Scan(path, func(event csvparse.Event) {
+			if symbols != nil && !symbols[event.Symbol] {
+				return
+			}
 			core.OnPrice(event.Symbol, event.SecType, event.Price, event.EventTimeMs)
 			highest = max(highest, event.EventTimeMs)
 			if highest >= lastWatermark+watermarkIntervalMs { // not highest-lastWatermark: overflows at the start
-				day.add(core.OnWatermark(highest))
+				day.add(closeWindows(highest))
 				lastWatermark = highest
 			}
 		})
@@ -56,11 +91,15 @@ func main() {
 	}
 	// Windows still open at the end of the last file; with the weekend files included there are none.
 	var last counts
-	last.add(core.OnWatermark(math.MaxInt64))
+	last.add(closeWindows(math.MaxInt64))
 	report("final watermark", last)
 	total.results, total.buys, total.sells, total.warmups =
 		total.results+last.results, total.buys+last.buys, total.sells+last.sells, total.warmups+last.warmups
 	report("total", total)
+
+	if *databaseURL != "" && !compareWithDatabase(*databaseURL, all) {
+		os.Exit(1)
+	}
 }
 
 func report(name string, c counts) {

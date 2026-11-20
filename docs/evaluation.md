@@ -21,12 +21,20 @@ Both latencies compare two moments on the wall clock (all services share one mac
 
 1. **Unit tests** for the computation: crossovers, touching without crossing, empty and late windows, disorder inside a window, first window, zero price, midnight, near-equal EMAs.
 2. **Whole week through the engine core** without Kafka (`tools/enginecheck`): 1,855,645 results, exactly the number of windows with a price from the [windows check](data.md#empty-windows-windows), and 5,506 late events, exactly Wednesday's 01:00 events.
-3. **End-to-end run** on about a dozen symbols for one day through Docker Compose, to catch errors between services.
+3. **End-to-end check** through the whole Compose pipeline (`go run ./tools/experiments e2e`): ingestion replays the whole week for twelve symbols (`SYMBOLS`), two equities and two indices from each exchange. Once the sink has stored every result, `tools/enginecheck -symbols … -db …` computes the same symbols without Kafka and compares both Postgres tables with its results row by row, comparing the doubles exactly. The whole week is needed because the first real crossovers come on Wednesday, after the warm-up; it also covers late events and EMA state across midnight.
 
-## Planned experiments
+## Experiments
 
-| # | Experiment | What varies | Reported |
-|---|---|---|---|
-| E1 | Engine scale-out | 1, 2, 4, 8 engine instances | end-to-end events/s, CPU per container |
-| E2 | CPU scaling | Docker Compose `cpus:` limits | events/s, latency |
-| E3 | Replay speed | 1×, 10×, 60×, as fast as possible | per-event and window-result latency (p50, p95, p99) |
+Each experiment is one command, `go run ./tools/experiments e1|e2|e3`. It starts from an empty stack, runs every setting three times, and writes to `report/data/`: `<experiment>-summary.csv` with one row per run, and one time-series file per run (`seconds,series,value`).
+
+| # | Experiment | What varies | Input | Reported |
+|---|---|---|---|---|
+| E1 | Engine scale-out | 1, 2, 4, 8 engine instances, no CPU limit | Whole week, pre-filled | events/s, CPU seconds and cores, peak memory of the engines |
+| E2 | CPU budget of one engine | `cpus:` 0.5, 1, 2, 4 for a single engine | Whole week, pre-filled | same as E1 |
+| E3 | Replay speed | 1×, 10×, 60×, as fast as possible; one engine and the sink | Monday live, paced runs from 09:00 for 10 minutes | events/s, both latencies (p50, p95, p99), cores per container |
+
+**Pre-filled topic (E1, E2).** Ingestion alone produces about 220k records/s, while one engine reads about 3 million records/s from a full topic, so in a live run the engines would only wait for ingestion. E1 and E2 therefore fill `ticks` with the whole week first and then start the engines on the full topic; each run reads it from the start, since the engine commits no offsets. Throughput is measured between the first scrape (every 250 ms) in which the engines have read anything and the first in which they have read the whole topic, so container startup and joining the group are left out. One engine reads Monday alone in about 5 s, too short to time precisely; the whole week takes several times longer. A run fails if the engines read more records than the topic holds, which would mean a partition was re-read after a rebalance; Kafka's initial rebalance delay (3 s) lets engines started together join before the partitions are assigned. Live end-to-end throughput, limited by ingestion, is E3's "as fast as possible" row.
+
+**Paced runs (E3).** `REPLAY_FROM` makes ingestion replay the night before 09:00 as fast as possible and pace from there. Latencies and throughput are taken over the 10 minutes after pacing starts, from the histograms' increase over exactly that window.
+
+Further settings that may be worth running are listed with the E2 decision in [decisions.md](decisions.md#evaluation).
