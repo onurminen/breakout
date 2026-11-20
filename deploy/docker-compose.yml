@@ -72,6 +72,21 @@ services:
       GRACE_MS: "1000"
     profiles: [pipeline]
 
+  sink:
+    build:
+      context: ..
+      args:
+        SERVICE: sink
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_started # the sink retries until Postgres accepts connections
+    environment:
+      KAFKA_BROKERS: kafka:9092
+      DATABASE_URL: postgres://breakout:breakout@postgres:5432/breakout
+    profiles: [pipeline]
+
   postgres:
     image: postgres:17.6
     ports:
