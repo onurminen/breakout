@@ -15,3 +15,7 @@ scrape_configs:
       - names: [engine]
         type: A
         port: 2112
+
+  - job_name: sink
+    static_configs:
+      - targets: ["sink:2112"]

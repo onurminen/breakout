@@ -4,7 +4,7 @@ What is measured and how correctness is tested.
 
 ## Metrics
 
-Every Go service exposes `/metrics` for Prometheus; cAdvisor adds CPU and memory per container, including Kafka's. Dropped lines are counted per parser reason (`no_price`, `bad_price`, `bad_time`, `bad_line`). The engine counts `engine_events_total`, `late_events_total`, `engine_results_total` and `engine_advisories_total{side,warmup}`.
+Every Go service exposes `/metrics` for Prometheus; cAdvisor adds CPU and memory per container, including Kafka's. Dropped lines are counted per parser reason (`no_price`, `bad_price`, `bad_time`, `bad_line`). The engine counts `engine_events_total`, `late_events_total`, `engine_results_total` and `engine_advisories_total{side,warmup}`. The sink counts new rows per table (`sink_rows_total{table}`) and records batch sizes (`sink_batch_rows`) and insert times (`sink_insert_seconds`).
 
 ## Latency
 

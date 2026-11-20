@@ -58,7 +58,7 @@ flowchart LR
 | Message broker | Apache Kafka (KRaft mode, single node) | Redpanda speaks the same protocol, so it could replace Kafka without code changes |
 | Kafka client | `franz-go` (`kgo`, `kadm`) | Pure Go; batching and LZ4 compression on the producer |
 | Serialization | Protobuf, generated with `buf` | Go and TypeScript types from the same schema |
-| Database | Postgres via `pgx` | Multi-row `INSERT … ON CONFLICT DO NOTHING` |
+| Database | Postgres via `pgx` | Batched `INSERT … ON CONFLICT DO NOTHING` |
 | Metrics | Prometheus client, Prometheus, Grafana, cAdvisor | |
 | WebSocket | `coder/websocket` | |
 | HTTP | Go standard library `net/http` | |
@@ -111,8 +111,10 @@ All messages between services are Protobuf. The schemas are the source of truth:
 
 Postgres holds the history for the charts. Only the sink writes to it. [`deploy/postgres/init.sql`](../deploy/postgres/init.sql) creates the tables `ema_results` and `advisories`, both keyed by `(symbol, window_start_ms)`.
 
-- The sink writes each batch with one multi-row `INSERT … ON CONFLICT DO NOTHING`.
-- Only after that insert succeeds does the sink commit its offset (its read position) to Kafka, which stores it per consumer group. After a crash, the sink resumes from the last committed offset and writes the uncommitted batch again; the primary key makes the repeated rows no-ops.
+- The sink reads both result topics as the consumer group `sink`, in batches of up to 10,000 records.
+- It writes each batch in one transaction, with one `INSERT … SELECT FROM unnest(…) ON CONFLICT DO NOTHING` per table; the columns are passed as arrays, so the statement is the same for any batch size. If Postgres is unavailable, the sink retries the batch with backoff.
+- Only after that transaction succeeds does the sink commit its offset (its read position) to Kafka, which stores it per consumer group. After a crash, the sink resumes from the last committed offset and writes the uncommitted batch again; the primary key makes the repeated rows no-ops.
+- Only the results themselves are stored, not their latency timestamps; latency is measured in Prometheus.
 
 ## Deployment
 
@@ -123,11 +125,12 @@ Everything runs on one machine with Docker Compose ([`deploy/docker-compose.yml`
 | `kafka` | `apache/kafka` | 9094 | Single broker in KRaft mode; containers reach it at `kafka:9092` |
 | `kafka-init` | `apache/kafka` | — | Creates the three topics, then exits |
 | `postgres` | `postgres` | 5432 | Result history; tables from `init.sql` |
-| `prometheus` | `prom/prometheus` | 9090 | Scrapes cAdvisor, ingestion and every engine replica (found by DNS), later the other services |
+| `prometheus` | `prom/prometheus` | 9090 | Scrapes cAdvisor, ingestion, the sink and every engine replica (found by DNS), later the API |
 | `grafana` | `grafana/grafana` | 3000 | Dashboards, Prometheus preconfigured, no login |
 | `cadvisor` | `ghcr.io/google/cadvisor` | — | CPU and memory per container |
 | `ingestion` | built from `Dockerfile` | — | Replays the files in `data/`, mounted read-only; started only by `up ingestion` |
 | `engine` | built from `Dockerfile` | — | Any number of replicas (`up --scale engine=N engine`); started only when named |
+| `sink` | built from `Dockerfile` | — | Writes the result topics to Postgres; started only when named |
 
 The root `Dockerfile` builds any service in `cmd/` (`--build-arg SERVICE=…`) into a small static image.
 
@@ -141,6 +144,7 @@ Services read environment variables; the defaults suit running on the host, and 
 | `METRICS_ADDR` | `:2112` | all | Address of `/metrics` |
 | `REPLAY_SPEED` | `0` | ingestion | Event-time seconds per wall-clock second; `0` = as fast as possible |
 | `GRACE_MS` | `1000` | engine | Grace period after a window's end before it closes |
+| `DATABASE_URL` | `postgres://breakout:breakout@localhost:5432/breakout` | sink | Postgres connection; host `postgres` inside Compose |
 
 Ingestion takes the day files as arguments, in date order. At a set speed, pacing starts at the first event; quiet periods such as nights replay at that speed too. After the last file, ingestion keeps serving `/metrics` until stopped, so the final counts can be scraped.
 
@@ -156,10 +160,12 @@ breakout/
 ├── gen/go/                  # generated code, never edited by hand (done)
 ├── cmd/
 │   ├── ingestion/           # CSV files → ticks (done)
-│   └── engine/              # ticks → ema-results, advisories (done)
+│   ├── engine/              # ticks → ema-results, advisories (done)
+│   └── sink/                # ema-results, advisories → Postgres (done)
 ├── internal/
 │   ├── csvparse/            # CSV line → price event (done)
 │   ├── engine/              # windows, EMAs and crossovers, without Kafka (done)
+│   ├── store/               # Postgres access (done: inserts)
 │   └── stream/              # topic names, partition function, Kafka client (done)
 ├── tools/
 │   ├── datacheck/{grace,order,windows}/   # data checks behind the constants (done)
@@ -169,8 +175,8 @@ breakout/
 ├── data/                    # the CSV files, ignored by git
 │
 │   planned:
-├── cmd/{sink,api}/                   # one folder per service binary
-├── internal/{store,metrics}/
+├── cmd/api/                 # API service
+├── internal/metrics/
 ├── tools/experiments/
 └── ui/                      # web UI
 ```
