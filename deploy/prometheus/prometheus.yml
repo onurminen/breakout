@@ -11,10 +11,12 @@ scrape_configs:
       - targets: ["ingestion:2112"]
 
   - job_name: engine
+    scrape_interval: 250ms # tools/experiments times runs of a few seconds from engine_records_total
     dns_sd_configs: # one target per replica of the Compose service
       - names: [engine]
         type: A
         port: 2112
+        refresh_interval: 1s # new replicas are scraped within seconds of starting
 
   - job_name: sink
     static_configs:

@@ -43,6 +43,15 @@ Why the system is built as it is. When a decision changes, update its row and th
 | Carry EMA state across days | Reset every midnight | A daily reset would keep EMA100 warming up all day, so almost every advisory would be the artificial first-window buy |
 | First window exactly as in the assignment, flagged `warmup` | Start the EMA at the first price; suppress the advisory | Matches the assignment for grading; the artifact stays visible and documented |
 
+## Evaluation
+
+| Decision | Alternatives | Why |
+|---|---|---|
+| E1 and E2 run on a pre-filled `ticks` topic | Run engines live alongside ingestion | Ingestion produces ~220k records/s, one engine reads ~3M/s: live, every engine count would show ingestion's rate. Live throughput is still measured, in E3 |
+| E2 varies the CPU limit of one engine (0.5, 1, 2, 4) | Every engine limited to 1 CPU with 1, 2, 4, 8 engines; or E1 itself run with 1 CPU per engine | E1 already varies the number of instances, so E2 measures the other dimension, cores per instance. The alternatives would show scale-out with a fixed budget per instance, as on separate machines, and remain candidates for further runs |
+| End-to-end check over the whole week for twelve symbols | One day | On the first two days the only advisories are warm-up buys; real crossovers, late events and midnight all appear only over the week |
+| Kafka's initial rebalance delay 3 s | 0 s | Engines started together get their partitions in one assignment instead of re-reading partitions moved by later joins |
+
 ## Open questions
 
 - **Parallel parsing.** Only needed if one core of parsing turns out to limit the whole pipeline. If so: parse numbered chunks of the file in parallel and send them on in their original order.

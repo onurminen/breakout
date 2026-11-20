@@ -22,6 +22,8 @@ type replay struct {
 	now   func() time.Time
 	sleep func(time.Duration)
 	speed float64 // event-time seconds per wall-clock second; 0 = as fast as possible
+	// Pacing starts at the first event at or after paceFromMs; earlier events go as fast as possible.
+	paceFromMs int64
 
 	highest, lastWatermark int64
 	pacing                 bool
@@ -35,6 +37,7 @@ func newReplay(send sendFunc, speed float64) *replay {
 		now:           time.Now,
 		sleep:         time.Sleep,
 		speed:         speed,
+		paceFromMs:    math.MinInt64,
 		highest:       math.MinInt64,
 		lastWatermark: math.MinInt64,
 	}
@@ -85,7 +88,7 @@ func (r *replay) sendWatermark(eventTimeMs, nowNs int64) {
 // such as Wednesday's 01:00 ones from asking for negative sleeps. Sleeping only
 // when more than a millisecond ahead avoids a sleep per event at high rates.
 func (r *replay) pace() {
-	if r.speed == 0 {
+	if r.speed == 0 || r.highest < r.paceFromMs {
 		return
 	}
 	now := r.now()
