@@ -98,3 +98,21 @@ func TestPacing(t *testing.T) {
 		t.Errorf("slept %v, want %v", slept, want)
 	}
 }
+
+func TestPacingStartsAtPaceFrom(t *testing.T) {
+	r, _ := recordingReplay(1)
+	r.paceFromMs = 60_000
+	wall := time.Unix(0, 0)
+	var slept []time.Duration
+	r.now = func() time.Time { return wall }
+	r.sleep = func(d time.Duration) { slept = append(slept, d); wall = wall.Add(d) }
+
+	r.onEvent(csvparse.Event{Symbol: "A", EventTimeMs: 0})      // before paceFromMs: as fast as possible
+	r.onEvent(csvparse.Event{Symbol: "A", EventTimeMs: 50_000}) // still before
+	r.onEvent(csvparse.Event{Symbol: "A", EventTimeMs: 61_000}) // pacing starts here
+	r.onEvent(csvparse.Event{Symbol: "A", EventTimeMs: 63_000}) // 2 s at 1×
+
+	if len(slept) != 1 || slept[0] != 2*time.Second {
+		t.Errorf("slept %v, want [2s]", slept)
+	}
+}

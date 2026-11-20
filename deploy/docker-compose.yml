@@ -17,7 +17,9 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
-      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      # A new group waits this long for more members before its first assignment, so
+      # engines started together share the partitions without re-reading (docs/evaluation.md).
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 3000
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false" # topics come from kafka-init only
     healthcheck:
       test: /opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 > /dev/null
@@ -50,10 +52,12 @@ services:
     depends_on:
       kafka-init:
         condition: service_completed_successfully
-    environment:
+    environment: # set from the shell by tools/experiments
       KAFKA_BROKERS: kafka:9092
-      REPLAY_SPEED: "0"
-    command: ["/data/debs2022-gc-trading-day-08-11-21.csv"] # day files in date order
+      REPLAY_SPEED: ${REPLAY_SPEED:-0}
+      REPLAY_FROM: ${REPLAY_FROM:-}
+      SYMBOLS: ${SYMBOLS:-}
+    command: ${INGEST_FILES:-/data/debs2022-gc-trading-day-08-11-21.csv} # day files in date order, separated by spaces
     volumes:
       - ../data:/data:ro
     profiles: [pipeline] # not started by a plain `up`; run with `up ingestion`
@@ -70,6 +74,7 @@ services:
     environment:
       KAFKA_BROKERS: kafka:9092
       GRACE_MS: "1000"
+    cpus: ${ENGINE_CPUS:-0} # per replica; 0 = no limit
     profiles: [pipeline]
 
   sink:

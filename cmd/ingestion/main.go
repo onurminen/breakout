@@ -18,6 +18,7 @@ import (
 	"os"
 	"os/signal"
 	"strconv"
+	"strings"
 	"syscall"
 	"time"
 
@@ -67,6 +68,21 @@ func main() {
 	if err != nil || speed < 0 {
 		log.Fatalf("REPLAY_SPEED must be a number ≥ 0, got %q", os.Getenv("REPLAY_SPEED"))
 	}
+	paceFromMs := int64(math.MinInt64)
+	if from := os.Getenv("REPLAY_FROM"); from != "" {
+		t, err := time.Parse(time.RFC3339, from)
+		if err != nil {
+			log.Fatalf("REPLAY_FROM must be an RFC 3339 time such as 2021-11-08T09:00:00Z, got %q", from)
+		}
+		paceFromMs = t.UnixMilli()
+	}
+	var symbols map[string]bool // nil: all symbols
+	if list := os.Getenv("SYMBOLS"); list != "" {
+		symbols = map[string]bool{}
+		for _, symbol := range strings.Split(list, ",") {
+			symbols[symbol] = true
+		}
+	}
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
@@ -93,6 +109,7 @@ func main() {
 		}
 		produce(ctx, client, partition, key, message)
 	}, speed)
+	r.paceFromMs = paceFromMs
 
 	parser := csvparse.New()
 	var lines [len(reasonLabels)]prometheus.Counter
@@ -101,7 +118,7 @@ func main() {
 	}
 	for _, path := range os.Args[1:] {
 		start := time.Now()
-		if err := replayFile(path, parser, r, &lines); err != nil {
+		if err := replayFile(path, parser, r, symbols, &lines); err != nil {
 			log.Fatal(err)
 		}
 		log.Printf("replayed %s in %s", path, time.Since(start).Round(time.Millisecond))
@@ -115,7 +132,7 @@ func main() {
 	<-ctx.Done()
 }
 
-func replayFile(path string, parser *csvparse.Parser, r *replay, lines *[len(reasonLabels)]prometheus.Counter) error {
+func replayFile(path string, parser *csvparse.Parser, r *replay, symbols map[string]bool, lines *[len(reasonLabels)]prometheus.Counter) error {
 	file, err := os.Open(path)
 	if err != nil {
 		return err
@@ -128,7 +145,7 @@ func replayFile(path string, parser *csvparse.Parser, r *replay, lines *[len(rea
 		if len(line) > 0 {
 			event, reason := parser.Parse(line)
 			lines[reason].Inc()
-			if reason == csvparse.OK {
+			if reason == csvparse.OK && (symbols == nil || symbols[event.Symbol]) {
 				r.onEvent(event)
 			}
 		}

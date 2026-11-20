@@ -144,10 +144,12 @@ Services read environment variables; the defaults suit running on the host, and 
 | `KAFKA_BROKERS` | `localhost:9094` | all | Comma-separated seed brokers; `kafka:9092` inside Compose |
 | `METRICS_ADDR` | `:2112` | all | Address of `/metrics` |
 | `REPLAY_SPEED` | `0` | ingestion | Event-time seconds per wall-clock second; `0` = as fast as possible |
+| `REPLAY_FROM` | — | ingestion | RFC 3339 time; events before it are sent as fast as possible, pacing starts there |
+| `SYMBOLS` | — | ingestion | Comma-separated symbols to send; empty: all |
 | `GRACE_MS` | `1000` | engine | Grace period after a window's end before it closes |
 | `DATABASE_URL` | `postgres://breakout:breakout@localhost:5432/breakout` | sink | Postgres connection; host `postgres` inside Compose |
 
-Ingestion takes the day files as arguments, in date order. At a set speed, pacing starts at the first event; quiet periods such as nights replay at that speed too. After the last file, ingestion keeps serving `/metrics` until stopped, so the final counts can be scraped.
+Ingestion takes the day files as arguments, in date order. In Compose, `INGEST_FILES` (paths under `/data`, separated by spaces) replaces the default Monday file, and `ENGINE_CPUS` limits each engine replica's CPUs; `tools/experiments` sets both. At a set speed, pacing starts at the first event; quiet periods such as nights replay at that speed too. After the last file, ingestion keeps serving `/metrics` until stopped, so the final counts can be scraped.
 
 Topic auto-creation is off, so a typo in a topic name fails loudly instead of creating a new topic.
 
@@ -170,14 +172,14 @@ breakout/
 │   └── stream/              # topic names, partition function, Kafka client (done)
 ├── tools/
 │   ├── datacheck/{grace,order,windows}/   # data checks behind the constants (done)
-│   └── enginecheck/         # runs day files through the engine core (done)
+│   ├── enginecheck/         # runs day files through the engine core, compares with Postgres (done)
+│   └── experiments/         # experiments and end-to-end check on the Compose stack (done)
 ├── deploy/                  # Compose file, Postgres, Prometheus and Grafana config (infrastructure done)
-├── report/                  # Typst report
+├── report/                  # Typst report; report/data/ holds the experiment results
 ├── data/                    # the CSV files, ignored by git
 │
 │   planned:
 ├── cmd/api/                 # API service
 ├── internal/metrics/
-├── tools/experiments/
 └── ui/                      # web UI
 ```
