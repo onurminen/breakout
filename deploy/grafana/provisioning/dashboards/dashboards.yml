@@ -1,0 +1,7 @@
+apiVersion: 1
+
+providers:
+  - name: breakout
+    type: file
+    options:
+      path: /etc/grafana/provisioning/dashboards # breakout.json, next to this file

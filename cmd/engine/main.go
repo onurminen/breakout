@@ -30,6 +30,10 @@ import (
 var latencyBuckets = prometheus.ExponentialBucketsRange(100e-6, 60, 20)
 
 var (
+	recordsTotal = promauto.NewCounter(prometheus.CounterOpts{
+		Name: "engine_records_total",
+		Help: "Records read from ticks, price events and watermarks; with the topic's end offsets it gives the engine's lag.",
+	})
 	eventsTotal = promauto.NewCounter(prometheus.CounterOpts{
 		Name: "engine_events_total",
 		Help: "Price events processed.",

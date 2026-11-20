@@ -48,6 +48,7 @@ func (w *worker) handle(records []*kgo.Record) error {
 			w.publishResults(w.core.OnWatermark(payload.Watermark.EventTimeMs), payload.Watermark.IngestTimeNs)
 		}
 	}
+	recordsTotal.Add(float64(len(records)))
 	lateEventsTotal.Add(float64(w.core.Late - w.lateCounted))
 	w.lateCounted = w.core.Late
 	return nil
