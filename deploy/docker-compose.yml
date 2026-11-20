@@ -87,6 +87,15 @@ services:
       DATABASE_URL: postgres://breakout:breakout@postgres:5432/breakout
     profiles: [pipeline]
 
+  # Consumer group lag and topic end offsets for Prometheus.
+  kafka-exporter:
+    image: danielqsj/kafka-exporter:v1.9.0
+    command: ["--kafka.server=kafka:9092"]
+    depends_on:
+      kafka:
+        condition: service_healthy
+    restart: on-failure # until Kafka accepts connections
+
   postgres:
     image: postgres:17.6
     ports:

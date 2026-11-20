@@ -32,7 +32,8 @@ Results are shown live in a web UI, and the system measures its own throughput a
 | Sink (`cmd/sink`) | Done: results and advisories to Postgres, offsets committed after each insert |
 | API | Next |
 | UI | Planned |
-| Metrics, dashboards, experiments | Planned |
+| Metrics and dashboard (`deploy/`) | Done: every service scraped, consumer lag from `kafka-exporter`, Grafana dashboard provisioned |
+| Experiments | Planned |
 
 ## Getting started
 
@@ -72,7 +73,7 @@ Run the whole week through the engine core without Kafka and count results, advi
 go run ./tools/enginecheck data/debs2022-gc-trading-day-*.csv
 ```
 
-Start the infrastructure (Docker with Compose). Grafana is then at http://localhost:3000 and Prometheus at http://localhost:9090:
+Start the infrastructure (Docker with Compose). The Grafana dashboard is then at http://localhost:3000/d/breakout and Prometheus at http://localhost:9090:
 
 ```bash
 docker compose -f deploy/docker-compose.yml up -d

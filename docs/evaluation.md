@@ -4,7 +4,11 @@ What is measured and how correctness is tested.
 
 ## Metrics
 
-Every Go service exposes `/metrics` for Prometheus; cAdvisor adds CPU and memory per container, including Kafka's. Dropped lines are counted per parser reason (`no_price`, `bad_price`, `bad_time`, `bad_line`). The engine counts `engine_events_total`, `late_events_total`, `engine_results_total` and `engine_advisories_total{side,warmup}`. The sink counts new rows per table (`sink_rows_total{table}`) and records batch sizes (`sink_batch_rows`) and insert times (`sink_insert_seconds`).
+Every Go service exposes `/metrics` for Prometheus; cAdvisor adds CPU and memory per container, including Kafka's. Dropped lines are counted per parser reason (`no_price`, `bad_price`, `bad_time`, `bad_line`). The engine counts `engine_records_total` (everything read from `ticks`), `engine_events_total`, `late_events_total`, `engine_results_total` and `engine_advisories_total{side,warmup}`. The sink counts new rows per table (`sink_rows_total{table}`) and records batch sizes (`sink_batch_rows`) and insert times (`sink_insert_seconds`).
+
+The Grafana dashboard `breakout` ([`deploy/grafana/`](../deploy/grafana/provisioning/dashboards/breakout.json)) shows a run at a glance: replay progress, totals, events/s overall and per engine replica, both latencies as p50/p95/p99, consumer lag, sink rows/s, and CPU and memory per container.
+
+**Consumer lag.** The sink's lag comes from `kafka-exporter` (`kafka_consumergroup_lag`). The engine commits no offsets, so its group lag would always be the whole topic; instead, its lag is the end offset of `ticks` minus `engine_records_total`. The two are scraped at slightly different moments, so while data flows it can show a few seconds' worth of records.
 
 ## Latency
 

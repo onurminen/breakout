@@ -125,9 +125,10 @@ Everything runs on one machine with Docker Compose ([`deploy/docker-compose.yml`
 | `kafka` | `apache/kafka` | 9094 | Single broker in KRaft mode; containers reach it at `kafka:9092` |
 | `kafka-init` | `apache/kafka` | — | Creates the three topics, then exits |
 | `postgres` | `postgres` | 5432 | Result history; tables from `init.sql` |
-| `prometheus` | `prom/prometheus` | 9090 | Scrapes cAdvisor, ingestion, the sink and every engine replica (found by DNS), later the API |
-| `grafana` | `grafana/grafana` | 3000 | Dashboards, Prometheus preconfigured, no login |
+| `prometheus` | `prom/prometheus` | 9090 | Scrapes cAdvisor, kafka-exporter, ingestion, the sink and every engine replica (found by DNS), later the API |
+| `grafana` | `grafana/grafana` | 3000 | The `breakout` dashboard and Prometheus provisioned from `deploy/grafana/`, no login |
 | `cadvisor` | `ghcr.io/google/cadvisor` | — | CPU and memory per container |
+| `kafka-exporter` | `danielqsj/kafka-exporter` | — | Topic end offsets and consumer group lag |
 | `ingestion` | built from `Dockerfile` | — | Replays the files in `data/`, mounted read-only; started only by `up ingestion` |
 | `engine` | built from `Dockerfile` | — | Any number of replicas (`up --scale engine=N engine`); started only when named |
 | `sink` | built from `Dockerfile` | — | Writes the result topics to Postgres; started only when named |
