@@ -24,11 +24,13 @@ func compose(env map[string]string, args ...string) {
 	}
 }
 
-// cleanStart removes all containers, which deletes Kafka's and Postgres's data,
-// and starts the infrastructure. The pipeline services depend on kafka-init, so
-// the first of them to start creates the topics.
+// cleanStart rebuilds the service images, so runs measure the current code,
+// removes all containers, which deletes Kafka's and Postgres's data, and starts
+// the infrastructure. The pipeline services depend on kafka-init, so the first
+// of them to start creates the topics.
 func cleanStart() {
 	log.Print("clean start")
+	compose(nil, "build")
 	compose(nil, "down")
 	compose(nil, "up", "-d", "--wait", "kafka", "postgres", "prometheus", "grafana", "cadvisor", "kafka-exporter")
 }
