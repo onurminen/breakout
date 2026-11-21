@@ -72,6 +72,15 @@ Measured on one machine with 12 cores and 15 GB of memory; the CSV files in `rep
 
 ### E3: replay speed (Monday, live)
 
-- As fast as possible, the whole pipeline processes about 253k events/s, limited by ingestion (1.2 cores); the engine needs only 0.7 cores for it. This is the end-to-end throughput, against about 3.6M events/s for one engine on a full topic.
-- Kafka uses about 0.5 cores even at 1× (about 400 events/s), a fixed base cost.
-- The latency percentiles are pending a re-run with the current bucket layout; the earlier buckets were too coarse (see [decisions.md](decisions.md#evaluation)). The median per-event latency was about 9 ms at every speed. A likely, not yet verified, cause is the producer's linger: franz-go waits up to 10 ms (`ProducerLinger`) to batch records, which every event sent by ingestion goes through.
+| Speed | Events/s | Event latency p50 / p95 / p99 | Window latency p50 / p95 / p99 | Ingestion cores | Engine cores | Kafka cores |
+|---|---|---|---|---|---|---|
+| 1× | 397 | 10.9 / 13.0 / 13.2 ms | 7.8 / 15.1 / 15.5 ms | 0.01 | 0.02 | 0.48 |
+| 10× | 3.6k | 8.8 / 12.9 / 13.2 ms | 11.8 / 15.3 / 15.6 ms | 0.05 | 0.05 | 0.52 |
+| 60× | 18.5k | 8.1 / 12.9 / 14.3 ms | 8.9 / 14.4 / 15.4 ms | 0.15 | 0.12 | 0.53 |
+| max | 235k (235–242k) | 9.7 / 15.1 / 17.3 ms | 10.9 / 15.8 / 18.0 ms | 1.13 | 0.69 | 0.85 |
+
+- Latency stays below 20 ms at the 99th percentile at every speed, also when the pipeline runs as fast as it can.
+- As fast as possible, the whole pipeline processes about 235k events/s, limited by ingestion (1.1 cores); the engine needs only 0.7 cores for it. This is the end-to-end throughput, against about 3.6M events/s for one engine on a full topic (E1).
+- Kafka uses about 0.5 cores even at 1×, a fixed base cost. The sink stays below 0.02 cores.
+- The median event latency falls from 10.9 ms at 1× to 8.1 ms at 60×, and the 95th percentile stays at 13 ms. This fits the producer's linger: franz-go waits up to 10 ms (`ProducerLinger`, default) before sending a partition's batch. At 1× a partition gets about 33 events/s, so nearly every event starts a batch and waits the full 10 ms; at higher speeds more events join a batch that is already waiting. A run with a shorter linger would confirm it; it has not been done.
+- Window latency is about the same as event latency, since the closing watermark goes through the same producer. At 1× only a few windows close in the 10 minutes, so its percentiles vary between runs (median 4.1–14.5 ms).

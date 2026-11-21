@@ -33,7 +33,7 @@ Results are shown live in a web UI, and the system measures its own throughput a
 | API | Next |
 | UI | Planned |
 | Metrics and dashboard (`deploy/`) | Done: every service scraped, consumer lag from `kafka-exporter`, Grafana dashboard provisioned |
-| Experiments (`tools/experiments`) | Tooling done: E1–E3 and the end-to-end check, one command each |
+| Experiments (`tools/experiments`) | Done: E1–E3 and the end-to-end check, one command each; results in `report/data/` and [evaluation.md](docs/evaluation.md#results) |
 
 ## Getting started
 
