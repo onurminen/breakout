@@ -50,6 +50,7 @@ Why the system is built as it is. When a decision changes, update its row and th
 | E1 and E2 run on a pre-filled `ticks` topic | Run engines live alongside ingestion | Ingestion produces ~220k records/s, one engine reads ~3M/s: live, every engine count would show ingestion's rate. Live throughput is still measured, in E3 |
 | E2 varies the CPU limit of one engine (0.5, 1, 2, 4) | Every engine limited to 1 CPU with 1, 2, 4, 8 engines; or E1 itself run with 1 CPU per engine | E1 already varies the number of instances, so E2 measures the other dimension, cores per instance. The alternatives would show scale-out with a fixed budget per instance, as on separate machines, and remain candidates for further runs |
 | End-to-end check over the whole week for twelve symbols | One day | On the first two days the only advisories are warm-up buys; real crossovers, late events and midnight all appear only over the week |
+| 80 latency buckets, each ~18% wider than the previous | 20 buckets, each twice the previous; Prometheus native histograms | Percentiles are interpolated inside a bucket. With 20 buckets almost every event fell into 6.7–13.5 ms, so p95 and p99 came out just below that bucket's edge at every speed. 80 buckets cost only more series; native histograms would need extra Prometheus configuration |
 | Kafka's initial rebalance delay 3 s | 0 s | Engines started together get their partitions in one assignment instead of re-reading partitions moved by later joins |
 
 ## Open questions

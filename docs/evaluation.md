@@ -17,6 +17,8 @@ Both latencies compare two moments on the wall clock (all services share one mac
 - **Per-event latency** = time the engine processes an event − that event's `ingest_time_ns` (`engine_event_latency_seconds`).
 - **Window-result latency** = a result's `published_ns` − `ingest_time_ns` of the watermark that closed its window (`engine_window_result_latency_seconds`). It excludes the window length and grace period, which are rules of the computation, not slowness. `published_ns` is when the result is handed to the Kafka producer.
 
+Both histograms have 80 exponential buckets from 100 µs to 60 s, each about 18% wider than the previous. `histogram_quantile` interpolates linearly inside a bucket, so a reported percentile is accurate to about that width.
+
 ## Correctness
 
 1. **Unit tests** for the computation: crossovers, touching without crossing, empty and late windows, disorder inside a window, first window, zero price, midnight, near-equal EMAs.
@@ -38,3 +40,38 @@ Each experiment is one command, `go run ./tools/experiments e1|e2|e3`. It starts
 **Paced runs (E3).** `REPLAY_FROM` makes ingestion replay the night before 09:00 as fast as possible and pace from there. Latencies and throughput are taken over the 10 minutes after pacing starts, from the histograms' increase over exactly that window.
 
 Further settings that may be worth running are listed with the E2 decision in [decisions.md](decisions.md#evaluation).
+
+## Results
+
+Measured on one machine with 12 cores and 15 GB of memory; the CSV files in `report/data/` are the source of every number here. Values are medians of three runs, with the range in parentheses where it matters. Throughput varied by 10–20% between sessions on different days, so only runs from the same session are compared with each other: E2 ran on 20.11.2026, E1 and E3 on 21.11.2026.
+
+### E1: engine scale-out (whole week, pre-filled)
+
+| Engines | Events/s | Engine cores | CPU-seconds | Peak memory |
+|---|---|---|---|---|
+| 1 | 3.62M (2.99–3.83M) | 6.9 | 111 | 0.6 GB |
+| 2 | 5.01M (5.00–5.03M) | 9.9 | 114 | 1.0 GB |
+| 4 | 5.44M (5.40–5.54M) | 10.3 | 111 | 1.9 GB |
+| 8 | 5.58M (5.58–5.75M) | 10.3 | 108 | 2.5 GB |
+
+- Throughput levels off at about 10 engine cores; the rest of the 12 cores serve Kafka. A single engine already runs one goroutine per partition, so more instances mostly share the same cores.
+- The total work stays about 110 CPU-seconds for the week at every instance count: extra instances cost almost no CPU, but memory grows with the number of instances.
+- The first run after filling the topic is the slowest (2.99M versus 3.62M and 3.83M with one engine), in both sessions where E1 ran. The cause is not known; a discarded warm-up run would remove it from the median.
+
+### E2: CPU budget of one engine (whole week, pre-filled)
+
+| CPU limit | Events/s | Per core | Cores used | CPU-seconds |
+|---|---|---|---|---|
+| 0.5 | 0.38M | 0.76M | 0.50 | 78 |
+| 1 | 0.73M | 0.73M | 1.01 | 82 |
+| 2 | 1.49M | 0.75M | 1.99 | 77 |
+| 4 | 2.56M | 0.64M | 3.96 | 84 |
+
+- Throughput grows almost linearly with the CPU limit, at about 0.75M events/s per core up to 2 cores and somewhat less at 4. Memory stays at 0.5 GB.
+- With a limit, the week costs 77–84 CPU-seconds; without one (E1) about 110. An unlimited engine spreads over about 7 cores and spends more CPU on the same work, probably in Go's scheduler and garbage collector; this is not verified.
+
+### E3: replay speed (Monday, live)
+
+- As fast as possible, the whole pipeline processes about 253k events/s, limited by ingestion (1.2 cores); the engine needs only 0.7 cores for it. This is the end-to-end throughput, against about 3.6M events/s for one engine on a full topic.
+- Kafka uses about 0.5 cores even at 1× (about 400 events/s), a fixed base cost.
+- The latency percentiles are pending a re-run with the current bucket layout; the earlier buckets were too coarse (see [decisions.md](decisions.md#evaluation)). The median per-event latency was about 9 ms at every speed. A likely, not yet verified, cause is the producer's linger: franz-go waits up to 10 ms (`ProducerLinger`) to batch records, which every event sent by ingestion goes through.

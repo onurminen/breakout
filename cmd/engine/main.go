@@ -26,8 +26,9 @@ import (
 	"github.com/onurminen/breakout/internal/stream"
 )
 
-// From 100 µs to 60 s, each bucket about twice the previous.
-var latencyBuckets = prometheus.ExponentialBucketsRange(100e-6, 60, 20)
+// From 100 µs to 60 s, each bucket about 18% wider than the previous.
+// Quantiles are interpolated inside a bucket, so this is also their resolution.
+var latencyBuckets = prometheus.ExponentialBucketsRange(100e-6, 60, 80)
 
 var (
 	recordsTotal = promauto.NewCounter(prometheus.CounterOpts{

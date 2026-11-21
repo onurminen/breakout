@@ -1,0 +1,1008 @@
+seconds,series,value
+0.00,events_per_s,0
+0.25,events_per_s,0
+0.50,events_per_s,0
+0.75,events_per_s,0
+1.00,events_per_s,0
+1.25,events_per_s,0
+1.50,events_per_s,0
+1.75,events_per_s,0
+9.50,events_per_s,0
+9.75,events_per_s,0
+10.00,events_per_s,0
+10.25,events_per_s,0
+10.50,events_per_s,0
+10.75,events_per_s,0
+11.00,events_per_s,0
+11.25,events_per_s,0
+11.50,events_per_s,0
+11.75,events_per_s,0
+12.00,events_per_s,24339.6
+12.25,events_per_s,459935
+12.50,events_per_s,925879
+12.75,events_per_s,1.402e+06
+13.00,events_per_s,1.89177e+06
+13.25,events_per_s,2.39527e+06
+13.50,events_per_s,2.8796e+06
+13.75,events_per_s,3.44943e+06
+14.00,events_per_s,3.95427e+06
+14.25,events_per_s,4.41612e+06
+14.50,events_per_s,4.96441e+06
+14.75,events_per_s,5.4856e+06
+15.00,events_per_s,5.8875e+06
+15.25,events_per_s,5.95903e+06
+15.50,events_per_s,6.00021e+06
+15.75,events_per_s,6.06087e+06
+16.00,events_per_s,6.07892e+06
+16.25,events_per_s,6.13311e+06
+16.50,events_per_s,6.08903e+06
+16.75,events_per_s,6.10444e+06
+17.00,events_per_s,6.16156e+06
+17.25,events_per_s,6.11112e+06
+17.50,events_per_s,6.12106e+06
+17.75,events_per_s,6.07685e+06
+18.00,events_per_s,6.04307e+06
+18.25,events_per_s,6.03234e+06
+18.50,events_per_s,5.97069e+06
+18.75,events_per_s,5.92453e+06
+19.00,events_per_s,5.84608e+06
+19.25,events_per_s,5.77812e+06
+19.50,events_per_s,5.68035e+06
+19.75,events_per_s,5.60865e+06
+20.00,events_per_s,5.56969e+06
+20.25,events_per_s,5.53139e+06
+20.50,events_per_s,5.46704e+06
+20.75,events_per_s,5.43846e+06
+21.00,events_per_s,5.42365e+06
+21.25,events_per_s,5.42993e+06
+21.50,events_per_s,5.47941e+06
+21.75,events_per_s,5.52543e+06
+22.00,events_per_s,5.49458e+06
+22.25,events_per_s,5.34437e+06
+22.50,events_per_s,5.05522e+06
+22.75,events_per_s,4.65059e+06
+23.00,events_per_s,4.16352e+06
+23.25,events_per_s,3.68233e+06
+23.50,events_per_s,3.18045e+06
+23.75,events_per_s,2.6621e+06
+24.00,events_per_s,2.14122e+06
+24.25,events_per_s,1.58917e+06
+24.50,events_per_s,1.05711e+06
+24.75,events_per_s,599995
+25.00,events_per_s,300536
+25.25,events_per_s,117358
+25.50,events_per_s,34656.4
+25.75,events_per_s,0
+26.00,events_per_s,0
+26.25,events_per_s,0
+26.50,events_per_s,0
+26.75,events_per_s,0
+27.00,events_per_s,0
+27.25,events_per_s,0
+27.50,events_per_s,0
+27.75,events_per_s,0
+28.00,events_per_s,0
+28.25,events_per_s,0
+28.50,events_per_s,0
+28.75,events_per_s,0
+29.00,events_per_s,0
+29.25,events_per_s,0
+29.50,events_per_s,0
+29.75,events_per_s,0
+30.00,events_per_s,0
+30.25,events_per_s,0
+30.50,events_per_s,0
+30.75,events_per_s,0
+31.00,events_per_s,0
+31.25,events_per_s,0
+31.50,events_per_s,0
+31.75,events_per_s,0
+32.00,events_per_s,0
+32.25,events_per_s,0
+32.50,events_per_s,0
+32.75,events_per_s,0
+33.00,events_per_s,0
+33.25,events_per_s,0
+33.50,events_per_s,0
+33.75,events_per_s,0
+34.00,events_per_s,0
+34.25,events_per_s,0
+34.50,events_per_s,0
+34.75,events_per_s,0
+35.00,events_per_s,0
+35.25,events_per_s,0
+35.50,events_per_s,0
+35.75,events_per_s,0
+36.00,events_per_s,0
+36.25,events_per_s,0
+36.50,events_per_s,0
+36.75,events_per_s,0
+37.00,events_per_s,0
+37.25,events_per_s,0
+37.50,events_per_s,0
+37.75,events_per_s,0
+38.00,events_per_s,0
+38.25,events_per_s,0
+38.50,events_per_s,0
+12.50,cpu_cores name=breakout-engine-1,0.123348
+12.75,cpu_cores name=breakout-engine-1,0.128986
+13.00,cpu_cores name=breakout-engine-1,0.134624
+13.25,cpu_cores name=breakout-engine-1,0.140262
+13.50,cpu_cores name=breakout-engine-1,0.1459
+13.75,cpu_cores name=breakout-engine-1,0.151538
+14.00,cpu_cores name=breakout-engine-1,0.157175
+14.25,cpu_cores name=breakout-engine-1,0.162813
+14.50,cpu_cores name=breakout-engine-1,0.168451
+14.75,cpu_cores name=breakout-engine-1,0.174089
+15.00,cpu_cores name=breakout-engine-1,0.179727
+15.25,cpu_cores name=breakout-engine-1,0.185365
+15.50,cpu_cores name=breakout-engine-1,0.191003
+15.75,cpu_cores name=breakout-engine-1,0.196641
+16.00,cpu_cores name=breakout-engine-1,0.202279
+16.25,cpu_cores name=breakout-engine-1,0.207917
+16.50,cpu_cores name=breakout-engine-1,0.213555
+16.75,cpu_cores name=breakout-engine-1,0.219193
+17.00,cpu_cores name=breakout-engine-1,0.22483
+17.25,cpu_cores name=breakout-engine-1,0.225517
+18.75,cpu_cores name=breakout-engine-1,1.94736
+19.00,cpu_cores name=breakout-engine-1,2.01797
+19.25,cpu_cores name=breakout-engine-1,2.08858
+19.50,cpu_cores name=breakout-engine-1,2.15919
+19.75,cpu_cores name=breakout-engine-1,2.22981
+20.00,cpu_cores name=breakout-engine-1,2.30042
+20.25,cpu_cores name=breakout-engine-1,2.37103
+20.50,cpu_cores name=breakout-engine-1,2.44164
+20.75,cpu_cores name=breakout-engine-1,2.51225
+21.00,cpu_cores name=breakout-engine-1,2.58286
+21.25,cpu_cores name=breakout-engine-1,2.65347
+21.50,cpu_cores name=breakout-engine-1,2.72408
+21.75,cpu_cores name=breakout-engine-1,2.79469
+22.00,cpu_cores name=breakout-engine-1,2.67693
+22.25,cpu_cores name=breakout-engine-1,2.67693
+22.50,cpu_cores name=breakout-engine-1,1.26941
+22.75,cpu_cores name=breakout-engine-1,1.32881
+23.00,cpu_cores name=breakout-engine-1,1.3882
+23.25,cpu_cores name=breakout-engine-1,1.44759
+23.50,cpu_cores name=breakout-engine-1,1.50698
+23.75,cpu_cores name=breakout-engine-1,1.56637
+24.00,cpu_cores name=breakout-engine-1,1.62576
+24.25,cpu_cores name=breakout-engine-1,1.68515
+24.50,cpu_cores name=breakout-engine-1,1.74454
+24.75,cpu_cores name=breakout-engine-1,1.80393
+25.00,cpu_cores name=breakout-engine-1,1.86332
+25.25,cpu_cores name=breakout-engine-1,1.92271
+25.50,cpu_cores name=breakout-engine-1,1.89729
+25.75,cpu_cores name=breakout-engine-1,1.8379
+26.00,cpu_cores name=breakout-engine-1,1.77851
+26.25,cpu_cores name=breakout-engine-1,1.71912
+26.50,cpu_cores name=breakout-engine-1,1.65973
+26.75,cpu_cores name=breakout-engine-1,1.60034
+27.00,cpu_cores name=breakout-engine-1,1.54095
+27.25,cpu_cores name=breakout-engine-1,1.48156
+27.50,cpu_cores name=breakout-engine-1,1.42217
+27.75,cpu_cores name=breakout-engine-1,1.36278
+28.00,cpu_cores name=breakout-engine-1,1.30339
+28.25,cpu_cores name=breakout-engine-1,1.244
+28.50,cpu_cores name=breakout-engine-1,0.911194
+28.75,cpu_cores name=breakout-engine-1,0.188117
+29.00,cpu_cores name=breakout-engine-1,0.188117
+29.25,cpu_cores name=breakout-engine-1,0.188117
+29.50,cpu_cores name=breakout-engine-1,0.188117
+29.75,cpu_cores name=breakout-engine-1,0.188117
+30.00,cpu_cores name=breakout-engine-1,0.188117
+30.25,cpu_cores name=breakout-engine-1,0.188117
+30.50,cpu_cores name=breakout-engine-1,0.188117
+30.75,cpu_cores name=breakout-engine-1,0.188117
+31.00,cpu_cores name=breakout-engine-1,0.188117
+31.25,cpu_cores name=breakout-engine-1,0.188117
+31.50,cpu_cores name=breakout-engine-1,0.188117
+31.75,cpu_cores name=breakout-engine-1,0.188117
+32.75,cpu_cores name=breakout-engine-1,0.00477761
+33.00,cpu_cores name=breakout-engine-1,0.00495843
+33.25,cpu_cores name=breakout-engine-1,0.00513925
+33.50,cpu_cores name=breakout-engine-1,0.00532007
+33.75,cpu_cores name=breakout-engine-1,0.00723277
+34.00,cpu_cores name=breakout-engine-1,0.00723277
+34.25,cpu_cores name=breakout-engine-1,0.00723277
+34.50,cpu_cores name=breakout-engine-1,0.00723277
+34.75,cpu_cores name=breakout-engine-1,0.00723277
+35.00,cpu_cores name=breakout-engine-1,0.00723277
+35.25,cpu_cores name=breakout-engine-1,0.00723277
+35.50,cpu_cores name=breakout-engine-1,0.00723277
+35.75,cpu_cores name=breakout-engine-1,0.00723277
+36.00,cpu_cores name=breakout-engine-1,0.00723277
+36.25,cpu_cores name=breakout-engine-1,0.00723277
+36.50,cpu_cores name=breakout-engine-1,0.00723277
+36.75,cpu_cores name=breakout-engine-1,0.00723277
+37.00,cpu_cores name=breakout-engine-1,0.00723277
+37.25,cpu_cores name=breakout-engine-1,0.00723277
+37.50,cpu_cores name=breakout-engine-1,0.0052962
+37.75,cpu_cores name=breakout-engine-1,0.00511538
+38.00,cpu_cores name=breakout-engine-1,0.00493456
+38.25,cpu_cores name=breakout-engine-1,0.00475374
+13.00,cpu_cores name=breakout-engine-2,0.32721
+13.25,cpu_cores name=breakout-engine-2,0.341811
+13.50,cpu_cores name=breakout-engine-2,0.356411
+13.75,cpu_cores name=breakout-engine-2,0.371011
+14.00,cpu_cores name=breakout-engine-2,0.385612
+14.25,cpu_cores name=breakout-engine-2,0.400212
+14.50,cpu_cores name=breakout-engine-2,0.414812
+14.75,cpu_cores name=breakout-engine-2,0.429413
+15.00,cpu_cores name=breakout-engine-2,0.444013
+15.25,cpu_cores name=breakout-engine-2,0.458613
+15.50,cpu_cores name=breakout-engine-2,0.473214
+15.75,cpu_cores name=breakout-engine-2,0.487814
+16.00,cpu_cores name=breakout-engine-2,0.502414
+16.25,cpu_cores name=breakout-engine-2,0.517015
+16.50,cpu_cores name=breakout-engine-2,0.531615
+16.75,cpu_cores name=breakout-engine-2,0.546215
+17.00,cpu_cores name=breakout-engine-2,0.560816
+17.25,cpu_cores name=breakout-engine-2,0.575416
+18.25,cpu_cores name=breakout-engine-2,1.82423
+18.50,cpu_cores name=breakout-engine-2,1.89518
+18.75,cpu_cores name=breakout-engine-2,1.96612
+19.00,cpu_cores name=breakout-engine-2,2.03706
+19.25,cpu_cores name=breakout-engine-2,2.10801
+19.50,cpu_cores name=breakout-engine-2,2.17895
+19.75,cpu_cores name=breakout-engine-2,2.24989
+20.00,cpu_cores name=breakout-engine-2,2.32084
+20.25,cpu_cores name=breakout-engine-2,2.39178
+20.50,cpu_cores name=breakout-engine-2,2.46272
+20.75,cpu_cores name=breakout-engine-2,2.53367
+21.00,cpu_cores name=breakout-engine-2,2.60461
+21.25,cpu_cores name=breakout-engine-2,2.67555
+21.50,cpu_cores name=breakout-engine-2,2.7465
+21.75,cpu_cores name=breakout-engine-2,2.81744
+22.00,cpu_cores name=breakout-engine-2,2.83773
+22.25,cpu_cores name=breakout-engine-2,2.83773
+22.50,cpu_cores name=breakout-engine-2,2.83773
+22.75,cpu_cores name=breakout-engine-2,2.83773
+23.25,cpu_cores name=breakout-engine-2,2.13587
+23.50,cpu_cores name=breakout-engine-2,2.13587
+23.75,cpu_cores name=breakout-engine-2,2.13587
+24.00,cpu_cores name=breakout-engine-2,2.13587
+24.25,cpu_cores name=breakout-engine-2,2.13587
+24.50,cpu_cores name=breakout-engine-2,2.13587
+24.75,cpu_cores name=breakout-engine-2,2.13587
+25.00,cpu_cores name=breakout-engine-2,2.13587
+25.25,cpu_cores name=breakout-engine-2,2.13587
+25.50,cpu_cores name=breakout-engine-2,2.13587
+25.75,cpu_cores name=breakout-engine-2,2.13587
+26.00,cpu_cores name=breakout-engine-2,2.13587
+26.25,cpu_cores name=breakout-engine-2,2.13587
+26.50,cpu_cores name=breakout-engine-2,2.13587
+26.75,cpu_cores name=breakout-engine-2,2.13587
+27.00,cpu_cores name=breakout-engine-2,2.13587
+27.25,cpu_cores name=breakout-engine-2,2.13587
+27.50,cpu_cores name=breakout-engine-2,2.13587
+27.75,cpu_cores name=breakout-engine-2,2.13587
+28.00,cpu_cores name=breakout-engine-2,1.07717
+28.25,cpu_cores name=breakout-engine-2,0.00712948
+28.50,cpu_cores name=breakout-engine-2,0.00712948
+28.75,cpu_cores name=breakout-engine-2,0.00712948
+29.00,cpu_cores name=breakout-engine-2,0.00712948
+29.25,cpu_cores name=breakout-engine-2,0.00712948
+29.50,cpu_cores name=breakout-engine-2,0.00712948
+29.75,cpu_cores name=breakout-engine-2,0.00712948
+30.00,cpu_cores name=breakout-engine-2,0.00712948
+30.25,cpu_cores name=breakout-engine-2,0.00712948
+30.50,cpu_cores name=breakout-engine-2,0.00712948
+30.75,cpu_cores name=breakout-engine-2,0.00712948
+31.00,cpu_cores name=breakout-engine-2,0.00712948
+31.25,cpu_cores name=breakout-engine-2,0.00712948
+31.50,cpu_cores name=breakout-engine-2,0.00712948
+31.75,cpu_cores name=breakout-engine-2,0.00712948
+32.00,cpu_cores name=breakout-engine-2,0.00712948
+32.25,cpu_cores name=breakout-engine-2,0.00712948
+32.50,cpu_cores name=breakout-engine-2,0.00712948
+32.75,cpu_cores name=breakout-engine-2,0.00712948
+33.00,cpu_cores name=breakout-engine-2,0.00712989
+33.25,cpu_cores name=breakout-engine-2,0.0071303
+33.50,cpu_cores name=breakout-engine-2,0.0071303
+33.75,cpu_cores name=breakout-engine-2,0.0071303
+34.00,cpu_cores name=breakout-engine-2,0.0071303
+34.25,cpu_cores name=breakout-engine-2,0.0071303
+34.50,cpu_cores name=breakout-engine-2,0.0071303
+34.75,cpu_cores name=breakout-engine-2,0.0071303
+35.00,cpu_cores name=breakout-engine-2,0.0071303
+35.25,cpu_cores name=breakout-engine-2,0.0071303
+35.50,cpu_cores name=breakout-engine-2,0.0071303
+35.75,cpu_cores name=breakout-engine-2,0.0071303
+36.00,cpu_cores name=breakout-engine-2,0.0071303
+36.25,cpu_cores name=breakout-engine-2,0.0071303
+36.50,cpu_cores name=breakout-engine-2,0.0071303
+36.75,cpu_cores name=breakout-engine-2,0.0071303
+37.00,cpu_cores name=breakout-engine-2,0.0071303
+37.25,cpu_cores name=breakout-engine-2,0.0071303
+37.50,cpu_cores name=breakout-engine-2,0.0071303
+37.75,cpu_cores name=breakout-engine-2,0.0071303
+13.00,cpu_cores name=breakout-engine-3,0.310916
+13.25,cpu_cores name=breakout-engine-3,0.324851
+13.50,cpu_cores name=breakout-engine-3,0.338786
+13.75,cpu_cores name=breakout-engine-3,0.35272
+14.00,cpu_cores name=breakout-engine-3,0.366655
+14.25,cpu_cores name=breakout-engine-3,0.38059
+14.50,cpu_cores name=breakout-engine-3,0.394525
+14.75,cpu_cores name=breakout-engine-3,0.40846
+15.00,cpu_cores name=breakout-engine-3,0.422394
+15.25,cpu_cores name=breakout-engine-3,0.436329
+15.50,cpu_cores name=breakout-engine-3,0.450264
+15.75,cpu_cores name=breakout-engine-3,0.464199
+16.00,cpu_cores name=breakout-engine-3,0.478133
+16.25,cpu_cores name=breakout-engine-3,0.492068
+16.50,cpu_cores name=breakout-engine-3,0.506003
+16.75,cpu_cores name=breakout-engine-3,0.519938
+17.00,cpu_cores name=breakout-engine-3,0.533873
+17.25,cpu_cores name=breakout-engine-3,0.547807
+17.50,cpu_cores name=breakout-engine-3,0.557391
+18.25,cpu_cores name=breakout-engine-3,1.79164
+18.50,cpu_cores name=breakout-engine-3,1.86157
+18.75,cpu_cores name=breakout-engine-3,1.93149
+19.00,cpu_cores name=breakout-engine-3,2.00142
+19.25,cpu_cores name=breakout-engine-3,2.07134
+19.50,cpu_cores name=breakout-engine-3,2.14127
+19.75,cpu_cores name=breakout-engine-3,2.21119
+20.00,cpu_cores name=breakout-engine-3,2.28111
+20.25,cpu_cores name=breakout-engine-3,2.35104
+20.50,cpu_cores name=breakout-engine-3,2.42096
+20.75,cpu_cores name=breakout-engine-3,2.49089
+21.00,cpu_cores name=breakout-engine-3,2.56081
+21.25,cpu_cores name=breakout-engine-3,2.63074
+21.50,cpu_cores name=breakout-engine-3,2.70066
+21.75,cpu_cores name=breakout-engine-3,2.77059
+22.00,cpu_cores name=breakout-engine-3,2.79697
+22.25,cpu_cores name=breakout-engine-3,2.79697
+22.50,cpu_cores name=breakout-engine-3,2.79697
+22.75,cpu_cores name=breakout-engine-3,2.48621
+23.00,cpu_cores name=breakout-engine-3,2.14232
+23.25,cpu_cores name=breakout-engine-3,2.14232
+23.50,cpu_cores name=breakout-engine-3,2.14232
+23.75,cpu_cores name=breakout-engine-3,2.14232
+24.00,cpu_cores name=breakout-engine-3,2.14232
+24.25,cpu_cores name=breakout-engine-3,2.14232
+24.50,cpu_cores name=breakout-engine-3,2.14232
+24.75,cpu_cores name=breakout-engine-3,2.14232
+25.00,cpu_cores name=breakout-engine-3,2.14232
+25.25,cpu_cores name=breakout-engine-3,2.14232
+25.50,cpu_cores name=breakout-engine-3,2.14232
+25.75,cpu_cores name=breakout-engine-3,2.14232
+26.00,cpu_cores name=breakout-engine-3,2.14232
+26.25,cpu_cores name=breakout-engine-3,2.14232
+26.50,cpu_cores name=breakout-engine-3,2.14232
+26.75,cpu_cores name=breakout-engine-3,2.14232
+27.00,cpu_cores name=breakout-engine-3,2.14232
+27.25,cpu_cores name=breakout-engine-3,2.14232
+27.50,cpu_cores name=breakout-engine-3,1.07188
+27.75,cpu_cores name=breakout-engine-3,1.07188
+28.00,cpu_cores name=breakout-engine-3,1.07188
+28.25,cpu_cores name=breakout-engine-3,0.00672788
+28.50,cpu_cores name=breakout-engine-3,0.00672788
+28.75,cpu_cores name=breakout-engine-3,0.00672788
+29.00,cpu_cores name=breakout-engine-3,0.00672788
+29.25,cpu_cores name=breakout-engine-3,0.00672788
+29.50,cpu_cores name=breakout-engine-3,0.00672788
+29.75,cpu_cores name=breakout-engine-3,0.00672788
+30.00,cpu_cores name=breakout-engine-3,0.00672788
+30.25,cpu_cores name=breakout-engine-3,0.00672788
+30.50,cpu_cores name=breakout-engine-3,0.00672788
+30.75,cpu_cores name=breakout-engine-3,0.00672788
+31.00,cpu_cores name=breakout-engine-3,0.00672788
+31.25,cpu_cores name=breakout-engine-3,0.00672788
+31.50,cpu_cores name=breakout-engine-3,0.00672788
+31.75,cpu_cores name=breakout-engine-3,0.00672788
+32.00,cpu_cores name=breakout-engine-3,0.00672788
+32.25,cpu_cores name=breakout-engine-3,0.00672788
+32.50,cpu_cores name=breakout-engine-3,0.00704013
+32.75,cpu_cores name=breakout-engine-3,0.00733612
+33.00,cpu_cores name=breakout-engine-3,0.00733612
+33.25,cpu_cores name=breakout-engine-3,0.00733612
+33.50,cpu_cores name=breakout-engine-3,0.00733612
+33.75,cpu_cores name=breakout-engine-3,0.00733612
+34.00,cpu_cores name=breakout-engine-3,0.00733612
+34.25,cpu_cores name=breakout-engine-3,0.00733612
+34.50,cpu_cores name=breakout-engine-3,0.00733612
+34.75,cpu_cores name=breakout-engine-3,0.00733612
+35.00,cpu_cores name=breakout-engine-3,0.00733612
+35.25,cpu_cores name=breakout-engine-3,0.00733612
+35.50,cpu_cores name=breakout-engine-3,0.00733612
+35.75,cpu_cores name=breakout-engine-3,0.00733612
+36.00,cpu_cores name=breakout-engine-3,0.00733612
+36.25,cpu_cores name=breakout-engine-3,0.00733612
+36.50,cpu_cores name=breakout-engine-3,0.00733612
+36.75,cpu_cores name=breakout-engine-3,0.00733612
+37.00,cpu_cores name=breakout-engine-3,0.00733612
+37.25,cpu_cores name=breakout-engine-3,0.00733612
+12.50,cpu_cores name=breakout-engine-4,0.166327
+12.75,cpu_cores name=breakout-engine-4,0.174297
+13.00,cpu_cores name=breakout-engine-4,0.182267
+13.25,cpu_cores name=breakout-engine-4,0.190238
+13.50,cpu_cores name=breakout-engine-4,0.198208
+13.75,cpu_cores name=breakout-engine-4,0.206178
+14.00,cpu_cores name=breakout-engine-4,0.214148
+14.25,cpu_cores name=breakout-engine-4,0.222118
+14.50,cpu_cores name=breakout-engine-4,0.230088
+14.75,cpu_cores name=breakout-engine-4,0.238059
+15.00,cpu_cores name=breakout-engine-4,0.246029
+15.25,cpu_cores name=breakout-engine-4,0.253999
+15.50,cpu_cores name=breakout-engine-4,0.261969
+15.75,cpu_cores name=breakout-engine-4,0.269939
+16.00,cpu_cores name=breakout-engine-4,0.277909
+16.25,cpu_cores name=breakout-engine-4,0.28588
+16.50,cpu_cores name=breakout-engine-4,0.29385
+16.75,cpu_cores name=breakout-engine-4,0.30182
+17.00,cpu_cores name=breakout-engine-4,0.30979
+17.25,cpu_cores name=breakout-engine-4,0.31776
+18.50,cpu_cores name=breakout-engine-4,1.85419
+18.75,cpu_cores name=breakout-engine-4,1.92384
+19.00,cpu_cores name=breakout-engine-4,1.99349
+19.25,cpu_cores name=breakout-engine-4,2.06314
+19.50,cpu_cores name=breakout-engine-4,2.13279
+19.75,cpu_cores name=breakout-engine-4,2.20244
+20.00,cpu_cores name=breakout-engine-4,2.27209
+20.25,cpu_cores name=breakout-engine-4,2.34174
+20.50,cpu_cores name=breakout-engine-4,2.41138
+20.75,cpu_cores name=breakout-engine-4,2.48103
+21.00,cpu_cores name=breakout-engine-4,2.55068
+21.25,cpu_cores name=breakout-engine-4,2.62033
+21.50,cpu_cores name=breakout-engine-4,2.68998
+21.75,cpu_cores name=breakout-engine-4,2.75963
+22.00,cpu_cores name=breakout-engine-4,2.78597
+22.25,cpu_cores name=breakout-engine-4,2.78597
+23.50,cpu_cores name=breakout-engine-4,1.68759
+23.75,cpu_cores name=breakout-engine-4,1.68759
+24.00,cpu_cores name=breakout-engine-4,1.68759
+24.25,cpu_cores name=breakout-engine-4,1.68759
+24.50,cpu_cores name=breakout-engine-4,1.68759
+24.75,cpu_cores name=breakout-engine-4,1.68759
+25.00,cpu_cores name=breakout-engine-4,1.68759
+25.25,cpu_cores name=breakout-engine-4,1.68759
+25.50,cpu_cores name=breakout-engine-4,1.68759
+25.75,cpu_cores name=breakout-engine-4,1.68759
+26.00,cpu_cores name=breakout-engine-4,1.68759
+26.25,cpu_cores name=breakout-engine-4,1.68759
+26.50,cpu_cores name=breakout-engine-4,1.68759
+26.75,cpu_cores name=breakout-engine-4,1.68759
+27.00,cpu_cores name=breakout-engine-4,1.68759
+27.25,cpu_cores name=breakout-engine-4,1.68759
+27.50,cpu_cores name=breakout-engine-4,1.68759
+27.75,cpu_cores name=breakout-engine-4,1.68759
+28.00,cpu_cores name=breakout-engine-4,1.68759
+28.25,cpu_cores name=breakout-engine-4,0.871175
+28.50,cpu_cores name=breakout-engine-4,0.00730786
+28.75,cpu_cores name=breakout-engine-4,0.00730786
+29.00,cpu_cores name=breakout-engine-4,0.00730786
+29.25,cpu_cores name=breakout-engine-4,0.00730786
+29.50,cpu_cores name=breakout-engine-4,0.00730786
+29.75,cpu_cores name=breakout-engine-4,0.00730786
+30.00,cpu_cores name=breakout-engine-4,0.00730786
+30.25,cpu_cores name=breakout-engine-4,0.00730786
+30.50,cpu_cores name=breakout-engine-4,0.00730786
+30.75,cpu_cores name=breakout-engine-4,0.00730786
+31.00,cpu_cores name=breakout-engine-4,0.00730786
+31.25,cpu_cores name=breakout-engine-4,0.00730786
+31.50,cpu_cores name=breakout-engine-4,0.00730786
+31.75,cpu_cores name=breakout-engine-4,0.00730786
+32.00,cpu_cores name=breakout-engine-4,0.00730786
+32.25,cpu_cores name=breakout-engine-4,0.00730786
+32.50,cpu_cores name=breakout-engine-4,0.00730786
+32.75,cpu_cores name=breakout-engine-4,0.00720015
+33.00,cpu_cores name=breakout-engine-4,0.00720015
+33.25,cpu_cores name=breakout-engine-4,0.00720015
+33.50,cpu_cores name=breakout-engine-4,0.00709265
+33.75,cpu_cores name=breakout-engine-4,0.00709265
+34.00,cpu_cores name=breakout-engine-4,0.00709265
+34.25,cpu_cores name=breakout-engine-4,0.00709265
+34.50,cpu_cores name=breakout-engine-4,0.00709265
+34.75,cpu_cores name=breakout-engine-4,0.00709265
+35.00,cpu_cores name=breakout-engine-4,0.00709265
+35.25,cpu_cores name=breakout-engine-4,0.00709265
+35.50,cpu_cores name=breakout-engine-4,0.00709265
+35.75,cpu_cores name=breakout-engine-4,0.00709265
+36.00,cpu_cores name=breakout-engine-4,0.00709265
+36.25,cpu_cores name=breakout-engine-4,0.00709265
+36.50,cpu_cores name=breakout-engine-4,0.00709265
+36.75,cpu_cores name=breakout-engine-4,0.00709265
+37.00,cpu_cores name=breakout-engine-4,0.00709265
+37.25,cpu_cores name=breakout-engine-4,0.00709265
+37.50,cpu_cores name=breakout-engine-4,0.00709265
+37.75,cpu_cores name=breakout-engine-4,0.00709265
+38.00,cpu_cores name=breakout-engine-4,0.00502443
+7.50,memory_bytes name=breakout-engine-1,8.56064e+06
+7.75,memory_bytes name=breakout-engine-1,8.56064e+06
+8.00,memory_bytes name=breakout-engine-1,8.56064e+06
+8.25,memory_bytes name=breakout-engine-1,8.56064e+06
+8.50,memory_bytes name=breakout-engine-1,8.56064e+06
+8.75,memory_bytes name=breakout-engine-1,8.56064e+06
+9.00,memory_bytes name=breakout-engine-1,8.56064e+06
+9.25,memory_bytes name=breakout-engine-1,8.56064e+06
+9.50,memory_bytes name=breakout-engine-1,8.56064e+06
+9.75,memory_bytes name=breakout-engine-1,8.56064e+06
+10.00,memory_bytes name=breakout-engine-1,8.56064e+06
+10.25,memory_bytes name=breakout-engine-1,8.56064e+06
+10.50,memory_bytes name=breakout-engine-1,8.56064e+06
+10.75,memory_bytes name=breakout-engine-1,8.56064e+06
+11.00,memory_bytes name=breakout-engine-1,8.56064e+06
+11.25,memory_bytes name=breakout-engine-1,8.56064e+06
+11.50,memory_bytes name=breakout-engine-1,8.56064e+06
+11.75,memory_bytes name=breakout-engine-1,8.56064e+06
+12.00,memory_bytes name=breakout-engine-1,8.56064e+06
+12.25,memory_bytes name=breakout-engine-1,8.56064e+06
+12.50,memory_bytes name=breakout-engine-1,2.49278e+08
+12.75,memory_bytes name=breakout-engine-1,2.49278e+08
+13.00,memory_bytes name=breakout-engine-1,2.49278e+08
+13.25,memory_bytes name=breakout-engine-1,2.49278e+08
+13.50,memory_bytes name=breakout-engine-1,2.49278e+08
+13.75,memory_bytes name=breakout-engine-1,2.49278e+08
+14.00,memory_bytes name=breakout-engine-1,2.49278e+08
+14.25,memory_bytes name=breakout-engine-1,2.49278e+08
+14.50,memory_bytes name=breakout-engine-1,2.49278e+08
+14.75,memory_bytes name=breakout-engine-1,2.49278e+08
+15.00,memory_bytes name=breakout-engine-1,2.49278e+08
+15.25,memory_bytes name=breakout-engine-1,2.49278e+08
+15.50,memory_bytes name=breakout-engine-1,2.49278e+08
+15.75,memory_bytes name=breakout-engine-1,2.49278e+08
+16.00,memory_bytes name=breakout-engine-1,2.49278e+08
+16.25,memory_bytes name=breakout-engine-1,2.49278e+08
+16.50,memory_bytes name=breakout-engine-1,2.49278e+08
+16.75,memory_bytes name=breakout-engine-1,2.49278e+08
+17.00,memory_bytes name=breakout-engine-1,2.49278e+08
+17.25,memory_bytes name=breakout-engine-1,2.49278e+08
+17.50,memory_bytes name=breakout-engine-1,2.49278e+08
+17.75,memory_bytes name=breakout-engine-1,2.49278e+08
+18.00,memory_bytes name=breakout-engine-1,2.49278e+08
+18.25,memory_bytes name=breakout-engine-1,2.49278e+08
+18.50,memory_bytes name=breakout-engine-1,2.49278e+08
+18.75,memory_bytes name=breakout-engine-1,4.2641e+08
+19.00,memory_bytes name=breakout-engine-1,4.2641e+08
+19.25,memory_bytes name=breakout-engine-1,4.2641e+08
+19.50,memory_bytes name=breakout-engine-1,4.2641e+08
+19.75,memory_bytes name=breakout-engine-1,4.2641e+08
+20.00,memory_bytes name=breakout-engine-1,4.2641e+08
+20.25,memory_bytes name=breakout-engine-1,4.2641e+08
+20.50,memory_bytes name=breakout-engine-1,4.2641e+08
+20.75,memory_bytes name=breakout-engine-1,4.2641e+08
+21.00,memory_bytes name=breakout-engine-1,4.2641e+08
+21.25,memory_bytes name=breakout-engine-1,4.2641e+08
+21.50,memory_bytes name=breakout-engine-1,4.2641e+08
+21.75,memory_bytes name=breakout-engine-1,4.2641e+08
+22.00,memory_bytes name=breakout-engine-1,3.78749e+08
+22.25,memory_bytes name=breakout-engine-1,3.78749e+08
+22.50,memory_bytes name=breakout-engine-1,3.78749e+08
+22.75,memory_bytes name=breakout-engine-1,3.78749e+08
+23.00,memory_bytes name=breakout-engine-1,3.78749e+08
+23.25,memory_bytes name=breakout-engine-1,3.78749e+08
+23.50,memory_bytes name=breakout-engine-1,3.78749e+08
+23.75,memory_bytes name=breakout-engine-1,3.78749e+08
+24.00,memory_bytes name=breakout-engine-1,3.78749e+08
+24.25,memory_bytes name=breakout-engine-1,3.78749e+08
+24.50,memory_bytes name=breakout-engine-1,3.78749e+08
+24.75,memory_bytes name=breakout-engine-1,3.78749e+08
+25.00,memory_bytes name=breakout-engine-1,3.78749e+08
+25.25,memory_bytes name=breakout-engine-1,3.78749e+08
+25.50,memory_bytes name=breakout-engine-1,3.78749e+08
+25.75,memory_bytes name=breakout-engine-1,3.78749e+08
+26.00,memory_bytes name=breakout-engine-1,3.78749e+08
+26.25,memory_bytes name=breakout-engine-1,3.78749e+08
+26.50,memory_bytes name=breakout-engine-1,3.78749e+08
+26.75,memory_bytes name=breakout-engine-1,3.78749e+08
+27.00,memory_bytes name=breakout-engine-1,3.78749e+08
+27.25,memory_bytes name=breakout-engine-1,3.78749e+08
+27.50,memory_bytes name=breakout-engine-1,3.78749e+08
+27.75,memory_bytes name=breakout-engine-1,3.78749e+08
+28.00,memory_bytes name=breakout-engine-1,3.78749e+08
+28.25,memory_bytes name=breakout-engine-1,3.78749e+08
+28.50,memory_bytes name=breakout-engine-1,3.77524e+08
+28.75,memory_bytes name=breakout-engine-1,3.77524e+08
+29.00,memory_bytes name=breakout-engine-1,3.77524e+08
+29.25,memory_bytes name=breakout-engine-1,3.77524e+08
+29.50,memory_bytes name=breakout-engine-1,3.77524e+08
+29.75,memory_bytes name=breakout-engine-1,3.77524e+08
+30.00,memory_bytes name=breakout-engine-1,3.77524e+08
+30.25,memory_bytes name=breakout-engine-1,3.77524e+08
+30.50,memory_bytes name=breakout-engine-1,3.77524e+08
+30.75,memory_bytes name=breakout-engine-1,3.77524e+08
+31.00,memory_bytes name=breakout-engine-1,3.77524e+08
+31.25,memory_bytes name=breakout-engine-1,3.77524e+08
+31.50,memory_bytes name=breakout-engine-1,3.77524e+08
+31.75,memory_bytes name=breakout-engine-1,3.77524e+08
+32.00,memory_bytes name=breakout-engine-1,3.77524e+08
+32.25,memory_bytes name=breakout-engine-1,3.77524e+08
+32.50,memory_bytes name=breakout-engine-1,3.77524e+08
+32.75,memory_bytes name=breakout-engine-1,3.77635e+08
+33.00,memory_bytes name=breakout-engine-1,3.77635e+08
+33.25,memory_bytes name=breakout-engine-1,3.77635e+08
+33.50,memory_bytes name=breakout-engine-1,3.77635e+08
+33.75,memory_bytes name=breakout-engine-1,3.77635e+08
+34.00,memory_bytes name=breakout-engine-1,3.77635e+08
+34.25,memory_bytes name=breakout-engine-1,3.77635e+08
+34.50,memory_bytes name=breakout-engine-1,3.77635e+08
+34.75,memory_bytes name=breakout-engine-1,3.77635e+08
+35.00,memory_bytes name=breakout-engine-1,3.77635e+08
+35.25,memory_bytes name=breakout-engine-1,3.77635e+08
+35.50,memory_bytes name=breakout-engine-1,3.77635e+08
+35.75,memory_bytes name=breakout-engine-1,3.77635e+08
+36.00,memory_bytes name=breakout-engine-1,3.77635e+08
+36.25,memory_bytes name=breakout-engine-1,3.77635e+08
+36.50,memory_bytes name=breakout-engine-1,3.77635e+08
+36.75,memory_bytes name=breakout-engine-1,3.77635e+08
+37.00,memory_bytes name=breakout-engine-1,3.77635e+08
+37.25,memory_bytes name=breakout-engine-1,3.77635e+08
+37.50,memory_bytes name=breakout-engine-1,3.77635e+08
+37.75,memory_bytes name=breakout-engine-1,3.77635e+08
+38.00,memory_bytes name=breakout-engine-1,3.77635e+08
+38.25,memory_bytes name=breakout-engine-1,3.77635e+08
+38.50,memory_bytes name=breakout-engine-1,3.77635e+08
+7.50,memory_bytes name=breakout-engine-2,1.17432e+07
+7.75,memory_bytes name=breakout-engine-2,1.17432e+07
+8.00,memory_bytes name=breakout-engine-2,1.17432e+07
+8.25,memory_bytes name=breakout-engine-2,1.17432e+07
+8.50,memory_bytes name=breakout-engine-2,1.17432e+07
+8.75,memory_bytes name=breakout-engine-2,1.17432e+07
+9.00,memory_bytes name=breakout-engine-2,1.17432e+07
+9.25,memory_bytes name=breakout-engine-2,1.17432e+07
+9.50,memory_bytes name=breakout-engine-2,1.17432e+07
+9.75,memory_bytes name=breakout-engine-2,1.17432e+07
+10.00,memory_bytes name=breakout-engine-2,1.17432e+07
+10.25,memory_bytes name=breakout-engine-2,1.17432e+07
+10.50,memory_bytes name=breakout-engine-2,1.17432e+07
+10.75,memory_bytes name=breakout-engine-2,1.17432e+07
+11.00,memory_bytes name=breakout-engine-2,1.17432e+07
+11.25,memory_bytes name=breakout-engine-2,1.17432e+07
+11.50,memory_bytes name=breakout-engine-2,1.17432e+07
+11.75,memory_bytes name=breakout-engine-2,1.17432e+07
+12.00,memory_bytes name=breakout-engine-2,1.17432e+07
+12.25,memory_bytes name=breakout-engine-2,1.17432e+07
+12.50,memory_bytes name=breakout-engine-2,1.17432e+07
+12.75,memory_bytes name=breakout-engine-2,1.17432e+07
+13.00,memory_bytes name=breakout-engine-2,4.08994e+08
+13.25,memory_bytes name=breakout-engine-2,4.08994e+08
+13.50,memory_bytes name=breakout-engine-2,4.08994e+08
+13.75,memory_bytes name=breakout-engine-2,4.08994e+08
+14.00,memory_bytes name=breakout-engine-2,4.08994e+08
+14.25,memory_bytes name=breakout-engine-2,4.08994e+08
+14.50,memory_bytes name=breakout-engine-2,4.08994e+08
+14.75,memory_bytes name=breakout-engine-2,4.08994e+08
+15.00,memory_bytes name=breakout-engine-2,4.08994e+08
+15.25,memory_bytes name=breakout-engine-2,4.08994e+08
+15.50,memory_bytes name=breakout-engine-2,4.08994e+08
+15.75,memory_bytes name=breakout-engine-2,4.08994e+08
+16.00,memory_bytes name=breakout-engine-2,4.08994e+08
+16.25,memory_bytes name=breakout-engine-2,4.08994e+08
+16.50,memory_bytes name=breakout-engine-2,4.08994e+08
+16.75,memory_bytes name=breakout-engine-2,4.08994e+08
+17.00,memory_bytes name=breakout-engine-2,4.08994e+08
+17.25,memory_bytes name=breakout-engine-2,4.08994e+08
+17.50,memory_bytes name=breakout-engine-2,4.08994e+08
+17.75,memory_bytes name=breakout-engine-2,4.08994e+08
+18.00,memory_bytes name=breakout-engine-2,4.08994e+08
+18.25,memory_bytes name=breakout-engine-2,4.69058e+08
+18.50,memory_bytes name=breakout-engine-2,4.69058e+08
+18.75,memory_bytes name=breakout-engine-2,4.69058e+08
+19.00,memory_bytes name=breakout-engine-2,4.69058e+08
+19.25,memory_bytes name=breakout-engine-2,4.69058e+08
+19.50,memory_bytes name=breakout-engine-2,4.69058e+08
+19.75,memory_bytes name=breakout-engine-2,4.69058e+08
+20.00,memory_bytes name=breakout-engine-2,4.69058e+08
+20.25,memory_bytes name=breakout-engine-2,4.69058e+08
+20.50,memory_bytes name=breakout-engine-2,4.69058e+08
+20.75,memory_bytes name=breakout-engine-2,4.69058e+08
+21.00,memory_bytes name=breakout-engine-2,4.69058e+08
+21.25,memory_bytes name=breakout-engine-2,4.69058e+08
+21.50,memory_bytes name=breakout-engine-2,4.69058e+08
+21.75,memory_bytes name=breakout-engine-2,4.69058e+08
+22.00,memory_bytes name=breakout-engine-2,4.69058e+08
+22.25,memory_bytes name=breakout-engine-2,4.69058e+08
+22.50,memory_bytes name=breakout-engine-2,4.69058e+08
+22.75,memory_bytes name=breakout-engine-2,4.69058e+08
+23.00,memory_bytes name=breakout-engine-2,4.69058e+08
+23.25,memory_bytes name=breakout-engine-2,4.06442e+08
+23.50,memory_bytes name=breakout-engine-2,4.06442e+08
+23.75,memory_bytes name=breakout-engine-2,4.06442e+08
+24.00,memory_bytes name=breakout-engine-2,4.06442e+08
+24.25,memory_bytes name=breakout-engine-2,4.06442e+08
+24.50,memory_bytes name=breakout-engine-2,4.06442e+08
+24.75,memory_bytes name=breakout-engine-2,4.06442e+08
+25.00,memory_bytes name=breakout-engine-2,4.06442e+08
+25.25,memory_bytes name=breakout-engine-2,4.06442e+08
+25.50,memory_bytes name=breakout-engine-2,4.06442e+08
+25.75,memory_bytes name=breakout-engine-2,4.06442e+08
+26.00,memory_bytes name=breakout-engine-2,4.06442e+08
+26.25,memory_bytes name=breakout-engine-2,4.06442e+08
+26.50,memory_bytes name=breakout-engine-2,4.06442e+08
+26.75,memory_bytes name=breakout-engine-2,4.06442e+08
+27.00,memory_bytes name=breakout-engine-2,4.06442e+08
+27.25,memory_bytes name=breakout-engine-2,4.06442e+08
+27.50,memory_bytes name=breakout-engine-2,4.06442e+08
+27.75,memory_bytes name=breakout-engine-2,4.06442e+08
+28.00,memory_bytes name=breakout-engine-2,4.06225e+08
+28.25,memory_bytes name=breakout-engine-2,4.06225e+08
+28.50,memory_bytes name=breakout-engine-2,4.06225e+08
+28.75,memory_bytes name=breakout-engine-2,4.06225e+08
+29.00,memory_bytes name=breakout-engine-2,4.06225e+08
+29.25,memory_bytes name=breakout-engine-2,4.06225e+08
+29.50,memory_bytes name=breakout-engine-2,4.06225e+08
+29.75,memory_bytes name=breakout-engine-2,4.06225e+08
+30.00,memory_bytes name=breakout-engine-2,4.06225e+08
+30.25,memory_bytes name=breakout-engine-2,4.06225e+08
+30.50,memory_bytes name=breakout-engine-2,4.06225e+08
+30.75,memory_bytes name=breakout-engine-2,4.06225e+08
+31.00,memory_bytes name=breakout-engine-2,4.06225e+08
+31.25,memory_bytes name=breakout-engine-2,4.06225e+08
+31.50,memory_bytes name=breakout-engine-2,4.06225e+08
+31.75,memory_bytes name=breakout-engine-2,4.06225e+08
+32.00,memory_bytes name=breakout-engine-2,4.06225e+08
+32.25,memory_bytes name=breakout-engine-2,4.06225e+08
+32.50,memory_bytes name=breakout-engine-2,4.06225e+08
+32.75,memory_bytes name=breakout-engine-2,4.06225e+08
+33.00,memory_bytes name=breakout-engine-2,4.06417e+08
+33.25,memory_bytes name=breakout-engine-2,4.06417e+08
+33.50,memory_bytes name=breakout-engine-2,4.06417e+08
+33.75,memory_bytes name=breakout-engine-2,4.06417e+08
+34.00,memory_bytes name=breakout-engine-2,4.06417e+08
+34.25,memory_bytes name=breakout-engine-2,4.06417e+08
+34.50,memory_bytes name=breakout-engine-2,4.06417e+08
+34.75,memory_bytes name=breakout-engine-2,4.06417e+08
+35.00,memory_bytes name=breakout-engine-2,4.06417e+08
+35.25,memory_bytes name=breakout-engine-2,4.06417e+08
+35.50,memory_bytes name=breakout-engine-2,4.06417e+08
+35.75,memory_bytes name=breakout-engine-2,4.06417e+08
+36.00,memory_bytes name=breakout-engine-2,4.06417e+08
+36.25,memory_bytes name=breakout-engine-2,4.06417e+08
+36.50,memory_bytes name=breakout-engine-2,4.06417e+08
+36.75,memory_bytes name=breakout-engine-2,4.06417e+08
+37.00,memory_bytes name=breakout-engine-2,4.06417e+08
+37.25,memory_bytes name=breakout-engine-2,4.06417e+08
+37.50,memory_bytes name=breakout-engine-2,4.06417e+08
+37.75,memory_bytes name=breakout-engine-2,4.06417e+08
+38.00,memory_bytes name=breakout-engine-2,4.06417e+08
+38.25,memory_bytes name=breakout-engine-2,4.06417e+08
+38.50,memory_bytes name=breakout-engine-2,4.06417e+08
+7.75,memory_bytes name=breakout-engine-3,1.20259e+07
+8.00,memory_bytes name=breakout-engine-3,1.20259e+07
+8.25,memory_bytes name=breakout-engine-3,1.20259e+07
+8.50,memory_bytes name=breakout-engine-3,1.20259e+07
+8.75,memory_bytes name=breakout-engine-3,1.20259e+07
+9.00,memory_bytes name=breakout-engine-3,1.20259e+07
+9.25,memory_bytes name=breakout-engine-3,1.20259e+07
+9.50,memory_bytes name=breakout-engine-3,1.20259e+07
+9.75,memory_bytes name=breakout-engine-3,1.20259e+07
+10.00,memory_bytes name=breakout-engine-3,1.20259e+07
+10.25,memory_bytes name=breakout-engine-3,1.20259e+07
+10.50,memory_bytes name=breakout-engine-3,1.20259e+07
+10.75,memory_bytes name=breakout-engine-3,1.20259e+07
+11.00,memory_bytes name=breakout-engine-3,1.20259e+07
+11.25,memory_bytes name=breakout-engine-3,1.20259e+07
+11.50,memory_bytes name=breakout-engine-3,1.20259e+07
+11.75,memory_bytes name=breakout-engine-3,1.20259e+07
+12.00,memory_bytes name=breakout-engine-3,1.20259e+07
+12.25,memory_bytes name=breakout-engine-3,1.20259e+07
+12.50,memory_bytes name=breakout-engine-3,1.20259e+07
+12.75,memory_bytes name=breakout-engine-3,1.20259e+07
+13.00,memory_bytes name=breakout-engine-3,3.48144e+08
+13.25,memory_bytes name=breakout-engine-3,3.48144e+08
+13.50,memory_bytes name=breakout-engine-3,3.48144e+08
+13.75,memory_bytes name=breakout-engine-3,3.48144e+08
+14.00,memory_bytes name=breakout-engine-3,3.48144e+08
+14.25,memory_bytes name=breakout-engine-3,3.48144e+08
+14.50,memory_bytes name=breakout-engine-3,3.48144e+08
+14.75,memory_bytes name=breakout-engine-3,3.48144e+08
+15.00,memory_bytes name=breakout-engine-3,3.48144e+08
+15.25,memory_bytes name=breakout-engine-3,3.48144e+08
+15.50,memory_bytes name=breakout-engine-3,3.48144e+08
+15.75,memory_bytes name=breakout-engine-3,3.48144e+08
+16.00,memory_bytes name=breakout-engine-3,3.48144e+08
+16.25,memory_bytes name=breakout-engine-3,3.48144e+08
+16.50,memory_bytes name=breakout-engine-3,3.48144e+08
+16.75,memory_bytes name=breakout-engine-3,3.48144e+08
+17.00,memory_bytes name=breakout-engine-3,3.48144e+08
+17.25,memory_bytes name=breakout-engine-3,3.48144e+08
+17.50,memory_bytes name=breakout-engine-3,3.48144e+08
+17.75,memory_bytes name=breakout-engine-3,3.48144e+08
+18.00,memory_bytes name=breakout-engine-3,3.48144e+08
+18.25,memory_bytes name=breakout-engine-3,5.13241e+08
+18.50,memory_bytes name=breakout-engine-3,5.13241e+08
+18.75,memory_bytes name=breakout-engine-3,5.13241e+08
+19.00,memory_bytes name=breakout-engine-3,5.13241e+08
+19.25,memory_bytes name=breakout-engine-3,5.13241e+08
+19.50,memory_bytes name=breakout-engine-3,5.13241e+08
+19.75,memory_bytes name=breakout-engine-3,5.13241e+08
+20.00,memory_bytes name=breakout-engine-3,5.13241e+08
+20.25,memory_bytes name=breakout-engine-3,5.13241e+08
+20.50,memory_bytes name=breakout-engine-3,5.13241e+08
+20.75,memory_bytes name=breakout-engine-3,5.13241e+08
+21.00,memory_bytes name=breakout-engine-3,5.13241e+08
+21.25,memory_bytes name=breakout-engine-3,5.13241e+08
+21.50,memory_bytes name=breakout-engine-3,5.13241e+08
+21.75,memory_bytes name=breakout-engine-3,5.13241e+08
+22.00,memory_bytes name=breakout-engine-3,5.13241e+08
+22.25,memory_bytes name=breakout-engine-3,5.13241e+08
+22.50,memory_bytes name=breakout-engine-3,5.13241e+08
+22.75,memory_bytes name=breakout-engine-3,3.76775e+08
+23.00,memory_bytes name=breakout-engine-3,3.76775e+08
+23.25,memory_bytes name=breakout-engine-3,3.76775e+08
+23.50,memory_bytes name=breakout-engine-3,3.76775e+08
+23.75,memory_bytes name=breakout-engine-3,3.76775e+08
+24.00,memory_bytes name=breakout-engine-3,3.76775e+08
+24.25,memory_bytes name=breakout-engine-3,3.76775e+08
+24.50,memory_bytes name=breakout-engine-3,3.76775e+08
+24.75,memory_bytes name=breakout-engine-3,3.76775e+08
+25.00,memory_bytes name=breakout-engine-3,3.76775e+08
+25.25,memory_bytes name=breakout-engine-3,3.76775e+08
+25.50,memory_bytes name=breakout-engine-3,3.76775e+08
+25.75,memory_bytes name=breakout-engine-3,3.76775e+08
+26.00,memory_bytes name=breakout-engine-3,3.76775e+08
+26.25,memory_bytes name=breakout-engine-3,3.76775e+08
+26.50,memory_bytes name=breakout-engine-3,3.76775e+08
+26.75,memory_bytes name=breakout-engine-3,3.76775e+08
+27.00,memory_bytes name=breakout-engine-3,3.76775e+08
+27.25,memory_bytes name=breakout-engine-3,3.76775e+08
+27.50,memory_bytes name=breakout-engine-3,3.76709e+08
+27.75,memory_bytes name=breakout-engine-3,3.76709e+08
+28.00,memory_bytes name=breakout-engine-3,3.76709e+08
+28.25,memory_bytes name=breakout-engine-3,3.76709e+08
+28.50,memory_bytes name=breakout-engine-3,3.76709e+08
+28.75,memory_bytes name=breakout-engine-3,3.76709e+08
+29.00,memory_bytes name=breakout-engine-3,3.76709e+08
+29.25,memory_bytes name=breakout-engine-3,3.76709e+08
+29.50,memory_bytes name=breakout-engine-3,3.76709e+08
+29.75,memory_bytes name=breakout-engine-3,3.76709e+08
+30.00,memory_bytes name=breakout-engine-3,3.76709e+08
+30.25,memory_bytes name=breakout-engine-3,3.76709e+08
+30.50,memory_bytes name=breakout-engine-3,3.76709e+08
+30.75,memory_bytes name=breakout-engine-3,3.76709e+08
+31.00,memory_bytes name=breakout-engine-3,3.76709e+08
+31.25,memory_bytes name=breakout-engine-3,3.76709e+08
+31.50,memory_bytes name=breakout-engine-3,3.76709e+08
+31.75,memory_bytes name=breakout-engine-3,3.76709e+08
+32.00,memory_bytes name=breakout-engine-3,3.76709e+08
+32.25,memory_bytes name=breakout-engine-3,3.76709e+08
+32.50,memory_bytes name=breakout-engine-3,3.77221e+08
+32.75,memory_bytes name=breakout-engine-3,3.77221e+08
+33.00,memory_bytes name=breakout-engine-3,3.77221e+08
+33.25,memory_bytes name=breakout-engine-3,3.77221e+08
+33.50,memory_bytes name=breakout-engine-3,3.77221e+08
+33.75,memory_bytes name=breakout-engine-3,3.77221e+08
+34.00,memory_bytes name=breakout-engine-3,3.77221e+08
+34.25,memory_bytes name=breakout-engine-3,3.77221e+08
+34.50,memory_bytes name=breakout-engine-3,3.77221e+08
+34.75,memory_bytes name=breakout-engine-3,3.77221e+08
+35.00,memory_bytes name=breakout-engine-3,3.77221e+08
+35.25,memory_bytes name=breakout-engine-3,3.77221e+08
+35.50,memory_bytes name=breakout-engine-3,3.77221e+08
+35.75,memory_bytes name=breakout-engine-3,3.77221e+08
+36.00,memory_bytes name=breakout-engine-3,3.77221e+08
+36.25,memory_bytes name=breakout-engine-3,3.77221e+08
+36.50,memory_bytes name=breakout-engine-3,3.77221e+08
+36.75,memory_bytes name=breakout-engine-3,3.77221e+08
+37.00,memory_bytes name=breakout-engine-3,3.77221e+08
+37.25,memory_bytes name=breakout-engine-3,3.77221e+08
+37.50,memory_bytes name=breakout-engine-3,3.77221e+08
+37.75,memory_bytes name=breakout-engine-3,3.77221e+08
+38.00,memory_bytes name=breakout-engine-3,3.77221e+08
+38.25,memory_bytes name=breakout-engine-3,3.77221e+08
+38.50,memory_bytes name=breakout-engine-3,3.77221e+08
+7.50,memory_bytes name=breakout-engine-4,1.00311e+07
+7.75,memory_bytes name=breakout-engine-4,1.00311e+07
+8.00,memory_bytes name=breakout-engine-4,1.00311e+07
+8.25,memory_bytes name=breakout-engine-4,1.00311e+07
+8.50,memory_bytes name=breakout-engine-4,1.00311e+07
+8.75,memory_bytes name=breakout-engine-4,1.00311e+07
+9.00,memory_bytes name=breakout-engine-4,1.00311e+07
+9.25,memory_bytes name=breakout-engine-4,1.00311e+07
+9.50,memory_bytes name=breakout-engine-4,1.00311e+07
+9.75,memory_bytes name=breakout-engine-4,1.00311e+07
+10.00,memory_bytes name=breakout-engine-4,1.00311e+07
+10.25,memory_bytes name=breakout-engine-4,1.00311e+07
+10.50,memory_bytes name=breakout-engine-4,1.00311e+07
+10.75,memory_bytes name=breakout-engine-4,1.00311e+07
+11.00,memory_bytes name=breakout-engine-4,1.00311e+07
+11.25,memory_bytes name=breakout-engine-4,1.00311e+07
+11.50,memory_bytes name=breakout-engine-4,1.00311e+07
+11.75,memory_bytes name=breakout-engine-4,1.00311e+07
+12.00,memory_bytes name=breakout-engine-4,1.00311e+07
+12.25,memory_bytes name=breakout-engine-4,1.00311e+07
+12.50,memory_bytes name=breakout-engine-4,3.46931e+08
+12.75,memory_bytes name=breakout-engine-4,3.46931e+08
+13.00,memory_bytes name=breakout-engine-4,3.46931e+08
+13.25,memory_bytes name=breakout-engine-4,3.46931e+08
+13.50,memory_bytes name=breakout-engine-4,3.46931e+08
+13.75,memory_bytes name=breakout-engine-4,3.46931e+08
+14.00,memory_bytes name=breakout-engine-4,3.46931e+08
+14.25,memory_bytes name=breakout-engine-4,3.46931e+08
+14.50,memory_bytes name=breakout-engine-4,3.46931e+08
+14.75,memory_bytes name=breakout-engine-4,3.46931e+08
+15.00,memory_bytes name=breakout-engine-4,3.46931e+08
+15.25,memory_bytes name=breakout-engine-4,3.46931e+08
+15.50,memory_bytes name=breakout-engine-4,3.46931e+08
+15.75,memory_bytes name=breakout-engine-4,3.46931e+08
+16.00,memory_bytes name=breakout-engine-4,3.46931e+08
+16.25,memory_bytes name=breakout-engine-4,3.46931e+08
+16.50,memory_bytes name=breakout-engine-4,3.46931e+08
+16.75,memory_bytes name=breakout-engine-4,3.46931e+08
+17.00,memory_bytes name=breakout-engine-4,3.46931e+08
+17.25,memory_bytes name=breakout-engine-4,3.46931e+08
+17.50,memory_bytes name=breakout-engine-4,3.46931e+08
+17.75,memory_bytes name=breakout-engine-4,3.46931e+08
+18.00,memory_bytes name=breakout-engine-4,3.46931e+08
+18.25,memory_bytes name=breakout-engine-4,3.46931e+08
+18.50,memory_bytes name=breakout-engine-4,5.03972e+08
+18.75,memory_bytes name=breakout-engine-4,5.03972e+08
+19.00,memory_bytes name=breakout-engine-4,5.03972e+08
+19.25,memory_bytes name=breakout-engine-4,5.03972e+08
+19.50,memory_bytes name=breakout-engine-4,5.03972e+08
+19.75,memory_bytes name=breakout-engine-4,5.03972e+08
+20.00,memory_bytes name=breakout-engine-4,5.03972e+08
+20.25,memory_bytes name=breakout-engine-4,5.03972e+08
+20.50,memory_bytes name=breakout-engine-4,5.03972e+08
+20.75,memory_bytes name=breakout-engine-4,5.03972e+08
+21.00,memory_bytes name=breakout-engine-4,5.03972e+08
+21.25,memory_bytes name=breakout-engine-4,5.03972e+08
+21.50,memory_bytes name=breakout-engine-4,5.03972e+08
+21.75,memory_bytes name=breakout-engine-4,5.03972e+08
+22.00,memory_bytes name=breakout-engine-4,5.03972e+08
+22.25,memory_bytes name=breakout-engine-4,5.03972e+08
+22.50,memory_bytes name=breakout-engine-4,5.03972e+08
+22.75,memory_bytes name=breakout-engine-4,5.03972e+08
+23.00,memory_bytes name=breakout-engine-4,5.03972e+08
+23.25,memory_bytes name=breakout-engine-4,5.03972e+08
+23.50,memory_bytes name=breakout-engine-4,3.95489e+08
+23.75,memory_bytes name=breakout-engine-4,3.95489e+08
+24.00,memory_bytes name=breakout-engine-4,3.95489e+08
+24.25,memory_bytes name=breakout-engine-4,3.95489e+08
+24.50,memory_bytes name=breakout-engine-4,3.95489e+08
+24.75,memory_bytes name=breakout-engine-4,3.95489e+08
+25.00,memory_bytes name=breakout-engine-4,3.95489e+08
+25.25,memory_bytes name=breakout-engine-4,3.95489e+08
+25.50,memory_bytes name=breakout-engine-4,3.95489e+08
+25.75,memory_bytes name=breakout-engine-4,3.95489e+08
+26.00,memory_bytes name=breakout-engine-4,3.95489e+08
+26.25,memory_bytes name=breakout-engine-4,3.95489e+08
+26.50,memory_bytes name=breakout-engine-4,3.95489e+08
+26.75,memory_bytes name=breakout-engine-4,3.95489e+08
+27.00,memory_bytes name=breakout-engine-4,3.95489e+08
+27.25,memory_bytes name=breakout-engine-4,3.95489e+08
+27.50,memory_bytes name=breakout-engine-4,3.95489e+08
+27.75,memory_bytes name=breakout-engine-4,3.95489e+08
+28.00,memory_bytes name=breakout-engine-4,3.95489e+08
+28.25,memory_bytes name=breakout-engine-4,3.95674e+08
+28.50,memory_bytes name=breakout-engine-4,3.95674e+08
+28.75,memory_bytes name=breakout-engine-4,3.95674e+08
+29.00,memory_bytes name=breakout-engine-4,3.95674e+08
+29.25,memory_bytes name=breakout-engine-4,3.95674e+08
+29.50,memory_bytes name=breakout-engine-4,3.95674e+08
+29.75,memory_bytes name=breakout-engine-4,3.95674e+08
+30.00,memory_bytes name=breakout-engine-4,3.95674e+08
+30.25,memory_bytes name=breakout-engine-4,3.95674e+08
+30.50,memory_bytes name=breakout-engine-4,3.95674e+08
+30.75,memory_bytes name=breakout-engine-4,3.95674e+08
+31.00,memory_bytes name=breakout-engine-4,3.95674e+08
+31.25,memory_bytes name=breakout-engine-4,3.95674e+08
+31.50,memory_bytes name=breakout-engine-4,3.95674e+08
+31.75,memory_bytes name=breakout-engine-4,3.95674e+08
+32.00,memory_bytes name=breakout-engine-4,3.95674e+08
+32.25,memory_bytes name=breakout-engine-4,3.95674e+08
+32.50,memory_bytes name=breakout-engine-4,3.95674e+08
+32.75,memory_bytes name=breakout-engine-4,3.95645e+08
+33.00,memory_bytes name=breakout-engine-4,3.95645e+08
+33.25,memory_bytes name=breakout-engine-4,3.95645e+08
+33.50,memory_bytes name=breakout-engine-4,3.95645e+08
+33.75,memory_bytes name=breakout-engine-4,3.95645e+08
+34.00,memory_bytes name=breakout-engine-4,3.95645e+08
+34.25,memory_bytes name=breakout-engine-4,3.95645e+08
+34.50,memory_bytes name=breakout-engine-4,3.95645e+08
+34.75,memory_bytes name=breakout-engine-4,3.95645e+08
+35.00,memory_bytes name=breakout-engine-4,3.95645e+08
+35.25,memory_bytes name=breakout-engine-4,3.95645e+08
+35.50,memory_bytes name=breakout-engine-4,3.95645e+08
+35.75,memory_bytes name=breakout-engine-4,3.95645e+08
+36.00,memory_bytes name=breakout-engine-4,3.95645e+08
+36.25,memory_bytes name=breakout-engine-4,3.95645e+08
+36.50,memory_bytes name=breakout-engine-4,3.95645e+08
+36.75,memory_bytes name=breakout-engine-4,3.95645e+08
+37.00,memory_bytes name=breakout-engine-4,3.95645e+08
+37.25,memory_bytes name=breakout-engine-4,3.95645e+08
+37.50,memory_bytes name=breakout-engine-4,3.95645e+08
+37.75,memory_bytes name=breakout-engine-4,3.95645e+08
+38.00,memory_bytes name=breakout-engine-4,3.95645e+08
+38.25,memory_bytes name=breakout-engine-4,3.95645e+08
+38.50,memory_bytes name=breakout-engine-4,3.95645e+08
