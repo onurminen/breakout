@@ -1,0 +1,1614 @@
+seconds,series,value
+0.00,events_per_s,35107.6
+5.00,events_per_s,35674.5
+10.00,events_per_s,36097.1
+15.00,events_per_s,1303.12
+20.00,events_per_s,1305.08
+25.00,events_per_s,1345.63
+30.00,events_per_s,1284.81
+35.00,events_per_s,921.695
+40.00,events_per_s,523.119
+45.00,events_per_s,200.271
+50.00,events_per_s,267.729
+55.00,events_per_s,283.525
+60.00,events_per_s,169.627
+65.00,events_per_s,293.288
+70.00,events_per_s,298.034
+75.00,events_per_s,326.237
+80.00,events_per_s,305.763
+85.00,events_per_s,293.627
+90.00,events_per_s,317.288
+95.00,events_per_s,259.932
+100.00,events_per_s,248.61
+105.00,events_per_s,178.373
+110.00,events_per_s,246.373
+115.00,events_per_s,240.949
+120.00,events_per_s,114.237
+125.00,events_per_s,277.898
+130.00,events_per_s,290.169
+135.00,events_per_s,195.458
+140.00,events_per_s,258.983
+145.00,events_per_s,253.288
+150.00,events_per_s,297.763
+155.00,events_per_s,262.78
+160.00,events_per_s,279.119
+165.00,events_per_s,204.881
+170.00,events_per_s,328.271
+175.00,events_per_s,344.271
+180.00,events_per_s,238.576
+185.00,events_per_s,360
+190.00,events_per_s,369.559
+195.00,events_per_s,273.627
+200.00,events_per_s,360.136
+205.00,events_per_s,358.102
+210.00,events_per_s,334.237
+215.00,events_per_s,357.153
+220.00,events_per_s,350.441
+225.00,events_per_s,265.017
+230.00,events_per_s,363.254
+235.00,events_per_s,368.407
+240.00,events_per_s,266.373
+245.00,events_per_s,372.746
+250.00,events_per_s,364.678
+255.00,events_per_s,296.746
+260.00,events_per_s,334.102
+265.00,events_per_s,339.119
+270.00,events_per_s,396.678
+275.00,events_per_s,346.847
+280.00,events_per_s,344.949
+285.00,events_per_s,252.407
+290.00,events_per_s,360.746
+295.00,events_per_s,357.831
+300.00,events_per_s,246.237
+305.00,events_per_s,376
+310.00,events_per_s,408.881
+315.00,events_per_s,365.22
+320.00,events_per_s,418.102
+325.00,events_per_s,405.966
+330.00,events_per_s,456.949
+335.00,events_per_s,409.085
+340.00,events_per_s,408.475
+345.00,events_per_s,315.458
+350.00,events_per_s,393.22
+355.00,events_per_s,393.424
+360.00,events_per_s,260.678
+365.00,events_per_s,399.186
+370.00,events_per_s,404.068
+375.00,events_per_s,333.898
+380.00,events_per_s,384.814
+385.00,events_per_s,378.237
+390.00,events_per_s,400.203
+395.00,events_per_s,366.78
+400.00,events_per_s,356.746
+405.00,events_per_s,241.356
+410.00,events_per_s,362.237
+415.00,events_per_s,362.102
+420.00,events_per_s,279.932
+425.00,events_per_s,375.458
+430.00,events_per_s,380.881
+435.00,events_per_s,413.017
+440.00,events_per_s,364.475
+445.00,events_per_s,363.051
+450.00,events_per_s,271.593
+455.00,events_per_s,385.559
+460.00,events_per_s,388.407
+465.00,events_per_s,285.898
+470.00,events_per_s,387.525
+475.00,events_per_s,387.932
+480.00,events_per_s,332.271
+485.00,events_per_s,379.051
+490.00,events_per_s,374.102
+495.00,events_per_s,421.153
+500.00,events_per_s,393.424
+505.00,events_per_s,397.424
+510.00,events_per_s,266.576
+515.00,events_per_s,369.695
+520.00,events_per_s,363.458
+525.00,events_per_s,270.305
+530.00,events_per_s,356.678
+535.00,events_per_s,369.288
+540.00,events_per_s,422.576
+545.00,events_per_s,384.203
+550.00,events_per_s,389.017
+555.00,events_per_s,295.051
+560.00,events_per_s,378.102
+565.00,events_per_s,405.017
+570.00,events_per_s,304.949
+575.00,events_per_s,432.339
+580.00,events_per_s,401.424
+585.00,events_per_s,319.458
+590.00,events_per_s,401.153
+595.00,events_per_s,395.729
+600.00,events_per_s,410.712
+0.00,event_latency_p50,0.0138351
+5.00,event_latency_p50,0.0137538
+10.00,event_latency_p50,0.0136813
+15.00,event_latency_p50,0.0136096
+20.00,event_latency_p50,0.0135225
+25.00,event_latency_p50,0.0134504
+30.00,event_latency_p50,0.0107092
+35.00,event_latency_p50,0.0105662
+40.00,event_latency_p50,0.0104591
+45.00,event_latency_p50,0.0104316
+50.00,event_latency_p50,0.0105474
+55.00,event_latency_p50,0.0106925
+60.00,event_latency_p50,0.0109224
+65.00,event_latency_p50,0.0112101
+70.00,event_latency_p50,0.011135
+75.00,event_latency_p50,0.0108654
+80.00,event_latency_p50,0.0111916
+85.00,event_latency_p50,0.0111947
+90.00,event_latency_p50,0.0110653
+95.00,event_latency_p50,0.0109166
+100.00,event_latency_p50,0.0109684
+105.00,event_latency_p50,0.0108798
+110.00,event_latency_p50,0.0102786
+115.00,event_latency_p50,0.0103362
+120.00,event_latency_p50,0.010417
+125.00,event_latency_p50,0.0105881
+130.00,event_latency_p50,0.0106001
+135.00,event_latency_p50,0.0107583
+140.00,event_latency_p50,0.0111267
+145.00,event_latency_p50,0.0111162
+150.00,event_latency_p50,0.0111079
+155.00,event_latency_p50,0.0111756
+160.00,event_latency_p50,0.0111532
+165.00,event_latency_p50,0.0111545
+170.00,event_latency_p50,0.0110975
+175.00,event_latency_p50,0.0111425
+180.00,event_latency_p50,0.010905
+185.00,event_latency_p50,0.0107118
+190.00,event_latency_p50,0.0107806
+195.00,event_latency_p50,0.0102717
+200.00,event_latency_p50,0.0106882
+205.00,event_latency_p50,0.0105973
+210.00,event_latency_p50,0.0107574
+215.00,event_latency_p50,0.0109009
+220.00,event_latency_p50,0.0108806
+225.00,event_latency_p50,0.01066
+230.00,event_latency_p50,0.0107527
+235.00,event_latency_p50,0.0107614
+240.00,event_latency_p50,0.0107186
+245.00,event_latency_p50,0.0109368
+250.00,event_latency_p50,0.0109523
+255.00,event_latency_p50,0.0110544
+260.00,event_latency_p50,0.011074
+265.00,event_latency_p50,0.0110579
+270.00,event_latency_p50,0.0109394
+275.00,event_latency_p50,0.0107068
+280.00,event_latency_p50,0.0107155
+285.00,event_latency_p50,0.0106339
+290.00,event_latency_p50,0.010297
+295.00,event_latency_p50,0.0103399
+300.00,event_latency_p50,0.010165
+305.00,event_latency_p50,0.0102147
+310.00,event_latency_p50,0.0101881
+315.00,event_latency_p50,0.0106278
+320.00,event_latency_p50,0.0110451
+325.00,event_latency_p50,0.0110575
+330.00,event_latency_p50,0.0109352
+335.00,event_latency_p50,0.0111331
+340.00,event_latency_p50,0.0111953
+345.00,event_latency_p50,0.0111626
+350.00,event_latency_p50,0.0106945
+355.00,event_latency_p50,0.0107088
+360.00,event_latency_p50,0.0108486
+365.00,event_latency_p50,0.0112302
+370.00,event_latency_p50,0.0112047
+375.00,event_latency_p50,0.011202
+380.00,event_latency_p50,0.0113779
+385.00,event_latency_p50,0.0113839
+390.00,event_latency_p50,0.0113393
+395.00,event_latency_p50,0.0112677
+400.00,event_latency_p50,0.0113184
+405.00,event_latency_p50,0.0113275
+410.00,event_latency_p50,0.0112006
+415.00,event_latency_p50,0.0111954
+420.00,event_latency_p50,0.0112552
+425.00,event_latency_p50,0.0113098
+430.00,event_latency_p50,0.0112629
+435.00,event_latency_p50,0.0111879
+440.00,event_latency_p50,0.0112597
+445.00,event_latency_p50,0.0112612
+450.00,event_latency_p50,0.0111526
+455.00,event_latency_p50,0.0111521
+460.00,event_latency_p50,0.0111977
+465.00,event_latency_p50,0.0111547
+470.00,event_latency_p50,0.0111942
+475.00,event_latency_p50,0.011176
+480.00,event_latency_p50,0.0110049
+485.00,event_latency_p50,0.010979
+490.00,event_latency_p50,0.0109325
+495.00,event_latency_p50,0.010765
+500.00,event_latency_p50,0.010731
+505.00,event_latency_p50,0.0107942
+510.00,event_latency_p50,0.0109736
+515.00,event_latency_p50,0.0110672
+520.00,event_latency_p50,0.0110462
+525.00,event_latency_p50,0.0110799
+530.00,event_latency_p50,0.0112452
+535.00,event_latency_p50,0.0112051
+540.00,event_latency_p50,0.011202
+545.00,event_latency_p50,0.0111744
+550.00,event_latency_p50,0.011092
+555.00,event_latency_p50,0.0109863
+560.00,event_latency_p50,0.0110362
+565.00,event_latency_p50,0.0109624
+570.00,event_latency_p50,0.0107943
+575.00,event_latency_p50,0.0109305
+580.00,event_latency_p50,0.0110363
+585.00,event_latency_p50,0.0107225
+590.00,event_latency_p50,0.0109018
+595.00,event_latency_p50,0.0109711
+600.00,event_latency_p50,0.0110223
+0.00,event_latency_p95,0.332467
+5.00,event_latency_p95,0.331446
+10.00,event_latency_p95,0.330685
+15.00,event_latency_p95,0.329931
+20.00,event_latency_p95,0.32901
+25.00,event_latency_p95,0.328251
+30.00,event_latency_p95,0.0130004
+35.00,event_latency_p95,0.012986
+40.00,event_latency_p95,0.0129784
+45.00,event_latency_p95,0.0129829
+50.00,event_latency_p95,0.0130269
+55.00,event_latency_p95,0.0130746
+60.00,event_latency_p95,0.0130788
+65.00,event_latency_p95,0.013152
+70.00,event_latency_p95,0.0131439
+75.00,event_latency_p95,0.0130775
+80.00,event_latency_p95,0.0130799
+85.00,event_latency_p95,0.0130814
+90.00,event_latency_p95,0.0130701
+95.00,event_latency_p95,0.0130028
+100.00,event_latency_p95,0.0130057
+105.00,event_latency_p95,0.0130002
+110.00,event_latency_p95,0.0129605
+115.00,event_latency_p95,0.0129673
+120.00,event_latency_p95,0.0129476
+125.00,event_latency_p95,0.0129784
+130.00,event_latency_p95,0.0129786
+135.00,event_latency_p95,0.0129843
+140.00,event_latency_p95,0.0130085
+145.00,event_latency_p95,0.0130079
+150.00,event_latency_p95,0.0130068
+155.00,event_latency_p95,0.0130118
+160.00,event_latency_p95,0.0130099
+165.00,event_latency_p95,0.01301
+170.00,event_latency_p95,0.0130063
+175.00,event_latency_p95,0.0130094
+180.00,event_latency_p95,0.0129933
+185.00,event_latency_p95,0.0129858
+190.00,event_latency_p95,0.0129916
+195.00,event_latency_p95,0.0129596
+200.00,event_latency_p95,0.0129844
+205.00,event_latency_p95,0.0129776
+210.00,event_latency_p95,0.0129866
+215.00,event_latency_p95,0.0129958
+220.00,event_latency_p95,0.0129942
+225.00,event_latency_p95,0.0129823
+230.00,event_latency_p95,0.0129895
+235.00,event_latency_p95,0.0129901
+240.00,event_latency_p95,0.0129839
+245.00,event_latency_p95,0.013
+250.00,event_latency_p95,0.0130012
+255.00,event_latency_p95,0.0130077
+260.00,event_latency_p95,0.0130067
+265.00,event_latency_p95,0.013006
+270.00,event_latency_p95,0.0130013
+275.00,event_latency_p95,0.0129897
+280.00,event_latency_p95,0.0129909
+285.00,event_latency_p95,0.0129928
+290.00,event_latency_p95,0.0129677
+295.00,event_latency_p95,0.0129714
+300.00,event_latency_p95,0.0129531
+305.00,event_latency_p95,0.0129705
+310.00,event_latency_p95,0.0129654
+315.00,event_latency_p95,0.0129854
+320.00,event_latency_p95,0.0130102
+325.00,event_latency_p95,0.0130107
+330.00,event_latency_p95,0.0130046
+335.00,event_latency_p95,0.0130094
+340.00,event_latency_p95,0.0130137
+345.00,event_latency_p95,0.0130108
+350.00,event_latency_p95,0.0129886
+355.00,event_latency_p95,0.0129889
+360.00,event_latency_p95,0.0129949
+365.00,event_latency_p95,0.0130172
+370.00,event_latency_p95,0.0130147
+375.00,event_latency_p95,0.0130144
+380.00,event_latency_p95,0.0130334
+385.00,event_latency_p95,0.013034
+390.00,event_latency_p95,0.0130297
+395.00,event_latency_p95,0.0130226
+400.00,event_latency_p95,0.0130276
+405.00,event_latency_p95,0.0130286
+410.00,event_latency_p95,0.0130143
+415.00,event_latency_p95,0.0130138
+420.00,event_latency_p95,0.0130197
+425.00,event_latency_p95,0.0130252
+430.00,event_latency_p95,0.0130205
+435.00,event_latency_p95,0.013013
+440.00,event_latency_p95,0.0130202
+445.00,event_latency_p95,0.0130203
+450.00,event_latency_p95,0.0130103
+455.00,event_latency_p95,0.0130103
+460.00,event_latency_p95,0.013014
+465.00,event_latency_p95,0.0130103
+470.00,event_latency_p95,0.0130136
+475.00,event_latency_p95,0.0130118
+480.00,event_latency_p95,0.0130017
+485.00,event_latency_p95,0.0130019
+490.00,event_latency_p95,0.0129997
+495.00,event_latency_p95,0.0129933
+500.00,event_latency_p95,0.0129924
+505.00,event_latency_p95,0.0129956
+510.00,event_latency_p95,0.0130033
+515.00,event_latency_p95,0.0130069
+520.00,event_latency_p95,0.0130061
+525.00,event_latency_p95,0.0130082
+530.00,event_latency_p95,0.0130194
+535.00,event_latency_p95,0.0130154
+540.00,event_latency_p95,0.0130151
+545.00,event_latency_p95,0.0130123
+550.00,event_latency_p95,0.0130078
+555.00,event_latency_p95,0.0130015
+560.00,event_latency_p95,0.0130052
+565.00,event_latency_p95,0.0130014
+570.00,event_latency_p95,0.0130029
+575.00,event_latency_p95,0.0130093
+580.00,event_latency_p95,0.0130152
+585.00,event_latency_p95,0.0129943
+590.00,event_latency_p95,0.0130087
+595.00,event_latency_p95,0.0130141
+600.00,event_latency_p95,0.0131049
+0.00,event_latency_p99,0.383066
+5.00,event_latency_p99,0.382862
+10.00,event_latency_p99,0.38271
+15.00,event_latency_p99,0.382559
+20.00,event_latency_p99,0.382375
+25.00,event_latency_p99,0.382223
+30.00,event_latency_p99,0.0131913
+35.00,event_latency_p99,0.0131895
+40.00,event_latency_p99,0.0131926
+45.00,event_latency_p99,0.0131996
+50.00,event_latency_p99,0.013982
+55.00,event_latency_p99,0.0145158
+60.00,event_latency_p99,0.014434
+65.00,event_latency_p99,0.0149515
+70.00,event_latency_p99,0.0149227
+75.00,event_latency_p99,0.0145051
+80.00,event_latency_p99,0.0142628
+85.00,event_latency_p99,0.0142886
+90.00,event_latency_p99,0.0141814
+95.00,event_latency_p99,0.0131778
+100.00,event_latency_p99,0.0131785
+105.00,event_latency_p99,0.0131777
+110.00,event_latency_p99,0.0131709
+115.00,event_latency_p99,0.0131723
+120.00,event_latency_p99,0.0131629
+125.00,event_latency_p99,0.0131683
+130.00,event_latency_p99,0.0131684
+135.00,event_latency_p99,0.0131695
+140.00,event_latency_p99,0.0131743
+145.00,event_latency_p99,0.0131742
+150.00,event_latency_p99,0.013174
+155.00,event_latency_p99,0.013175
+160.00,event_latency_p99,0.0131746
+165.00,event_latency_p99,0.0131746
+170.00,event_latency_p99,0.0131739
+175.00,event_latency_p99,0.0131745
+180.00,event_latency_p99,0.0131713
+185.00,event_latency_p99,0.0131698
+190.00,event_latency_p99,0.013171
+195.00,event_latency_p99,0.0131646
+200.00,event_latency_p99,0.0131695
+205.00,event_latency_p99,0.0131682
+210.00,event_latency_p99,0.01317
+215.00,event_latency_p99,0.0131718
+220.00,event_latency_p99,0.0131715
+225.00,event_latency_p99,0.0131691
+230.00,event_latency_p99,0.0131733
+235.00,event_latency_p99,0.0131734
+240.00,event_latency_p99,0.0131728
+245.00,event_latency_p99,0.0131752
+250.00,event_latency_p99,0.0131754
+255.00,event_latency_p99,0.0131772
+260.00,event_latency_p99,0.013174
+265.00,event_latency_p99,0.0131738
+270.00,event_latency_p99,0.0131732
+275.00,event_latency_p99,0.0131709
+280.00,event_latency_p99,0.0131712
+285.00,event_latency_p99,0.013178
+290.00,event_latency_p99,0.0131736
+295.00,event_latency_p99,0.0131743
+300.00,event_latency_p99,0.0131723
+305.00,event_latency_p99,0.0131794
+310.00,event_latency_p99,0.0131781
+315.00,event_latency_p99,0.0131755
+320.00,event_latency_p99,0.013179
+325.00,event_latency_p99,0.013179
+330.00,event_latency_p99,0.0131778
+335.00,event_latency_p99,0.0131745
+340.00,event_latency_p99,0.0131754
+345.00,event_latency_p99,0.0131748
+350.00,event_latency_p99,0.0131704
+355.00,event_latency_p99,0.0131704
+360.00,event_latency_p99,0.0131716
+365.00,event_latency_p99,0.0131761
+370.00,event_latency_p99,0.0131756
+375.00,event_latency_p99,0.0131755
+380.00,event_latency_p99,0.0131806
+385.00,event_latency_p99,0.0131807
+390.00,event_latency_p99,0.0131799
+395.00,event_latency_p99,0.0131785
+400.00,event_latency_p99,0.0131795
+405.00,event_latency_p99,0.0131798
+410.00,event_latency_p99,0.0131755
+415.00,event_latency_p99,0.0131754
+420.00,event_latency_p99,0.0131766
+425.00,event_latency_p99,0.0131777
+430.00,event_latency_p99,0.0131767
+435.00,event_latency_p99,0.0131752
+440.00,event_latency_p99,0.0131767
+445.00,event_latency_p99,0.0131767
+450.00,event_latency_p99,0.0131747
+455.00,event_latency_p99,0.0131747
+460.00,event_latency_p99,0.0131754
+465.00,event_latency_p99,0.0131747
+470.00,event_latency_p99,0.0131754
+475.00,event_latency_p99,0.013175
+480.00,event_latency_p99,0.013173
+485.00,event_latency_p99,0.013173
+490.00,event_latency_p99,0.0131726
+495.00,event_latency_p99,0.0131713
+500.00,event_latency_p99,0.0131711
+505.00,event_latency_p99,0.0131718
+510.00,event_latency_p99,0.0131733
+515.00,event_latency_p99,0.013174
+520.00,event_latency_p99,0.0131739
+525.00,event_latency_p99,0.013175
+530.00,event_latency_p99,0.0131771
+535.00,event_latency_p99,0.0131763
+540.00,event_latency_p99,0.0131763
+545.00,event_latency_p99,0.0131757
+550.00,event_latency_p99,0.0131748
+555.00,event_latency_p99,0.0131729
+560.00,event_latency_p99,0.0131737
+565.00,event_latency_p99,0.0131729
+570.00,event_latency_p99,0.0131847
+575.00,event_latency_p99,0.0131848
+580.00,event_latency_p99,0.0131857
+585.00,event_latency_p99,0.0131841
+590.00,event_latency_p99,0.0131868
+595.00,event_latency_p99,0.0131881
+600.00,event_latency_p99,0.0146752
+0.00,window_latency_p50,0.0147968
+5.00,window_latency_p50,0.0147159
+10.00,window_latency_p50,0.0147159
+15.00,window_latency_p50,0.0147159
+20.00,window_latency_p50,0.0147159
+25.00,window_latency_p50,0.0147159
+30.00,window_latency_p50,0.0144279
+305.00,window_latency_p50,0.0144813
+310.00,window_latency_p50,0.0144813
+315.00,window_latency_p50,0.0144813
+320.00,window_latency_p50,0.0144813
+325.00,window_latency_p50,0.0144813
+330.00,window_latency_p50,0.0144813
+0.00,window_latency_p95,0.325541
+5.00,window_latency_p95,0.0361342
+10.00,window_latency_p95,0.0361342
+15.00,window_latency_p95,0.0361342
+20.00,window_latency_p95,0.0361342
+25.00,window_latency_p95,0.0361342
+30.00,window_latency_p95,0.0155187
+305.00,window_latency_p95,0.0177233
+310.00,window_latency_p95,0.0177233
+315.00,window_latency_p95,0.0177233
+320.00,window_latency_p95,0.0177233
+325.00,window_latency_p95,0.0177233
+330.00,window_latency_p95,0.0177233
+0.00,window_latency_p99,0.373411
+5.00,window_latency_p99,0.37281
+10.00,window_latency_p99,0.37281
+15.00,window_latency_p99,0.37281
+20.00,window_latency_p99,0.37281
+25.00,window_latency_p99,0.37281
+30.00,window_latency_p99,0.0156157
+305.00,window_latency_p99,0.0183516
+310.00,window_latency_p99,0.0183516
+315.00,window_latency_p99,0.0183516
+320.00,window_latency_p99,0.0183516
+325.00,window_latency_p99,0.0183516
+330.00,window_latency_p99,0.0183516
+0.00,cpu_cores name=breakout-cadvisor-1,0.104809
+5.00,cpu_cores name=breakout-cadvisor-1,0.0960324
+10.00,cpu_cores name=breakout-cadvisor-1,0.0980706
+15.00,cpu_cores name=breakout-cadvisor-1,0.0966487
+20.00,cpu_cores name=breakout-cadvisor-1,0.0940159
+25.00,cpu_cores name=breakout-cadvisor-1,0.0924576
+30.00,cpu_cores name=breakout-cadvisor-1,0.0930795
+35.00,cpu_cores name=breakout-cadvisor-1,0.1066
+40.00,cpu_cores name=breakout-cadvisor-1,0.107544
+45.00,cpu_cores name=breakout-cadvisor-1,0.103718
+50.00,cpu_cores name=breakout-cadvisor-1,0.105438
+55.00,cpu_cores name=breakout-cadvisor-1,0.106638
+60.00,cpu_cores name=breakout-cadvisor-1,0.0905475
+65.00,cpu_cores name=breakout-cadvisor-1,0.0862067
+70.00,cpu_cores name=breakout-cadvisor-1,0.0893836
+75.00,cpu_cores name=breakout-cadvisor-1,0.0867883
+80.00,cpu_cores name=breakout-cadvisor-1,0.0905686
+85.00,cpu_cores name=breakout-cadvisor-1,0.0886257
+90.00,cpu_cores name=breakout-cadvisor-1,0.0918285
+95.00,cpu_cores name=breakout-cadvisor-1,0.0985915
+100.00,cpu_cores name=breakout-cadvisor-1,0.0971159
+105.00,cpu_cores name=breakout-cadvisor-1,0.0950634
+110.00,cpu_cores name=breakout-cadvisor-1,0.0969687
+115.00,cpu_cores name=breakout-cadvisor-1,0.0917411
+120.00,cpu_cores name=breakout-cadvisor-1,0.08729
+125.00,cpu_cores name=breakout-cadvisor-1,0.0892167
+130.00,cpu_cores name=breakout-cadvisor-1,0.0831234
+135.00,cpu_cores name=breakout-cadvisor-1,0.0829652
+140.00,cpu_cores name=breakout-cadvisor-1,0.0842041
+145.00,cpu_cores name=breakout-cadvisor-1,0.0835203
+150.00,cpu_cores name=breakout-cadvisor-1,0.0798301
+155.00,cpu_cores name=breakout-cadvisor-1,0.0950355
+160.00,cpu_cores name=breakout-cadvisor-1,0.0968413
+165.00,cpu_cores name=breakout-cadvisor-1,0.104624
+170.00,cpu_cores name=breakout-cadvisor-1,0.0955437
+175.00,cpu_cores name=breakout-cadvisor-1,0.102893
+180.00,cpu_cores name=breakout-cadvisor-1,0.0907367
+185.00,cpu_cores name=breakout-cadvisor-1,0.0874442
+190.00,cpu_cores name=breakout-cadvisor-1,0.0821766
+195.00,cpu_cores name=breakout-cadvisor-1,0.0869911
+200.00,cpu_cores name=breakout-cadvisor-1,0.0801127
+205.00,cpu_cores name=breakout-cadvisor-1,0.0788871
+210.00,cpu_cores name=breakout-cadvisor-1,0.0823168
+215.00,cpu_cores name=breakout-cadvisor-1,0.0895227
+220.00,cpu_cores name=breakout-cadvisor-1,0.0907869
+225.00,cpu_cores name=breakout-cadvisor-1,0.0912183
+230.00,cpu_cores name=breakout-cadvisor-1,0.0954275
+235.00,cpu_cores name=breakout-cadvisor-1,0.08979
+240.00,cpu_cores name=breakout-cadvisor-1,0.083854
+245.00,cpu_cores name=breakout-cadvisor-1,0.0843332
+250.00,cpu_cores name=breakout-cadvisor-1,0.089197
+255.00,cpu_cores name=breakout-cadvisor-1,0.0846778
+260.00,cpu_cores name=breakout-cadvisor-1,0.0855474
+265.00,cpu_cores name=breakout-cadvisor-1,0.0860352
+270.00,cpu_cores name=breakout-cadvisor-1,0.0856985
+275.00,cpu_cores name=breakout-cadvisor-1,0.0924658
+280.00,cpu_cores name=breakout-cadvisor-1,0.0965654
+285.00,cpu_cores name=breakout-cadvisor-1,0.10224
+290.00,cpu_cores name=breakout-cadvisor-1,0.099413
+295.00,cpu_cores name=breakout-cadvisor-1,0.0948463
+300.00,cpu_cores name=breakout-cadvisor-1,0.0872173
+305.00,cpu_cores name=breakout-cadvisor-1,0.0862532
+310.00,cpu_cores name=breakout-cadvisor-1,0.0805433
+315.00,cpu_cores name=breakout-cadvisor-1,0.0814143
+320.00,cpu_cores name=breakout-cadvisor-1,0.0812426
+325.00,cpu_cores name=breakout-cadvisor-1,0.0800914
+330.00,cpu_cores name=breakout-cadvisor-1,0.0788006
+335.00,cpu_cores name=breakout-cadvisor-1,0.0927621
+340.00,cpu_cores name=breakout-cadvisor-1,0.0914181
+345.00,cpu_cores name=breakout-cadvisor-1,0.0957844
+350.00,cpu_cores name=breakout-cadvisor-1,0.09839
+355.00,cpu_cores name=breakout-cadvisor-1,0.0994472
+360.00,cpu_cores name=breakout-cadvisor-1,0.0869799
+365.00,cpu_cores name=breakout-cadvisor-1,0.0867182
+370.00,cpu_cores name=breakout-cadvisor-1,0.0831639
+375.00,cpu_cores name=breakout-cadvisor-1,0.082752
+380.00,cpu_cores name=breakout-cadvisor-1,0.0808898
+385.00,cpu_cores name=breakout-cadvisor-1,0.0805431
+390.00,cpu_cores name=breakout-cadvisor-1,0.0829087
+395.00,cpu_cores name=breakout-cadvisor-1,0.0935467
+400.00,cpu_cores name=breakout-cadvisor-1,0.0960092
+405.00,cpu_cores name=breakout-cadvisor-1,0.0988133
+410.00,cpu_cores name=breakout-cadvisor-1,0.0948698
+415.00,cpu_cores name=breakout-cadvisor-1,0.0958506
+420.00,cpu_cores name=breakout-cadvisor-1,0.0839585
+425.00,cpu_cores name=breakout-cadvisor-1,0.0804423
+430.00,cpu_cores name=breakout-cadvisor-1,0.0792771
+435.00,cpu_cores name=breakout-cadvisor-1,0.081297
+440.00,cpu_cores name=breakout-cadvisor-1,0.0820377
+445.00,cpu_cores name=breakout-cadvisor-1,0.0813539
+450.00,cpu_cores name=breakout-cadvisor-1,0.076676
+455.00,cpu_cores name=breakout-cadvisor-1,0.086852
+460.00,cpu_cores name=breakout-cadvisor-1,0.0945228
+465.00,cpu_cores name=breakout-cadvisor-1,0.0896196
+470.00,cpu_cores name=breakout-cadvisor-1,0.091187
+475.00,cpu_cores name=breakout-cadvisor-1,0.0941689
+480.00,cpu_cores name=breakout-cadvisor-1,0.0846548
+485.00,cpu_cores name=breakout-cadvisor-1,0.0787395
+490.00,cpu_cores name=breakout-cadvisor-1,0.0791415
+495.00,cpu_cores name=breakout-cadvisor-1,0.0817394
+500.00,cpu_cores name=breakout-cadvisor-1,0.0851181
+505.00,cpu_cores name=breakout-cadvisor-1,0.0808829
+510.00,cpu_cores name=breakout-cadvisor-1,0.0860032
+515.00,cpu_cores name=breakout-cadvisor-1,0.0991971
+520.00,cpu_cores name=breakout-cadvisor-1,0.093559
+525.00,cpu_cores name=breakout-cadvisor-1,0.0970346
+530.00,cpu_cores name=breakout-cadvisor-1,0.0955206
+535.00,cpu_cores name=breakout-cadvisor-1,0.0900545
+540.00,cpu_cores name=breakout-cadvisor-1,0.0783686
+545.00,cpu_cores name=breakout-cadvisor-1,0.08207
+550.00,cpu_cores name=breakout-cadvisor-1,0.0782764
+555.00,cpu_cores name=breakout-cadvisor-1,0.0803442
+560.00,cpu_cores name=breakout-cadvisor-1,0.0837403
+565.00,cpu_cores name=breakout-cadvisor-1,0.08129
+570.00,cpu_cores name=breakout-cadvisor-1,0.0799122
+575.00,cpu_cores name=breakout-cadvisor-1,0.0879043
+580.00,cpu_cores name=breakout-cadvisor-1,0.0935296
+585.00,cpu_cores name=breakout-cadvisor-1,0.09161
+590.00,cpu_cores name=breakout-cadvisor-1,0.0931885
+595.00,cpu_cores name=breakout-cadvisor-1,0.0929233
+600.00,cpu_cores name=breakout-cadvisor-1,0.0875591
+0.00,cpu_cores name=breakout-engine-1,0.00668149
+5.00,cpu_cores name=breakout-engine-1,0.0610763
+10.00,cpu_cores name=breakout-engine-1,0.0622766
+15.00,cpu_cores name=breakout-engine-1,0.0672555
+20.00,cpu_cores name=breakout-engine-1,0.0715372
+25.00,cpu_cores name=breakout-engine-1,0.0738149
+30.00,cpu_cores name=breakout-engine-1,0.0258533
+35.00,cpu_cores name=breakout-engine-1,0.0273074
+40.00,cpu_cores name=breakout-engine-1,0.0265454
+45.00,cpu_cores name=breakout-engine-1,0.0245498
+50.00,cpu_cores name=breakout-engine-1,0.0232833
+55.00,cpu_cores name=breakout-engine-1,0.0211991
+60.00,cpu_cores name=breakout-engine-1,0.0187578
+65.00,cpu_cores name=breakout-engine-1,0.0193264
+70.00,cpu_cores name=breakout-engine-1,0.0196348
+75.00,cpu_cores name=breakout-engine-1,0.0192418
+80.00,cpu_cores name=breakout-engine-1,0.0207601
+85.00,cpu_cores name=breakout-engine-1,0.0206028
+90.00,cpu_cores name=breakout-engine-1,0.0196117
+95.00,cpu_cores name=breakout-engine-1,0.0202428
+100.00,cpu_cores name=breakout-engine-1,0.0195729
+105.00,cpu_cores name=breakout-engine-1,0.0181582
+110.00,cpu_cores name=breakout-engine-1,0.0184828
+115.00,cpu_cores name=breakout-engine-1,0.018269
+120.00,cpu_cores name=breakout-engine-1,0.0169305
+125.00,cpu_cores name=breakout-engine-1,0.0175715
+130.00,cpu_cores name=breakout-engine-1,0.0181315
+135.00,cpu_cores name=breakout-engine-1,0.0183049
+140.00,cpu_cores name=breakout-engine-1,0.0191279
+145.00,cpu_cores name=breakout-engine-1,0.0192563
+150.00,cpu_cores name=breakout-engine-1,0.0183242
+155.00,cpu_cores name=breakout-engine-1,0.0187416
+160.00,cpu_cores name=breakout-engine-1,0.0185633
+165.00,cpu_cores name=breakout-engine-1,0.0179677
+170.00,cpu_cores name=breakout-engine-1,0.0190843
+175.00,cpu_cores name=breakout-engine-1,0.0194174
+180.00,cpu_cores name=breakout-engine-1,0.0186497
+185.00,cpu_cores name=breakout-engine-1,0.0193176
+190.00,cpu_cores name=breakout-engine-1,0.0197501
+195.00,cpu_cores name=breakout-engine-1,0.0191469
+200.00,cpu_cores name=breakout-engine-1,0.0193595
+205.00,cpu_cores name=breakout-engine-1,0.020056
+210.00,cpu_cores name=breakout-engine-1,0.0192839
+215.00,cpu_cores name=breakout-engine-1,0.0195812
+220.00,cpu_cores name=breakout-engine-1,0.0196812
+225.00,cpu_cores name=breakout-engine-1,0.0194934
+230.00,cpu_cores name=breakout-engine-1,0.0194669
+235.00,cpu_cores name=breakout-engine-1,0.0198476
+240.00,cpu_cores name=breakout-engine-1,0.0192234
+245.00,cpu_cores name=breakout-engine-1,0.0198061
+250.00,cpu_cores name=breakout-engine-1,0.0201546
+255.00,cpu_cores name=breakout-engine-1,0.0196288
+260.00,cpu_cores name=breakout-engine-1,0.0197058
+265.00,cpu_cores name=breakout-engine-1,0.0197539
+270.00,cpu_cores name=breakout-engine-1,0.0190248
+275.00,cpu_cores name=breakout-engine-1,0.0189938
+280.00,cpu_cores name=breakout-engine-1,0.0186477
+285.00,cpu_cores name=breakout-engine-1,0.018872
+290.00,cpu_cores name=breakout-engine-1,0.0192372
+295.00,cpu_cores name=breakout-engine-1,0.0191462
+300.00,cpu_cores name=breakout-engine-1,0.018962
+305.00,cpu_cores name=breakout-engine-1,0.0215957
+310.00,cpu_cores name=breakout-engine-1,0.0222025
+315.00,cpu_cores name=breakout-engine-1,0.0225296
+320.00,cpu_cores name=breakout-engine-1,0.0235197
+325.00,cpu_cores name=breakout-engine-1,0.0239736
+330.00,cpu_cores name=breakout-engine-1,0.0219646
+335.00,cpu_cores name=breakout-engine-1,0.0220838
+340.00,cpu_cores name=breakout-engine-1,0.0219068
+345.00,cpu_cores name=breakout-engine-1,0.0210907
+350.00,cpu_cores name=breakout-engine-1,0.0214134
+355.00,cpu_cores name=breakout-engine-1,0.0212132
+360.00,cpu_cores name=breakout-engine-1,0.0201757
+365.00,cpu_cores name=breakout-engine-1,0.0211149
+370.00,cpu_cores name=breakout-engine-1,0.0212306
+375.00,cpu_cores name=breakout-engine-1,0.0205816
+380.00,cpu_cores name=breakout-engine-1,0.0212026
+385.00,cpu_cores name=breakout-engine-1,0.0210351
+390.00,cpu_cores name=breakout-engine-1,0.0193638
+395.00,cpu_cores name=breakout-engine-1,0.0194925
+400.00,cpu_cores name=breakout-engine-1,0.0191741
+405.00,cpu_cores name=breakout-engine-1,0.0179984
+410.00,cpu_cores name=breakout-engine-1,0.0182828
+415.00,cpu_cores name=breakout-engine-1,0.0189827
+420.00,cpu_cores name=breakout-engine-1,0.0182105
+425.00,cpu_cores name=breakout-engine-1,0.0196721
+430.00,cpu_cores name=breakout-engine-1,0.0200393
+435.00,cpu_cores name=breakout-engine-1,0.0194422
+440.00,cpu_cores name=breakout-engine-1,0.0193426
+445.00,cpu_cores name=breakout-engine-1,0.0193028
+450.00,cpu_cores name=breakout-engine-1,0.0178432
+455.00,cpu_cores name=breakout-engine-1,0.0191732
+460.00,cpu_cores name=breakout-engine-1,0.0196151
+465.00,cpu_cores name=breakout-engine-1,0.0193902
+470.00,cpu_cores name=breakout-engine-1,0.0207496
+475.00,cpu_cores name=breakout-engine-1,0.0211675
+480.00,cpu_cores name=breakout-engine-1,0.0194313
+485.00,cpu_cores name=breakout-engine-1,0.0196371
+490.00,cpu_cores name=breakout-engine-1,0.0197543
+495.00,cpu_cores name=breakout-engine-1,0.0189008
+500.00,cpu_cores name=breakout-engine-1,0.0196496
+505.00,cpu_cores name=breakout-engine-1,0.0198228
+510.00,cpu_cores name=breakout-engine-1,0.019383
+515.00,cpu_cores name=breakout-engine-1,0.0197695
+520.00,cpu_cores name=breakout-engine-1,0.0197354
+525.00,cpu_cores name=breakout-engine-1,0.0186987
+530.00,cpu_cores name=breakout-engine-1,0.018911
+535.00,cpu_cores name=breakout-engine-1,0.0190688
+540.00,cpu_cores name=breakout-engine-1,0.0185344
+545.00,cpu_cores name=breakout-engine-1,0.0187871
+550.00,cpu_cores name=breakout-engine-1,0.019214
+555.00,cpu_cores name=breakout-engine-1,0.0192692
+560.00,cpu_cores name=breakout-engine-1,0.0196956
+565.00,cpu_cores name=breakout-engine-1,0.020001
+570.00,cpu_cores name=breakout-engine-1,0.0209243
+575.00,cpu_cores name=breakout-engine-1,0.0212149
+580.00,cpu_cores name=breakout-engine-1,0.0210295
+585.00,cpu_cores name=breakout-engine-1,0.0209808
+590.00,cpu_cores name=breakout-engine-1,0.021366
+595.00,cpu_cores name=breakout-engine-1,0.0199806
+600.00,cpu_cores name=breakout-engine-1,0.0194515
+0.00,cpu_cores name=breakout-grafana-1,0.165199
+5.00,cpu_cores name=breakout-grafana-1,0.127029
+10.00,cpu_cores name=breakout-grafana-1,0.0239125
+15.00,cpu_cores name=breakout-grafana-1,0.00139504
+20.00,cpu_cores name=breakout-grafana-1,0.001373
+25.00,cpu_cores name=breakout-grafana-1,0.0014313
+30.00,cpu_cores name=breakout-grafana-1,0.00132378
+35.00,cpu_cores name=breakout-grafana-1,0.00140366
+40.00,cpu_cores name=breakout-grafana-1,0.00152681
+45.00,cpu_cores name=breakout-grafana-1,0.00289446
+50.00,cpu_cores name=breakout-grafana-1,0.00278052
+55.00,cpu_cores name=breakout-grafana-1,0.00290413
+60.00,cpu_cores name=breakout-grafana-1,0.00275254
+65.00,cpu_cores name=breakout-grafana-1,0.0025335
+70.00,cpu_cores name=breakout-grafana-1,0.00119383
+75.00,cpu_cores name=breakout-grafana-1,0.00133022
+80.00,cpu_cores name=breakout-grafana-1,0.00129436
+85.00,cpu_cores name=breakout-grafana-1,0.00135559
+90.00,cpu_cores name=breakout-grafana-1,0.00127676
+95.00,cpu_cores name=breakout-grafana-1,0.001317
+100.00,cpu_cores name=breakout-grafana-1,0.0011897
+105.00,cpu_cores name=breakout-grafana-1,0.0034973
+110.00,cpu_cores name=breakout-grafana-1,0.003454
+115.00,cpu_cores name=breakout-grafana-1,0.0035293
+120.00,cpu_cores name=breakout-grafana-1,0.00335412
+125.00,cpu_cores name=breakout-grafana-1,0.00341112
+130.00,cpu_cores name=breakout-grafana-1,0.00115691
+135.00,cpu_cores name=breakout-grafana-1,0.00128297
+140.00,cpu_cores name=breakout-grafana-1,0.00125641
+145.00,cpu_cores name=breakout-grafana-1,0.0013667
+150.00,cpu_cores name=breakout-grafana-1,0.0013127
+155.00,cpu_cores name=breakout-grafana-1,0.00140281
+160.00,cpu_cores name=breakout-grafana-1,0.00128793
+165.00,cpu_cores name=breakout-grafana-1,0.00166739
+170.00,cpu_cores name=breakout-grafana-1,0.00156613
+175.00,cpu_cores name=breakout-grafana-1,0.00161737
+180.00,cpu_cores name=breakout-grafana-1,0.00152129
+185.00,cpu_cores name=breakout-grafana-1,0.00159438
+190.00,cpu_cores name=breakout-grafana-1,0.00118187
+195.00,cpu_cores name=breakout-grafana-1,0.00129184
+200.00,cpu_cores name=breakout-grafana-1,0.00126065
+205.00,cpu_cores name=breakout-grafana-1,0.0013529
+210.00,cpu_cores name=breakout-grafana-1,0.00128837
+215.00,cpu_cores name=breakout-grafana-1,0.0013649
+220.00,cpu_cores name=breakout-grafana-1,0.00126365
+225.00,cpu_cores name=breakout-grafana-1,0.00302937
+230.00,cpu_cores name=breakout-grafana-1,0.00304933
+235.00,cpu_cores name=breakout-grafana-1,0.00304743
+240.00,cpu_cores name=breakout-grafana-1,0.00304248
+245.00,cpu_cores name=breakout-grafana-1,0.00305154
+250.00,cpu_cores name=breakout-grafana-1,0.00128284
+255.00,cpu_cores name=breakout-grafana-1,0.00137426
+260.00,cpu_cores name=breakout-grafana-1,0.00132599
+265.00,cpu_cores name=breakout-grafana-1,0.00138378
+270.00,cpu_cores name=breakout-grafana-1,0.00131705
+275.00,cpu_cores name=breakout-grafana-1,0.00136588
+280.00,cpu_cores name=breakout-grafana-1,0.00126671
+285.00,cpu_cores name=breakout-grafana-1,0.0016805
+290.00,cpu_cores name=breakout-grafana-1,0.00163081
+295.00,cpu_cores name=breakout-grafana-1,0.00165967
+300.00,cpu_cores name=breakout-grafana-1,0.00161622
+305.00,cpu_cores name=breakout-grafana-1,0.00168353
+310.00,cpu_cores name=breakout-grafana-1,0.00122314
+315.00,cpu_cores name=breakout-grafana-1,0.0013508
+320.00,cpu_cores name=breakout-grafana-1,0.00129705
+325.00,cpu_cores name=breakout-grafana-1,0.00133939
+330.00,cpu_cores name=breakout-grafana-1,0.00127497
+335.00,cpu_cores name=breakout-grafana-1,0.00136633
+340.00,cpu_cores name=breakout-grafana-1,0.00120906
+345.00,cpu_cores name=breakout-grafana-1,0.0032781
+350.00,cpu_cores name=breakout-grafana-1,0.00337171
+355.00,cpu_cores name=breakout-grafana-1,0.00323538
+360.00,cpu_cores name=breakout-grafana-1,0.00320479
+365.00,cpu_cores name=breakout-grafana-1,0.00326566
+370.00,cpu_cores name=breakout-grafana-1,0.00125164
+375.00,cpu_cores name=breakout-grafana-1,0.00138156
+380.00,cpu_cores name=breakout-grafana-1,0.00134652
+385.00,cpu_cores name=breakout-grafana-1,0.00143064
+390.00,cpu_cores name=breakout-grafana-1,0.00134953
+395.00,cpu_cores name=breakout-grafana-1,0.0014132
+400.00,cpu_cores name=breakout-grafana-1,0.00127864
+405.00,cpu_cores name=breakout-grafana-1,0.00168358
+410.00,cpu_cores name=breakout-grafana-1,0.00157057
+415.00,cpu_cores name=breakout-grafana-1,0.00165491
+420.00,cpu_cores name=breakout-grafana-1,0.00158935
+425.00,cpu_cores name=breakout-grafana-1,0.00164582
+430.00,cpu_cores name=breakout-grafana-1,0.00124958
+435.00,cpu_cores name=breakout-grafana-1,0.00139342
+440.00,cpu_cores name=breakout-grafana-1,0.001319
+445.00,cpu_cores name=breakout-grafana-1,0.00142141
+450.00,cpu_cores name=breakout-grafana-1,0.00134955
+455.00,cpu_cores name=breakout-grafana-1,0.00141373
+460.00,cpu_cores name=breakout-grafana-1,0.00127332
+465.00,cpu_cores name=breakout-grafana-1,0.00303953
+470.00,cpu_cores name=breakout-grafana-1,0.00298389
+475.00,cpu_cores name=breakout-grafana-1,0.00309692
+480.00,cpu_cores name=breakout-grafana-1,0.00299972
+485.00,cpu_cores name=breakout-grafana-1,0.00309259
+490.00,cpu_cores name=breakout-grafana-1,0.00128329
+495.00,cpu_cores name=breakout-grafana-1,0.00138461
+500.00,cpu_cores name=breakout-grafana-1,0.00132618
+505.00,cpu_cores name=breakout-grafana-1,0.00138867
+510.00,cpu_cores name=breakout-grafana-1,0.00132568
+515.00,cpu_cores name=breakout-grafana-1,0.00137529
+520.00,cpu_cores name=breakout-grafana-1,0.00123493
+525.00,cpu_cores name=breakout-grafana-1,0.00161724
+530.00,cpu_cores name=breakout-grafana-1,0.001621
+535.00,cpu_cores name=breakout-grafana-1,0.00160671
+540.00,cpu_cores name=breakout-grafana-1,0.00155662
+545.00,cpu_cores name=breakout-grafana-1,0.00160933
+550.00,cpu_cores name=breakout-grafana-1,0.00120906
+555.00,cpu_cores name=breakout-grafana-1,0.00134035
+560.00,cpu_cores name=breakout-grafana-1,0.00128251
+565.00,cpu_cores name=breakout-grafana-1,0.00137027
+570.00,cpu_cores name=breakout-grafana-1,0.00130536
+575.00,cpu_cores name=breakout-grafana-1,0.00139436
+580.00,cpu_cores name=breakout-grafana-1,0.00121651
+585.00,cpu_cores name=breakout-grafana-1,0.00599727
+590.00,cpu_cores name=breakout-grafana-1,0.00583681
+595.00,cpu_cores name=breakout-grafana-1,0.00624976
+600.00,cpu_cores name=breakout-grafana-1,0.00593431
+5.00,cpu_cores name=breakout-ingestion-1,0.0987187
+10.00,cpu_cores name=breakout-ingestion-1,0.074115
+15.00,cpu_cores name=breakout-ingestion-1,0.0789305
+20.00,cpu_cores name=breakout-ingestion-1,0.0779396
+25.00,cpu_cores name=breakout-ingestion-1,0.0804914
+30.00,cpu_cores name=breakout-ingestion-1,0.0254343
+35.00,cpu_cores name=breakout-ingestion-1,0.0253406
+40.00,cpu_cores name=breakout-ingestion-1,0.0236502
+45.00,cpu_cores name=breakout-ingestion-1,0.0212478
+50.00,cpu_cores name=breakout-ingestion-1,0.0179855
+55.00,cpu_cores name=breakout-ingestion-1,0.0154024
+60.00,cpu_cores name=breakout-ingestion-1,0.0136828
+65.00,cpu_cores name=breakout-ingestion-1,0.0139949
+70.00,cpu_cores name=breakout-ingestion-1,0.0146342
+75.00,cpu_cores name=breakout-ingestion-1,0.0151087
+80.00,cpu_cores name=breakout-ingestion-1,0.0155613
+85.00,cpu_cores name=breakout-ingestion-1,0.0154855
+90.00,cpu_cores name=breakout-ingestion-1,0.0149992
+95.00,cpu_cores name=breakout-ingestion-1,0.0146666
+100.00,cpu_cores name=breakout-ingestion-1,0.0137585
+105.00,cpu_cores name=breakout-ingestion-1,0.0132254
+110.00,cpu_cores name=breakout-ingestion-1,0.0134042
+115.00,cpu_cores name=breakout-ingestion-1,0.0125514
+120.00,cpu_cores name=breakout-ingestion-1,0.0116314
+125.00,cpu_cores name=breakout-ingestion-1,0.0125405
+130.00,cpu_cores name=breakout-ingestion-1,0.013229
+135.00,cpu_cores name=breakout-ingestion-1,0.0132551
+140.00,cpu_cores name=breakout-ingestion-1,0.0142096
+145.00,cpu_cores name=breakout-ingestion-1,0.0140455
+150.00,cpu_cores name=breakout-ingestion-1,0.0132398
+155.00,cpu_cores name=breakout-ingestion-1,0.0127813
+160.00,cpu_cores name=breakout-ingestion-1,0.0129885
+165.00,cpu_cores name=breakout-ingestion-1,0.0127583
+170.00,cpu_cores name=breakout-ingestion-1,0.0140252
+175.00,cpu_cores name=breakout-ingestion-1,0.0141907
+180.00,cpu_cores name=breakout-ingestion-1,0.0138862
+185.00,cpu_cores name=breakout-ingestion-1,0.014124
+190.00,cpu_cores name=breakout-ingestion-1,0.0144919
+195.00,cpu_cores name=breakout-ingestion-1,0.0141087
+200.00,cpu_cores name=breakout-ingestion-1,0.0141626
+205.00,cpu_cores name=breakout-ingestion-1,0.0145688
+210.00,cpu_cores name=breakout-ingestion-1,0.0140108
+215.00,cpu_cores name=breakout-ingestion-1,0.0140208
+220.00,cpu_cores name=breakout-ingestion-1,0.0138414
+225.00,cpu_cores name=breakout-ingestion-1,0.0139008
+230.00,cpu_cores name=breakout-ingestion-1,0.0144131
+235.00,cpu_cores name=breakout-ingestion-1,0.0151412
+240.00,cpu_cores name=breakout-ingestion-1,0.0146846
+245.00,cpu_cores name=breakout-ingestion-1,0.015243
+250.00,cpu_cores name=breakout-ingestion-1,0.0153605
+255.00,cpu_cores name=breakout-ingestion-1,0.0147355
+260.00,cpu_cores name=breakout-ingestion-1,0.0141186
+265.00,cpu_cores name=breakout-ingestion-1,0.0143722
+270.00,cpu_cores name=breakout-ingestion-1,0.0138578
+275.00,cpu_cores name=breakout-ingestion-1,0.0139333
+280.00,cpu_cores name=breakout-ingestion-1,0.0136089
+285.00,cpu_cores name=breakout-ingestion-1,0.0136912
+290.00,cpu_cores name=breakout-ingestion-1,0.0141096
+295.00,cpu_cores name=breakout-ingestion-1,0.0137976
+300.00,cpu_cores name=breakout-ingestion-1,0.0130242
+305.00,cpu_cores name=breakout-ingestion-1,0.0147258
+310.00,cpu_cores name=breakout-ingestion-1,0.015488
+315.00,cpu_cores name=breakout-ingestion-1,0.0157969
+320.00,cpu_cores name=breakout-ingestion-1,0.0166656
+325.00,cpu_cores name=breakout-ingestion-1,0.0175783
+330.00,cpu_cores name=breakout-ingestion-1,0.016369
+335.00,cpu_cores name=breakout-ingestion-1,0.0166534
+340.00,cpu_cores name=breakout-ingestion-1,0.016235
+345.00,cpu_cores name=breakout-ingestion-1,0.015672
+350.00,cpu_cores name=breakout-ingestion-1,0.0161849
+355.00,cpu_cores name=breakout-ingestion-1,0.0157802
+360.00,cpu_cores name=breakout-ingestion-1,0.014571
+365.00,cpu_cores name=breakout-ingestion-1,0.0150961
+370.00,cpu_cores name=breakout-ingestion-1,0.0153768
+375.00,cpu_cores name=breakout-ingestion-1,0.0147203
+380.00,cpu_cores name=breakout-ingestion-1,0.015131
+385.00,cpu_cores name=breakout-ingestion-1,0.0150848
+390.00,cpu_cores name=breakout-ingestion-1,0.0140645
+395.00,cpu_cores name=breakout-ingestion-1,0.0137848
+400.00,cpu_cores name=breakout-ingestion-1,0.0135148
+405.00,cpu_cores name=breakout-ingestion-1,0.012855
+410.00,cpu_cores name=breakout-ingestion-1,0.0130073
+415.00,cpu_cores name=breakout-ingestion-1,0.0128991
+420.00,cpu_cores name=breakout-ingestion-1,0.0120607
+425.00,cpu_cores name=breakout-ingestion-1,0.0126885
+430.00,cpu_cores name=breakout-ingestion-1,0.0130846
+435.00,cpu_cores name=breakout-ingestion-1,0.0127216
+440.00,cpu_cores name=breakout-ingestion-1,0.0130982
+445.00,cpu_cores name=breakout-ingestion-1,0.0135075
+450.00,cpu_cores name=breakout-ingestion-1,0.0122877
+455.00,cpu_cores name=breakout-ingestion-1,0.0130834
+460.00,cpu_cores name=breakout-ingestion-1,0.0133575
+465.00,cpu_cores name=breakout-ingestion-1,0.0134886
+470.00,cpu_cores name=breakout-ingestion-1,0.0140689
+475.00,cpu_cores name=breakout-ingestion-1,0.0147231
+480.00,cpu_cores name=breakout-ingestion-1,0.0135517
+485.00,cpu_cores name=breakout-ingestion-1,0.0140267
+490.00,cpu_cores name=breakout-ingestion-1,0.0135058
+495.00,cpu_cores name=breakout-ingestion-1,0.0132745
+500.00,cpu_cores name=breakout-ingestion-1,0.0140618
+505.00,cpu_cores name=breakout-ingestion-1,0.0142702
+510.00,cpu_cores name=breakout-ingestion-1,0.0136018
+515.00,cpu_cores name=breakout-ingestion-1,0.014643
+520.00,cpu_cores name=breakout-ingestion-1,0.0139231
+525.00,cpu_cores name=breakout-ingestion-1,0.0131104
+530.00,cpu_cores name=breakout-ingestion-1,0.0129561
+535.00,cpu_cores name=breakout-ingestion-1,0.012958
+540.00,cpu_cores name=breakout-ingestion-1,0.0120521
+545.00,cpu_cores name=breakout-ingestion-1,0.0129718
+550.00,cpu_cores name=breakout-ingestion-1,0.013589
+555.00,cpu_cores name=breakout-ingestion-1,0.0136954
+560.00,cpu_cores name=breakout-ingestion-1,0.0139936
+565.00,cpu_cores name=breakout-ingestion-1,0.0147232
+570.00,cpu_cores name=breakout-ingestion-1,0.0154922
+575.00,cpu_cores name=breakout-ingestion-1,0.0155265
+580.00,cpu_cores name=breakout-ingestion-1,0.0153694
+585.00,cpu_cores name=breakout-ingestion-1,0.0162482
+590.00,cpu_cores name=breakout-ingestion-1,0.0164739
+595.00,cpu_cores name=breakout-ingestion-1,0.0148774
+600.00,cpu_cores name=breakout-ingestion-1,0.0144173
+0.00,cpu_cores name=breakout-kafka-1,0.582013
+5.00,cpu_cores name=breakout-kafka-1,0.702498
+10.00,cpu_cores name=breakout-kafka-1,0.685496
+15.00,cpu_cores name=breakout-kafka-1,0.659808
+20.00,cpu_cores name=breakout-kafka-1,0.630936
+25.00,cpu_cores name=breakout-kafka-1,0.731053
+30.00,cpu_cores name=breakout-kafka-1,0.620477
+35.00,cpu_cores name=breakout-kafka-1,0.604085
+40.00,cpu_cores name=breakout-kafka-1,0.511971
+45.00,cpu_cores name=breakout-kafka-1,0.590221
+50.00,cpu_cores name=breakout-kafka-1,0.581403
+55.00,cpu_cores name=breakout-kafka-1,0.563912
+60.00,cpu_cores name=breakout-kafka-1,0.472046
+65.00,cpu_cores name=breakout-kafka-1,0.590214
+70.00,cpu_cores name=breakout-kafka-1,0.564011
+75.00,cpu_cores name=breakout-kafka-1,0.556845
+80.00,cpu_cores name=breakout-kafka-1,0.485023
+85.00,cpu_cores name=breakout-kafka-1,0.544367
+90.00,cpu_cores name=breakout-kafka-1,0.511781
+95.00,cpu_cores name=breakout-kafka-1,0.52463
+100.00,cpu_cores name=breakout-kafka-1,0.473659
+105.00,cpu_cores name=breakout-kafka-1,0.476414
+110.00,cpu_cores name=breakout-kafka-1,0.488617
+115.00,cpu_cores name=breakout-kafka-1,0.505677
+120.00,cpu_cores name=breakout-kafka-1,0.40998
+125.00,cpu_cores name=breakout-kafka-1,0.43387
+130.00,cpu_cores name=breakout-kafka-1,0.498946
+135.00,cpu_cores name=breakout-kafka-1,0.497953
+140.00,cpu_cores name=breakout-kafka-1,0.473789
+145.00,cpu_cores name=breakout-kafka-1,0.463353
+150.00,cpu_cores name=breakout-kafka-1,0.463884
+155.00,cpu_cores name=breakout-kafka-1,0.477568
+160.00,cpu_cores name=breakout-kafka-1,0.48047
+165.00,cpu_cores name=breakout-kafka-1,0.416459
+170.00,cpu_cores name=breakout-kafka-1,0.494191
+175.00,cpu_cores name=breakout-kafka-1,0.511619
+180.00,cpu_cores name=breakout-kafka-1,0.50519
+185.00,cpu_cores name=breakout-kafka-1,0.412181
+190.00,cpu_cores name=breakout-kafka-1,0.47864
+195.00,cpu_cores name=breakout-kafka-1,0.489307
+200.00,cpu_cores name=breakout-kafka-1,0.469633
+205.00,cpu_cores name=breakout-kafka-1,0.386144
+210.00,cpu_cores name=breakout-kafka-1,0.486035
+215.00,cpu_cores name=breakout-kafka-1,0.512229
+220.00,cpu_cores name=breakout-kafka-1,0.51931
+225.00,cpu_cores name=breakout-kafka-1,0.510135
+230.00,cpu_cores name=breakout-kafka-1,0.501744
+235.00,cpu_cores name=breakout-kafka-1,0.49337
+240.00,cpu_cores name=breakout-kafka-1,0.468511
+245.00,cpu_cores name=breakout-kafka-1,0.466182
+250.00,cpu_cores name=breakout-kafka-1,0.399007
+255.00,cpu_cores name=breakout-kafka-1,0.490952
+260.00,cpu_cores name=breakout-kafka-1,0.49362
+265.00,cpu_cores name=breakout-kafka-1,0.504208
+270.00,cpu_cores name=breakout-kafka-1,0.428926
+275.00,cpu_cores name=breakout-kafka-1,0.466126
+280.00,cpu_cores name=breakout-kafka-1,0.473685
+285.00,cpu_cores name=breakout-kafka-1,0.483666
+290.00,cpu_cores name=breakout-kafka-1,0.380008
+295.00,cpu_cores name=breakout-kafka-1,0.426846
+300.00,cpu_cores name=breakout-kafka-1,0.478422
+305.00,cpu_cores name=breakout-kafka-1,0.474935
+310.00,cpu_cores name=breakout-kafka-1,0.453124
+315.00,cpu_cores name=breakout-kafka-1,0.458267
+320.00,cpu_cores name=breakout-kafka-1,0.469672
+325.00,cpu_cores name=breakout-kafka-1,0.464395
+330.00,cpu_cores name=breakout-kafka-1,0.453616
+335.00,cpu_cores name=breakout-kafka-1,0.382673
+340.00,cpu_cores name=breakout-kafka-1,0.477239
+345.00,cpu_cores name=breakout-kafka-1,0.499025
+350.00,cpu_cores name=breakout-kafka-1,0.507238
+355.00,cpu_cores name=breakout-kafka-1,0.417024
+360.00,cpu_cores name=breakout-kafka-1,0.454338
+365.00,cpu_cores name=breakout-kafka-1,0.467616
+370.00,cpu_cores name=breakout-kafka-1,0.449044
+375.00,cpu_cores name=breakout-kafka-1,0.452836
+380.00,cpu_cores name=breakout-kafka-1,0.433852
+385.00,cpu_cores name=breakout-kafka-1,0.474852
+390.00,cpu_cores name=breakout-kafka-1,0.465535
+395.00,cpu_cores name=breakout-kafka-1,0.483238
+400.00,cpu_cores name=breakout-kafka-1,0.377728
+405.00,cpu_cores name=breakout-kafka-1,0.456651
+410.00,cpu_cores name=breakout-kafka-1,0.466036
+415.00,cpu_cores name=breakout-kafka-1,0.468481
+420.00,cpu_cores name=breakout-kafka-1,0.435622
+425.00,cpu_cores name=breakout-kafka-1,0.441202
+430.00,cpu_cores name=breakout-kafka-1,0.481991
+435.00,cpu_cores name=breakout-kafka-1,0.469319
+440.00,cpu_cores name=breakout-kafka-1,0.45049
+445.00,cpu_cores name=breakout-kafka-1,0.383819
+450.00,cpu_cores name=breakout-kafka-1,0.4658
+455.00,cpu_cores name=breakout-kafka-1,0.454295
+460.00,cpu_cores name=breakout-kafka-1,0.442195
+465.00,cpu_cores name=breakout-kafka-1,0.358572
+470.00,cpu_cores name=breakout-kafka-1,0.462221
+475.00,cpu_cores name=breakout-kafka-1,0.450867
+480.00,cpu_cores name=breakout-kafka-1,0.452035
+485.00,cpu_cores name=breakout-kafka-1,0.415592
+490.00,cpu_cores name=breakout-kafka-1,0.478706
+495.00,cpu_cores name=breakout-kafka-1,0.453381
+500.00,cpu_cores name=breakout-kafka-1,0.478708
+505.00,cpu_cores name=breakout-kafka-1,0.468517
+510.00,cpu_cores name=breakout-kafka-1,0.428325
+515.00,cpu_cores name=breakout-kafka-1,0.466299
+520.00,cpu_cores name=breakout-kafka-1,0.493452
+525.00,cpu_cores name=breakout-kafka-1,0.463898
+530.00,cpu_cores name=breakout-kafka-1,0.364052
+535.00,cpu_cores name=breakout-kafka-1,0.476299
+540.00,cpu_cores name=breakout-kafka-1,0.474198
+545.00,cpu_cores name=breakout-kafka-1,0.458366
+550.00,cpu_cores name=breakout-kafka-1,0.378103
+555.00,cpu_cores name=breakout-kafka-1,0.472255
+560.00,cpu_cores name=breakout-kafka-1,0.467029
+565.00,cpu_cores name=breakout-kafka-1,0.453509
+570.00,cpu_cores name=breakout-kafka-1,0.372125
+575.00,cpu_cores name=breakout-kafka-1,0.455439
+580.00,cpu_cores name=breakout-kafka-1,0.483632
+585.00,cpu_cores name=breakout-kafka-1,0.475644
+590.00,cpu_cores name=breakout-kafka-1,0.467779
+595.00,cpu_cores name=breakout-kafka-1,0.446684
+600.00,cpu_cores name=breakout-kafka-1,0.484826
+0.00,cpu_cores name=breakout-kafka-exporter-1,0.000967416
+5.00,cpu_cores name=breakout-kafka-exporter-1,0.00135226
+10.00,cpu_cores name=breakout-kafka-exporter-1,0.00153111
+15.00,cpu_cores name=breakout-kafka-exporter-1,0.00205466
+20.00,cpu_cores name=breakout-kafka-exporter-1,0.00289343
+25.00,cpu_cores name=breakout-kafka-exporter-1,0.00355413
+30.00,cpu_cores name=breakout-kafka-exporter-1,0.00480399
+35.00,cpu_cores name=breakout-kafka-exporter-1,0.00502379
+40.00,cpu_cores name=breakout-kafka-exporter-1,0.00475016
+45.00,cpu_cores name=breakout-kafka-exporter-1,0.00489097
+50.00,cpu_cores name=breakout-kafka-exporter-1,0.00418904
+55.00,cpu_cores name=breakout-kafka-exporter-1,0.00335603
+60.00,cpu_cores name=breakout-kafka-exporter-1,0.00385732
+65.00,cpu_cores name=breakout-kafka-exporter-1,0.00346939
+70.00,cpu_cores name=breakout-kafka-exporter-1,0.00321451
+75.00,cpu_cores name=breakout-kafka-exporter-1,0.00397219
+80.00,cpu_cores name=breakout-kafka-exporter-1,0.00372703
+85.00,cpu_cores name=breakout-kafka-exporter-1,0.00397862
+90.00,cpu_cores name=breakout-kafka-exporter-1,0.00401138
+95.00,cpu_cores name=breakout-kafka-exporter-1,0.00401757
+100.00,cpu_cores name=breakout-kafka-exporter-1,0.00497492
+105.00,cpu_cores name=breakout-kafka-exporter-1,0.00538576
+110.00,cpu_cores name=breakout-kafka-exporter-1,0.00452477
+115.00,cpu_cores name=breakout-kafka-exporter-1,0.0045496
+120.00,cpu_cores name=breakout-kafka-exporter-1,0.00464328
+125.00,cpu_cores name=breakout-kafka-exporter-1,0.00369285
+130.00,cpu_cores name=breakout-kafka-exporter-1,0.00443897
+135.00,cpu_cores name=breakout-kafka-exporter-1,0.00442782
+140.00,cpu_cores name=breakout-kafka-exporter-1,0.00441539
+145.00,cpu_cores name=breakout-kafka-exporter-1,0.00472729
+150.00,cpu_cores name=breakout-kafka-exporter-1,0.00449137
+155.00,cpu_cores name=breakout-kafka-exporter-1,0.0040825
+160.00,cpu_cores name=breakout-kafka-exporter-1,0.00483324
+165.00,cpu_cores name=breakout-kafka-exporter-1,0.00408776
+170.00,cpu_cores name=breakout-kafka-exporter-1,0.00378596
+175.00,cpu_cores name=breakout-kafka-exporter-1,0.00392587
+180.00,cpu_cores name=breakout-kafka-exporter-1,0.00421262
+185.00,cpu_cores name=breakout-kafka-exporter-1,0.00345416
+190.00,cpu_cores name=breakout-kafka-exporter-1,0.00433773
+195.00,cpu_cores name=breakout-kafka-exporter-1,0.00452479
+200.00,cpu_cores name=breakout-kafka-exporter-1,0.00470909
+205.00,cpu_cores name=breakout-kafka-exporter-1,0.00446101
+210.00,cpu_cores name=breakout-kafka-exporter-1,0.00453369
+215.00,cpu_cores name=breakout-kafka-exporter-1,0.00430842
+220.00,cpu_cores name=breakout-kafka-exporter-1,0.0041929
+225.00,cpu_cores name=breakout-kafka-exporter-1,0.00467074
+230.00,cpu_cores name=breakout-kafka-exporter-1,0.00399797
+235.00,cpu_cores name=breakout-kafka-exporter-1,0.00459603
+240.00,cpu_cores name=breakout-kafka-exporter-1,0.00394694
+245.00,cpu_cores name=breakout-kafka-exporter-1,0.00403261
+250.00,cpu_cores name=breakout-kafka-exporter-1,0.00330211
+255.00,cpu_cores name=breakout-kafka-exporter-1,0.00318145
+260.00,cpu_cores name=breakout-kafka-exporter-1,0.00317044
+265.00,cpu_cores name=breakout-kafka-exporter-1,0.00483009
+270.00,cpu_cores name=breakout-kafka-exporter-1,0.00421518
+275.00,cpu_cores name=breakout-kafka-exporter-1,0.00410573
+280.00,cpu_cores name=breakout-kafka-exporter-1,0.00435176
+285.00,cpu_cores name=breakout-kafka-exporter-1,0.00531088
+290.00,cpu_cores name=breakout-kafka-exporter-1,0.00440282
+295.00,cpu_cores name=breakout-kafka-exporter-1,0.00428748
+300.00,cpu_cores name=breakout-kafka-exporter-1,0.00455974
+305.00,cpu_cores name=breakout-kafka-exporter-1,0.0042081
+310.00,cpu_cores name=breakout-kafka-exporter-1,0.00343638
+315.00,cpu_cores name=breakout-kafka-exporter-1,0.00335945
+320.00,cpu_cores name=breakout-kafka-exporter-1,0.00385373
+325.00,cpu_cores name=breakout-kafka-exporter-1,0.00387517
+330.00,cpu_cores name=breakout-kafka-exporter-1,0.00402194
+335.00,cpu_cores name=breakout-kafka-exporter-1,0.00415895
+340.00,cpu_cores name=breakout-kafka-exporter-1,0.00447757
+345.00,cpu_cores name=breakout-kafka-exporter-1,0.00455301
+350.00,cpu_cores name=breakout-kafka-exporter-1,0.00519513
+355.00,cpu_cores name=breakout-kafka-exporter-1,0.00467097
+360.00,cpu_cores name=breakout-kafka-exporter-1,0.0044561
+365.00,cpu_cores name=breakout-kafka-exporter-1,0.00402792
+370.00,cpu_cores name=breakout-kafka-exporter-1,0.00402519
+375.00,cpu_cores name=breakout-kafka-exporter-1,0.00420966
+380.00,cpu_cores name=breakout-kafka-exporter-1,0.0043379
+385.00,cpu_cores name=breakout-kafka-exporter-1,0.00406785
+390.00,cpu_cores name=breakout-kafka-exporter-1,0.00421812
+395.00,cpu_cores name=breakout-kafka-exporter-1,0.00452289
+400.00,cpu_cores name=breakout-kafka-exporter-1,0.00379236
+405.00,cpu_cores name=breakout-kafka-exporter-1,0.00443054
+410.00,cpu_cores name=breakout-kafka-exporter-1,0.00445472
+415.00,cpu_cores name=breakout-kafka-exporter-1,0.0037499
+420.00,cpu_cores name=breakout-kafka-exporter-1,0.00374329
+425.00,cpu_cores name=breakout-kafka-exporter-1,0.00361802
+430.00,cpu_cores name=breakout-kafka-exporter-1,0.00352241
+435.00,cpu_cores name=breakout-kafka-exporter-1,0.00374705
+440.00,cpu_cores name=breakout-kafka-exporter-1,0.00452585
+445.00,cpu_cores name=breakout-kafka-exporter-1,0.00456352
+450.00,cpu_cores name=breakout-kafka-exporter-1,0.00485999
+455.00,cpu_cores name=breakout-kafka-exporter-1,0.0043923
+460.00,cpu_cores name=breakout-kafka-exporter-1,0.00422288
+465.00,cpu_cores name=breakout-kafka-exporter-1,0.00421206
+470.00,cpu_cores name=breakout-kafka-exporter-1,0.00435086
+475.00,cpu_cores name=breakout-kafka-exporter-1,0.00348891
+480.00,cpu_cores name=breakout-kafka-exporter-1,0.00496005
+485.00,cpu_cores name=breakout-kafka-exporter-1,0.00438283
+490.00,cpu_cores name=breakout-kafka-exporter-1,0.00435475
+495.00,cpu_cores name=breakout-kafka-exporter-1,0.0049751
+500.00,cpu_cores name=breakout-kafka-exporter-1,0.00516153
+505.00,cpu_cores name=breakout-kafka-exporter-1,0.00346494
+510.00,cpu_cores name=breakout-kafka-exporter-1,0.00412966
+515.00,cpu_cores name=breakout-kafka-exporter-1,0.00441189
+520.00,cpu_cores name=breakout-kafka-exporter-1,0.00344226
+525.00,cpu_cores name=breakout-kafka-exporter-1,0.00370602
+530.00,cpu_cores name=breakout-kafka-exporter-1,0.00459713
+535.00,cpu_cores name=breakout-kafka-exporter-1,0.00479255
+540.00,cpu_cores name=breakout-kafka-exporter-1,0.00469199
+545.00,cpu_cores name=breakout-kafka-exporter-1,0.00461598
+550.00,cpu_cores name=breakout-kafka-exporter-1,0.00460194
+555.00,cpu_cores name=breakout-kafka-exporter-1,0.00410574
+560.00,cpu_cores name=breakout-kafka-exporter-1,0.00383614
+565.00,cpu_cores name=breakout-kafka-exporter-1,0.00377674
+570.00,cpu_cores name=breakout-kafka-exporter-1,0.00425187
+575.00,cpu_cores name=breakout-kafka-exporter-1,0.00431425
+580.00,cpu_cores name=breakout-kafka-exporter-1,0.00397715
+585.00,cpu_cores name=breakout-kafka-exporter-1,0.00407847
+590.00,cpu_cores name=breakout-kafka-exporter-1,0.00428155
+595.00,cpu_cores name=breakout-kafka-exporter-1,0.00462945
+600.00,cpu_cores name=breakout-kafka-exporter-1,0.00369696
+0.00,cpu_cores name=breakout-kafka-init-1,0.00425542
+5.00,cpu_cores name=breakout-kafka-init-1,0.00425542
+0.00,cpu_cores name=breakout-postgres-1,0.000644855
+5.00,cpu_cores name=breakout-postgres-1,0.0138176
+10.00,cpu_cores name=breakout-postgres-1,0.0134427
+15.00,cpu_cores name=breakout-postgres-1,0.0164242
+20.00,cpu_cores name=breakout-postgres-1,0.0165078
+25.00,cpu_cores name=breakout-postgres-1,0.0163343
+30.00,cpu_cores name=breakout-postgres-1,0.00311325
+35.00,cpu_cores name=breakout-postgres-1,0.00561769
+40.00,cpu_cores name=breakout-postgres-1,0.00269527
+45.00,cpu_cores name=breakout-postgres-1,0.00269593
+50.00,cpu_cores name=breakout-postgres-1,0.00267524
+55.00,cpu_cores name=breakout-postgres-1,0.0027624
+60.00,cpu_cores name=breakout-postgres-1,0.000321217
+65.00,cpu_cores name=breakout-postgres-1,0.000316573
+70.00,cpu_cores name=breakout-postgres-1,0.000310591
+75.00,cpu_cores name=breakout-postgres-1,0.000542539
+80.00,cpu_cores name=breakout-postgres-1,0.000335538
+85.00,cpu_cores name=breakout-postgres-1,0.000334549
+90.00,cpu_cores name=breakout-postgres-1,0.000320347
+95.00,cpu_cores name=breakout-postgres-1,0.000742793
+100.00,cpu_cores name=breakout-postgres-1,0.000499924
+105.00,cpu_cores name=breakout-postgres-1,0.000503512
+110.00,cpu_cores name=breakout-postgres-1,0.000481393
+115.00,cpu_cores name=breakout-postgres-1,0.00078485
+120.00,cpu_cores name=breakout-postgres-1,0.000327287
+125.00,cpu_cores name=breakout-postgres-1,0.000331851
+130.00,cpu_cores name=breakout-postgres-1,0.000317506
+135.00,cpu_cores name=breakout-postgres-1,0.00050004
+140.00,cpu_cores name=breakout-postgres-1,0.000191709
+145.00,cpu_cores name=breakout-postgres-1,0.000197828
+150.00,cpu_cores name=breakout-postgres-1,0.000191233
+155.00,cpu_cores name=breakout-postgres-1,0.000585281
+160.00,cpu_cores name=breakout-postgres-1,0.000401122
+165.00,cpu_cores name=breakout-postgres-1,0.000423216
+170.00,cpu_cores name=breakout-postgres-1,0.000409018
+175.00,cpu_cores name=breakout-postgres-1,0.000645979
+180.00,cpu_cores name=breakout-postgres-1,0.000233655
+185.00,cpu_cores name=breakout-postgres-1,0.000251951
+190.00,cpu_cores name=breakout-postgres-1,0.000247252
+195.00,cpu_cores name=breakout-postgres-1,0.000499879
+200.00,cpu_cores name=breakout-postgres-1,0.000252371
+205.00,cpu_cores name=breakout-postgres-1,0.000241978
+210.00,cpu_cores name=breakout-postgres-1,0.000252951
+215.00,cpu_cores name=breakout-postgres-1,0.000416925
+220.00,cpu_cores name=breakout-postgres-1,0.000179116
+225.00,cpu_cores name=breakout-postgres-1,0.000184336
+230.00,cpu_cores name=breakout-postgres-1,0.00018463
+235.00,cpu_cores name=breakout-postgres-1,0.000433317
+240.00,cpu_cores name=breakout-postgres-1,0.000256572
+245.00,cpu_cores name=breakout-postgres-1,0.000256191
+250.00,cpu_cores name=breakout-postgres-1,0.000258764
+255.00,cpu_cores name=breakout-postgres-1,0.000478164
+260.00,cpu_cores name=breakout-postgres-1,0.000254112
+265.00,cpu_cores name=breakout-postgres-1,0.000236822
+270.00,cpu_cores name=breakout-postgres-1,0.000268586
+275.00,cpu_cores name=breakout-postgres-1,0.000508079
+280.00,cpu_cores name=breakout-postgres-1,0.000402108
+285.00,cpu_cores name=breakout-postgres-1,0.000459264
+290.00,cpu_cores name=breakout-postgres-1,0.000561392
+295.00,cpu_cores name=breakout-postgres-1,0.000807357
+300.00,cpu_cores name=breakout-postgres-1,0.000706591
+305.00,cpu_cores name=breakout-postgres-1,0.00320949
+310.00,cpu_cores name=breakout-postgres-1,0.00346374
+315.00,cpu_cores name=breakout-postgres-1,0.00669178
+320.00,cpu_cores name=breakout-postgres-1,0.00607839
+325.00,cpu_cores name=breakout-postgres-1,0.00603856
+330.00,cpu_cores name=breakout-postgres-1,0.00383124
+335.00,cpu_cores name=breakout-postgres-1,0.00372747
+340.00,cpu_cores name=breakout-postgres-1,0.000403753
+345.00,cpu_cores name=breakout-postgres-1,0.000322759
+350.00,cpu_cores name=breakout-postgres-1,0.000226263
+355.00,cpu_cores name=breakout-postgres-1,0.000460895
+360.00,cpu_cores name=breakout-postgres-1,0.000262087
+365.00,cpu_cores name=breakout-postgres-1,0.000267205
+370.00,cpu_cores name=breakout-postgres-1,0.000287765
+375.00,cpu_cores name=breakout-postgres-1,0.000498915
+380.00,cpu_cores name=breakout-postgres-1,0.000249911
+385.00,cpu_cores name=breakout-postgres-1,0.000256729
+390.00,cpu_cores name=breakout-postgres-1,0.000250179
+395.00,cpu_cores name=breakout-postgres-1,0.000451397
+400.00,cpu_cores name=breakout-postgres-1,0.000247215
+405.00,cpu_cores name=breakout-postgres-1,0.00025003
+410.00,cpu_cores name=breakout-postgres-1,0.000253912
+415.00,cpu_cores name=breakout-postgres-1,0.000489124
+420.00,cpu_cores name=breakout-postgres-1,0.000240744
+425.00,cpu_cores name=breakout-postgres-1,0.000243565
+430.00,cpu_cores name=breakout-postgres-1,0.000247943
+435.00,cpu_cores name=breakout-postgres-1,0.000473546
+440.00,cpu_cores name=breakout-postgres-1,0.000241742
+445.00,cpu_cores name=breakout-postgres-1,0.000247203
+450.00,cpu_cores name=breakout-postgres-1,0.000240477
+455.00,cpu_cores name=breakout-postgres-1,0.000455429
+460.00,cpu_cores name=breakout-postgres-1,0.000237308
+465.00,cpu_cores name=breakout-postgres-1,0.000245821
+470.00,cpu_cores name=breakout-postgres-1,0.000264428
+475.00,cpu_cores name=breakout-postgres-1,0.000396643
+480.00,cpu_cores name=breakout-postgres-1,0.000169891
+485.00,cpu_cores name=breakout-postgres-1,0.000182144
+490.00,cpu_cores name=breakout-postgres-1,0.000160603
+495.00,cpu_cores name=breakout-postgres-1,0.000349416
+500.00,cpu_cores name=breakout-postgres-1,0.000222085
+505.00,cpu_cores name=breakout-postgres-1,0.000226737
+510.00,cpu_cores name=breakout-postgres-1,0.000207595
+515.00,cpu_cores name=breakout-postgres-1,0.000421034
+520.00,cpu_cores name=breakout-postgres-1,0.000215564
+525.00,cpu_cores name=breakout-postgres-1,0.000216027
+530.00,cpu_cores name=breakout-postgres-1,0.000201798
+535.00,cpu_cores name=breakout-postgres-1,0.000402443
+540.00,cpu_cores name=breakout-postgres-1,0.000219816
+545.00,cpu_cores name=breakout-postgres-1,0.00022195
+550.00,cpu_cores name=breakout-postgres-1,0.000209213
+555.00,cpu_cores name=breakout-postgres-1,0.000449399
+560.00,cpu_cores name=breakout-postgres-1,0.000242458
+565.00,cpu_cores name=breakout-postgres-1,0.00023328
+570.00,cpu_cores name=breakout-postgres-1,0.000252767
+575.00,cpu_cores name=breakout-postgres-1,0.000443983
+580.00,cpu_cores name=breakout-postgres-1,0.000205882
+585.00,cpu_cores name=breakout-postgres-1,0.000211144
+590.00,cpu_cores name=breakout-postgres-1,0.000215581
+595.00,cpu_cores name=breakout-postgres-1,0.000395139
+600.00,cpu_cores name=breakout-postgres-1,0.000253166
+0.00,cpu_cores name=breakout-prometheus-1,0.0170889
+5.00,cpu_cores name=breakout-prometheus-1,0.0126109
+10.00,cpu_cores name=breakout-prometheus-1,0.0152996
+15.00,cpu_cores name=breakout-prometheus-1,0.0139718
+20.00,cpu_cores name=breakout-prometheus-1,0.0142211
+25.00,cpu_cores name=breakout-prometheus-1,0.013058
+30.00,cpu_cores name=breakout-prometheus-1,0.0139712
+35.00,cpu_cores name=breakout-prometheus-1,0.0124087
+40.00,cpu_cores name=breakout-prometheus-1,0.0126952
+45.00,cpu_cores name=breakout-prometheus-1,0.0120984
+50.00,cpu_cores name=breakout-prometheus-1,0.0125565
+55.00,cpu_cores name=breakout-prometheus-1,0.0123397
+60.00,cpu_cores name=breakout-prometheus-1,0.0126917
+65.00,cpu_cores name=breakout-prometheus-1,0.0123848
+70.00,cpu_cores name=breakout-prometheus-1,0.0127572
+75.00,cpu_cores name=breakout-prometheus-1,0.0132922
+80.00,cpu_cores name=breakout-prometheus-1,0.0135512
+85.00,cpu_cores name=breakout-prometheus-1,0.0131297
+90.00,cpu_cores name=breakout-prometheus-1,0.0136525
+95.00,cpu_cores name=breakout-prometheus-1,0.0146715
+100.00,cpu_cores name=breakout-prometheus-1,0.0141099
+105.00,cpu_cores name=breakout-prometheus-1,0.0133915
+110.00,cpu_cores name=breakout-prometheus-1,0.0123627
+115.00,cpu_cores name=breakout-prometheus-1,0.0125846
+120.00,cpu_cores name=breakout-prometheus-1,0.0112848
+125.00,cpu_cores name=breakout-prometheus-1,0.0113818
+130.00,cpu_cores name=breakout-prometheus-1,0.0120684
+135.00,cpu_cores name=breakout-prometheus-1,0.0130218
+140.00,cpu_cores name=breakout-prometheus-1,0.0130728
+145.00,cpu_cores name=breakout-prometheus-1,0.0129659
+150.00,cpu_cores name=breakout-prometheus-1,0.0126916
+155.00,cpu_cores name=breakout-prometheus-1,0.0124188
+160.00,cpu_cores name=breakout-prometheus-1,0.0123362
+165.00,cpu_cores name=breakout-prometheus-1,0.0122795
+170.00,cpu_cores name=breakout-prometheus-1,0.0127359
+175.00,cpu_cores name=breakout-prometheus-1,0.0123812
+180.00,cpu_cores name=breakout-prometheus-1,0.0123558
+185.00,cpu_cores name=breakout-prometheus-1,0.0127137
+190.00,cpu_cores name=breakout-prometheus-1,0.0125799
+195.00,cpu_cores name=breakout-prometheus-1,0.0120948
+200.00,cpu_cores name=breakout-prometheus-1,0.0125825
+205.00,cpu_cores name=breakout-prometheus-1,0.0124118
+210.00,cpu_cores name=breakout-prometheus-1,0.0118235
+215.00,cpu_cores name=breakout-prometheus-1,0.011935
+220.00,cpu_cores name=breakout-prometheus-1,0.0130512
+225.00,cpu_cores name=breakout-prometheus-1,0.0133009
+230.00,cpu_cores name=breakout-prometheus-1,0.0129561
+235.00,cpu_cores name=breakout-prometheus-1,0.0136086
+240.00,cpu_cores name=breakout-prometheus-1,0.0132314
+245.00,cpu_cores name=breakout-prometheus-1,0.0132141
+250.00,cpu_cores name=breakout-prometheus-1,0.0130834
+255.00,cpu_cores name=breakout-prometheus-1,0.0129824
+260.00,cpu_cores name=breakout-prometheus-1,0.0127741
+265.00,cpu_cores name=breakout-prometheus-1,0.0130626
+270.00,cpu_cores name=breakout-prometheus-1,0.0128666
+275.00,cpu_cores name=breakout-prometheus-1,0.013296
+280.00,cpu_cores name=breakout-prometheus-1,0.0131048
+285.00,cpu_cores name=breakout-prometheus-1,0.0132824
+290.00,cpu_cores name=breakout-prometheus-1,0.0131982
+295.00,cpu_cores name=breakout-prometheus-1,0.013483
+300.00,cpu_cores name=breakout-prometheus-1,0.0133061
+305.00,cpu_cores name=breakout-prometheus-1,0.0142431
+310.00,cpu_cores name=breakout-prometheus-1,0.0142396
+315.00,cpu_cores name=breakout-prometheus-1,0.0143883
+320.00,cpu_cores name=breakout-prometheus-1,0.0129427
+325.00,cpu_cores name=breakout-prometheus-1,0.0123421
+330.00,cpu_cores name=breakout-prometheus-1,0.0119403
+335.00,cpu_cores name=breakout-prometheus-1,0.0121263
+340.00,cpu_cores name=breakout-prometheus-1,0.0121262
+345.00,cpu_cores name=breakout-prometheus-1,0.0120892
+350.00,cpu_cores name=breakout-prometheus-1,0.0128171
+355.00,cpu_cores name=breakout-prometheus-1,0.0133544
+360.00,cpu_cores name=breakout-prometheus-1,0.012951
+365.00,cpu_cores name=breakout-prometheus-1,0.0122646
+370.00,cpu_cores name=breakout-prometheus-1,0.0143584
+375.00,cpu_cores name=breakout-prometheus-1,0.0142005
+380.00,cpu_cores name=breakout-prometheus-1,0.0139441
+385.00,cpu_cores name=breakout-prometheus-1,0.0133874
+390.00,cpu_cores name=breakout-prometheus-1,0.0143384
+395.00,cpu_cores name=breakout-prometheus-1,0.0131209
+400.00,cpu_cores name=breakout-prometheus-1,0.0131292
+405.00,cpu_cores name=breakout-prometheus-1,0.01238
+410.00,cpu_cores name=breakout-prometheus-1,0.0130448
+415.00,cpu_cores name=breakout-prometheus-1,0.0129819
+420.00,cpu_cores name=breakout-prometheus-1,0.0130643
+425.00,cpu_cores name=breakout-prometheus-1,0.0125686
+430.00,cpu_cores name=breakout-prometheus-1,0.0132684
+435.00,cpu_cores name=breakout-prometheus-1,0.0134044
+440.00,cpu_cores name=breakout-prometheus-1,0.0130804
+445.00,cpu_cores name=breakout-prometheus-1,0.0133818
+450.00,cpu_cores name=breakout-prometheus-1,0.0132722
+455.00,cpu_cores name=breakout-prometheus-1,0.0136974
+460.00,cpu_cores name=breakout-prometheus-1,0.0133609
+465.00,cpu_cores name=breakout-prometheus-1,0.0131142
+470.00,cpu_cores name=breakout-prometheus-1,0.0127349
+475.00,cpu_cores name=breakout-prometheus-1,0.0131894
+480.00,cpu_cores name=breakout-prometheus-1,0.013051
+485.00,cpu_cores name=breakout-prometheus-1,0.0131647
+490.00,cpu_cores name=breakout-prometheus-1,0.0138999
+495.00,cpu_cores name=breakout-prometheus-1,0.0136355
+500.00,cpu_cores name=breakout-prometheus-1,0.0133257
+505.00,cpu_cores name=breakout-prometheus-1,0.0123468
+510.00,cpu_cores name=breakout-prometheus-1,0.0124709
+515.00,cpu_cores name=breakout-prometheus-1,0.0122598
+520.00,cpu_cores name=breakout-prometheus-1,0.0123477
+525.00,cpu_cores name=breakout-prometheus-1,0.0128687
+530.00,cpu_cores name=breakout-prometheus-1,0.0136284
+535.00,cpu_cores name=breakout-prometheus-1,0.0132358
+540.00,cpu_cores name=breakout-prometheus-1,0.0122632
+545.00,cpu_cores name=breakout-prometheus-1,0.0124109
+550.00,cpu_cores name=breakout-prometheus-1,0.0123149
+555.00,cpu_cores name=breakout-prometheus-1,0.0117488
+560.00,cpu_cores name=breakout-prometheus-1,0.0121647
+565.00,cpu_cores name=breakout-prometheus-1,0.0130623
+570.00,cpu_cores name=breakout-prometheus-1,0.0133538
+575.00,cpu_cores name=breakout-prometheus-1,0.0137478
+580.00,cpu_cores name=breakout-prometheus-1,0.0130761
+585.00,cpu_cores name=breakout-prometheus-1,0.0127331
+590.00,cpu_cores name=breakout-prometheus-1,0.0130054
+595.00,cpu_cores name=breakout-prometheus-1,0.0129455
+600.00,cpu_cores name=breakout-prometheus-1,0.0116312
+0.00,cpu_cores name=breakout-sink-1,0.000727951
+5.00,cpu_cores name=breakout-sink-1,0.00383974
+10.00,cpu_cores name=breakout-sink-1,0.00391519
+15.00,cpu_cores name=breakout-sink-1,0.00360148
+20.00,cpu_cores name=breakout-sink-1,0.00357706
+25.00,cpu_cores name=breakout-sink-1,0.00354951
+30.00,cpu_cores name=breakout-sink-1,0.000544136
+35.00,cpu_cores name=breakout-sink-1,0.000480269
+40.00,cpu_cores name=breakout-sink-1,0.000538109
+45.00,cpu_cores name=breakout-sink-1,0.000512089
+50.00,cpu_cores name=breakout-sink-1,0.000516631
+55.00,cpu_cores name=breakout-sink-1,0.00050232
+60.00,cpu_cores name=breakout-sink-1,0.000502578
+65.00,cpu_cores name=breakout-sink-1,0.000576835
+70.00,cpu_cores name=breakout-sink-1,0.000533366
+75.00,cpu_cores name=breakout-sink-1,0.000527639
+80.00,cpu_cores name=breakout-sink-1,0.000585846
+85.00,cpu_cores name=breakout-sink-1,0.000517754
+90.00,cpu_cores name=breakout-sink-1,0.000437125
+95.00,cpu_cores name=breakout-sink-1,0.000526723
+100.00,cpu_cores name=breakout-sink-1,0.000488431
+105.00,cpu_cores name=breakout-sink-1,0.000421622
+110.00,cpu_cores name=breakout-sink-1,0.000478918
+115.00,cpu_cores name=breakout-sink-1,0.000479231
+120.00,cpu_cores name=breakout-sink-1,0.000465186
+125.00,cpu_cores name=breakout-sink-1,0.000606356
+130.00,cpu_cores name=breakout-sink-1,0.000672931
+135.00,cpu_cores name=breakout-sink-1,0.000616592
+140.00,cpu_cores name=breakout-sink-1,0.000687447
+145.00,cpu_cores name=breakout-sink-1,0.000616043
+150.00,cpu_cores name=breakout-sink-1,0.000501905
+155.00,cpu_cores name=breakout-sink-1,0.000487347
+160.00,cpu_cores name=breakout-sink-1,0.000491586
+165.00,cpu_cores name=breakout-sink-1,0.000496798
+170.00,cpu_cores name=breakout-sink-1,0.000501133
+175.00,cpu_cores name=breakout-sink-1,0.000511766
+180.00,cpu_cores name=breakout-sink-1,0.000495474
+185.00,cpu_cores name=breakout-sink-1,0.000603289
+190.00,cpu_cores name=breakout-sink-1,0.000459568
+195.00,cpu_cores name=breakout-sink-1,0.00073326
+200.00,cpu_cores name=breakout-sink-1,0.000700537
+205.00,cpu_cores name=breakout-sink-1,0.000644573
+210.00,cpu_cores name=breakout-sink-1,0.000692149
+215.00,cpu_cores name=breakout-sink-1,0.000721258
+220.00,cpu_cores name=breakout-sink-1,0.000466661
+225.00,cpu_cores name=breakout-sink-1,0.000527703
+230.00,cpu_cores name=breakout-sink-1,0.000672552
+235.00,cpu_cores name=breakout-sink-1,0.00054108
+240.00,cpu_cores name=breakout-sink-1,0.000592058
+245.00,cpu_cores name=breakout-sink-1,0.000695425
+250.00,cpu_cores name=breakout-sink-1,0.000776984
+255.00,cpu_cores name=breakout-sink-1,0.00059395
+260.00,cpu_cores name=breakout-sink-1,0.000650913
+265.00,cpu_cores name=breakout-sink-1,0.000636798
+270.00,cpu_cores name=breakout-sink-1,0.000571906
+275.00,cpu_cores name=breakout-sink-1,0.000468728
+280.00,cpu_cores name=breakout-sink-1,0.000721972
+285.00,cpu_cores name=breakout-sink-1,0.00074179
+290.00,cpu_cores name=breakout-sink-1,0.000729256
+295.00,cpu_cores name=breakout-sink-1,0.000669183
+300.00,cpu_cores name=breakout-sink-1,0.000656984
+305.00,cpu_cores name=breakout-sink-1,0.00122542
+310.00,cpu_cores name=breakout-sink-1,0.00123786
+315.00,cpu_cores name=breakout-sink-1,0.00128853
+320.00,cpu_cores name=breakout-sink-1,0.00136752
+325.00,cpu_cores name=breakout-sink-1,0.00135273
+330.00,cpu_cores name=breakout-sink-1,0.00056517
+335.00,cpu_cores name=breakout-sink-1,0.000544576
+340.00,cpu_cores name=breakout-sink-1,0.000747353
+345.00,cpu_cores name=breakout-sink-1,0.000664623
+350.00,cpu_cores name=breakout-sink-1,0.000701995
+355.00,cpu_cores name=breakout-sink-1,0.000694988
+360.00,cpu_cores name=breakout-sink-1,0.000712397
+365.00,cpu_cores name=breakout-sink-1,0.000468109
+370.00,cpu_cores name=breakout-sink-1,0.000758527
+375.00,cpu_cores name=breakout-sink-1,0.00075002
+380.00,cpu_cores name=breakout-sink-1,0.000686733
+385.00,cpu_cores name=breakout-sink-1,0.000661769
+390.00,cpu_cores name=breakout-sink-1,0.000687634
+395.00,cpu_cores name=breakout-sink-1,0.000654314
+400.00,cpu_cores name=breakout-sink-1,0.000589486
+405.00,cpu_cores name=breakout-sink-1,0.00066962
+410.00,cpu_cores name=breakout-sink-1,0.000738323
+415.00,cpu_cores name=breakout-sink-1,0.000656562
+420.00,cpu_cores name=breakout-sink-1,0.000537538
+425.00,cpu_cores name=breakout-sink-1,0.000557032
+430.00,cpu_cores name=breakout-sink-1,0.000557141
+435.00,cpu_cores name=breakout-sink-1,0.000675987
+440.00,cpu_cores name=breakout-sink-1,0.000708801
+445.00,cpu_cores name=breakout-sink-1,0.000633245
+450.00,cpu_cores name=breakout-sink-1,0.000832178
+455.00,cpu_cores name=breakout-sink-1,0.000876779
+460.00,cpu_cores name=breakout-sink-1,0.000662409
+465.00,cpu_cores name=breakout-sink-1,0.000707841
+470.00,cpu_cores name=breakout-sink-1,0.000788711
+475.00,cpu_cores name=breakout-sink-1,0.000632527
+480.00,cpu_cores name=breakout-sink-1,0.000653531
+485.00,cpu_cores name=breakout-sink-1,0.000686531
+490.00,cpu_cores name=breakout-sink-1,0.000618603
+495.00,cpu_cores name=breakout-sink-1,0.000653334
+500.00,cpu_cores name=breakout-sink-1,0.000660492
+505.00,cpu_cores name=breakout-sink-1,0.000602904
+510.00,cpu_cores name=breakout-sink-1,0.000587505
+515.00,cpu_cores name=breakout-sink-1,0.000610907
+520.00,cpu_cores name=breakout-sink-1,0.000532815
+525.00,cpu_cores name=breakout-sink-1,0.00065873
+530.00,cpu_cores name=breakout-sink-1,0.000634773
+535.00,cpu_cores name=breakout-sink-1,0.000616663
+540.00,cpu_cores name=breakout-sink-1,0.000643072
+545.00,cpu_cores name=breakout-sink-1,0.000805438
+550.00,cpu_cores name=breakout-sink-1,0.000620036
+555.00,cpu_cores name=breakout-sink-1,0.000621611
+560.00,cpu_cores name=breakout-sink-1,0.000638308
+565.00,cpu_cores name=breakout-sink-1,0.000716578
+570.00,cpu_cores name=breakout-sink-1,0.000432621
+575.00,cpu_cores name=breakout-sink-1,0.000477203
+580.00,cpu_cores name=breakout-sink-1,0.000618531
+585.00,cpu_cores name=breakout-sink-1,0.000644781
+590.00,cpu_cores name=breakout-sink-1,0.000665803
+595.00,cpu_cores name=breakout-sink-1,0.000664287
+600.00,cpu_cores name=breakout-sink-1,0.000701624
