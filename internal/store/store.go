@@ -9,6 +9,7 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 
 	resultsv1 "github.com/onurminen/breakout/gen/go/breakout/results/v1"
+	ticksv1 "github.com/onurminen/breakout/gen/go/breakout/ticks/v1"
 )
 
 // Store is a pool of connections to the results database. It is safe for concurrent use.
@@ -26,6 +27,92 @@ func Connect(databaseURL string) (*Store, error) {
 }
 
 func (s *Store) Close() { s.pool.Close() }
+
+type Symbol struct {
+	Symbol  string
+	SecType ticksv1.SecType
+}
+
+// Symbols returns the symbols for which the sink has stored at least one window.
+func (s *Store) Symbols(ctx context.Context) ([]Symbol, error) {
+	rows, err := s.pool.Query(ctx, `SELECT DISTINCT symbol, sec_type FROM ema_results ORDER BY symbol, sec_type`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	symbols := make([]Symbol, 0)
+	for rows.Next() {
+		var symbol Symbol
+		var secType int16
+		if err := rows.Scan(&symbol.Symbol, &secType); err != nil {
+			return nil, err
+		}
+		symbol.SecType = ticksv1.SecType(secType)
+		symbols = append(symbols, symbol)
+	}
+	return symbols, rows.Err()
+}
+
+// History returns both result types for one symbol, ordered by window start.
+// The time range is [fromMs, toMs). A read-only transaction gives both queries
+// the same snapshot while the sink is writing.
+func (s *Store) History(ctx context.Context, symbol string, fromMs, toMs int64) ([]*resultsv1.EmaResult, []*resultsv1.Advisory, error) {
+	tx, err := s.pool.BeginTx(ctx, pgx.TxOptions{IsoLevel: pgx.RepeatableRead, AccessMode: pgx.ReadOnly})
+	if err != nil {
+		return nil, nil, err
+	}
+	defer tx.Rollback(ctx)
+
+	results := make([]*resultsv1.EmaResult, 0)
+	rows, err := tx.Query(ctx, `SELECT symbol, sec_type, window_start_ms, last_price, ema38, ema100
+		FROM ema_results WHERE symbol = $1 AND window_start_ms >= $2 AND window_start_ms < $3
+		ORDER BY window_start_ms`, symbol, fromMs, toMs)
+	if err != nil {
+		return nil, nil, err
+	}
+	for rows.Next() {
+		r := &resultsv1.EmaResult{}
+		var secType int16
+		if err := rows.Scan(&r.Symbol, &secType, &r.WindowStartMs, &r.LastPrice, &r.Ema38, &r.Ema100); err != nil {
+			rows.Close()
+			return nil, nil, err
+		}
+		r.SecType = ticksv1.SecType(secType)
+		results = append(results, r)
+	}
+	err = rows.Err()
+	rows.Close()
+	if err != nil {
+		return nil, nil, err
+	}
+
+	advisories := make([]*resultsv1.Advisory, 0)
+	rows, err = tx.Query(ctx, `SELECT symbol, sec_type, window_start_ms, side, ema38, ema100, warmup
+		FROM advisories WHERE symbol = $1 AND window_start_ms >= $2 AND window_start_ms < $3
+		ORDER BY window_start_ms`, symbol, fromMs, toMs)
+	if err != nil {
+		return nil, nil, err
+	}
+	for rows.Next() {
+		a := &resultsv1.Advisory{}
+		var secType, side int16
+		if err := rows.Scan(&a.Symbol, &secType, &a.WindowStartMs, &side, &a.Ema38, &a.Ema100, &a.Warmup); err != nil {
+			rows.Close()
+			return nil, nil, err
+		}
+		a.SecType, a.Side = ticksv1.SecType(secType), resultsv1.Side(side)
+		advisories = append(advisories, a)
+	}
+	err = rows.Err()
+	rows.Close()
+	if err != nil {
+		return nil, nil, err
+	}
+	if err := tx.Commit(ctx); err != nil {
+		return nil, nil, err
+	}
+	return results, advisories, nil
+}
 
 // The arrays keep each statement the same whatever the batch size. Rows that
 // are already stored are skipped, so writing a batch again changes nothing.

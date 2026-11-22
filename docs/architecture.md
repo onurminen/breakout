@@ -125,13 +125,14 @@ Everything runs on one machine with Docker Compose ([`deploy/docker-compose.yml`
 | `kafka` | `apache/kafka` | 9094 | Single broker in KRaft mode; containers reach it at `kafka:9092` |
 | `kafka-init` | `apache/kafka` | — | Creates the three topics, then exits |
 | `postgres` | `postgres` | 5432 | Result history; tables from `init.sql` |
-| `prometheus` | `prom/prometheus` | 9090 | Scrapes cAdvisor, kafka-exporter, ingestion, the sink and every engine replica (found by DNS), later the API |
+| `prometheus` | `prom/prometheus` | 9090 | Scrapes cAdvisor, kafka-exporter, ingestion, the sink, the API and every engine replica (found by DNS) |
 | `grafana` | `grafana/grafana` | 3000 | The `breakout` dashboard and Prometheus provisioned from `deploy/grafana/`, no login |
 | `cadvisor` | `ghcr.io/google/cadvisor` | — | CPU and memory per container |
 | `kafka-exporter` | `danielqsj/kafka-exporter` | — | Topic end offsets and consumer group lag |
 | `ingestion` | built from `Dockerfile` | — | Replays the files in `data/`, mounted read-only; started only by `up ingestion` |
 | `engine` | built from `Dockerfile` | — | Any number of replicas (`up --scale engine=N engine`); started only when named |
 | `sink` | built from `Dockerfile` | — | Writes the result topics to Postgres; started only when named |
+| `api` | built from `Dockerfile` | 8080 | Serves history, symbols, KPIs, subscribed live results, and built UI files |
 
 The root `Dockerfile` builds any service in `cmd/` (`--build-arg SERVICE=…`) into a small static image.
 
@@ -147,7 +148,10 @@ Services read environment variables; the defaults suit running on the host, and 
 | `REPLAY_FROM` | — | ingestion | RFC 3339 time; events before it are sent as fast as possible, pacing starts there |
 | `SYMBOLS` | — | ingestion | Comma-separated symbols to send; empty: all |
 | `GRACE_MS` | `1000` | engine | Grace period after a window's end before it closes |
-| `DATABASE_URL` | `postgres://breakout:breakout@localhost:5432/breakout` | sink | Postgres connection; host `postgres` inside Compose |
+| `DATABASE_URL` | `postgres://breakout:breakout@localhost:5432/breakout` | sink, API | Postgres connection; host `postgres` inside Compose |
+| `PROMETHEUS_URL` | `http://localhost:9090` | API | Prometheus HTTP API for KPIs |
+| `HTTP_ADDR` | `:8080` | API | REST, WebSocket and UI listener |
+| `UI_DIR` | `ui/dist` | API | Built UI files; `/` returns 404 while absent |
 
 Ingestion takes the day files as arguments, in date order. In Compose, `INGEST_FILES` (paths under `/data`, separated by spaces) replaces the default Monday file, and `ENGINE_CPUS` limits each engine replica's CPUs; `tools/experiments` sets both. At a set speed, pacing starts at the first event; quiet periods such as nights replay at that speed too. After the last file, ingestion keeps serving `/metrics` until stopped, so the final counts can be scraped.
 
@@ -164,11 +168,12 @@ breakout/
 ├── cmd/
 │   ├── ingestion/           # CSV files → ticks (done)
 │   ├── engine/              # ticks → ema-results, advisories (done)
-│   └── sink/                # ema-results, advisories → Postgres (done)
+│   ├── sink/                # ema-results, advisories → Postgres (done)
+│   └── api/                 # REST, WebSocket, KPI and static UI service (done)
 ├── internal/
 │   ├── csvparse/            # CSV line → price event (done)
 │   ├── engine/              # windows, EMAs and crossovers, without Kafka (done)
-│   ├── store/               # Postgres access (done: inserts)
+│   ├── store/               # Postgres inserts and history queries (done)
 │   └── stream/              # topic names, partition function, Kafka client (done)
 ├── tools/
 │   ├── datacheck/{grace,order,windows}/   # data checks behind the constants (done)
@@ -179,7 +184,6 @@ breakout/
 ├── data/                    # the CSV files, ignored by git
 │
 │   planned:
-├── cmd/api/                 # API service
 ├── internal/metrics/
 └── ui/                      # web UI
 ```

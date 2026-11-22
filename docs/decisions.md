@@ -18,6 +18,8 @@ Why the system is built as it is. When a decision changes, update its row and th
 | Idempotent writes keyed by (symbol, window start) | Exactly-once transactions | Simple, and enough with at-least-once delivery |
 | Postgres | TimescaleDB, QuestDB, ClickHouse, Redis | ~1.9M results per week ([windows check](data.md#empty-windows-windows)) is small for an indexed table; TimescaleDB remains a drop-in upgrade |
 | Live results Kafka → API → WebSocket | API polls Postgres | No database write, read or polling delay on the way to the user |
+| API forwards repeated live results after an engine replay | API keeps a deduplication cache | The API stays stateless; clients deduplicate by symbol, window start, and message type, while Postgres absorbs duplicate rows |
+| New clients subscribe, wait for confirmation, then fetch history | Fetch history before subscribing | Buffer live messages during the history fetch and merge by symbol, window start, and message type; refresh history if the sink is still catching up |
 | Latency ends when a result is published to Kafka | Until it reaches the browser | The browser's clock is not synchronized with the servers' |
 | Prometheus, Grafana, cAdvisor | A custom logging or evaluation service | Performance questions need metrics, not logs; standard tools |
 
@@ -56,5 +58,3 @@ Why the system is built as it is. When a decision changes, update its row and th
 ## Open questions
 
 - **Parallel parsing.** Only needed if one core of parsing turns out to limit the whole pipeline. If so: parse numbered chunks of the file in parallel and send them on in their original order.
-- **Engine restarts.** A partition taken over mid-run is re-read from the beginning, so its results are published again. Postgres absorbs the duplicates, but live WebSocket clients would see repeated alerts. Is that acceptable?
-- **New WebSocket clients.** How a client combines history (REST) with the live stream without gaps or duplicates.

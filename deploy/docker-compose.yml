@@ -92,6 +92,26 @@ services:
       DATABASE_URL: postgres://breakout:breakout@postgres:5432/breakout
     profiles: [pipeline]
 
+  api:
+    build:
+      context: ..
+      args:
+        SERVICE: api
+    depends_on:
+      kafka-init:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_started
+      prometheus:
+        condition: service_started
+    environment:
+      KAFKA_BROKERS: kafka:9092
+      DATABASE_URL: postgres://breakout:breakout@postgres:5432/breakout
+      PROMETHEUS_URL: http://prometheus:9090
+      UI_DIR: /ui
+    ports:
+      - "8080:8080"
+
   # Consumer group lag and topic end offsets for Prometheus.
   kafka-exporter:
     image: danielqsj/kafka-exporter:v1.9.0

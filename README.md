@@ -30,7 +30,7 @@ Results are shown live in a web UI, and the system measures its own throughput a
 | Ingestion → Kafka (`cmd/ingestion`) | Done: events and watermarks to `ticks`, optional pacing |
 | Engine service (`cmd/engine`) | Done: one goroutine per partition, results and advisories to Kafka, latency histograms |
 | Sink (`cmd/sink`) | Done: results and advisories to Postgres, offsets committed after each insert |
-| API | Next |
+| API (`cmd/api`) | Done: history and symbols over REST, KPIs, subscribed live results over WebSocket |
 | UI | Planned |
 | Metrics and dashboard (`deploy/`) | Done: every service scraped, consumer lag from `kafka-exporter`, Grafana dashboard provisioned |
 | Experiments (`tools/experiments`) | Done: E1–E3 and the end-to-end check, one command each; results in `report/data/` and [evaluation.md](docs/evaluation.md#results) |
@@ -73,11 +73,13 @@ Run the whole week through the engine core without Kafka and count results, advi
 go run ./tools/enginecheck data/debs2022-gc-trading-day-*.csv
 ```
 
-Start the infrastructure (Docker with Compose). The Grafana dashboard is then at http://localhost:3000/d/breakout and Prometheus at http://localhost:9090:
+Start the infrastructure (Docker with Compose). The API is at http://localhost:8080, the Grafana dashboard at http://localhost:3000/d/breakout, and Prometheus at http://localhost:9090:
 
 ```bash
 docker compose -f deploy/docker-compose.yml up -d
 ```
+
+The API is also available from the host with `go run ./cmd/api`. Its REST routes are `GET /api/symbols`, `GET /api/history?symbol=PX1.FR&from=0&to=9999999999999` (epoch-millisecond bounds, start inclusive and end exclusive), and `GET /api/kpis`. `GET /ws` accepts `{"subscribe":["PX1.FR"]}` and `{"unsubscribe":["PX1.FR"]}`. It confirms subscriptions before sending `ema` and `advisory` messages for those symbols. The API serves the UI from `UI_DIR` once built; until then `/` returns 404.
 
 Start the engine, with as many instances as wanted, and the sink inside Compose. Start the engine before ingestion: an instance that takes over a partition later re-reads it from the beginning and publishes its results again ([architecture.md](docs/architecture.md#kafka-topics)):
 

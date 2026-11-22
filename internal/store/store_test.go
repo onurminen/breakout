@@ -80,3 +80,41 @@ func TestInsertTwiceKeepsOneCopy(t *testing.T) {
 		t.Errorf("advisory side %d warmup %v, %v; want 1 (buy) and true", side, warmup, err)
 	}
 }
+
+func TestHistoryAndSymbols(t *testing.T) {
+	s := connect(t)
+	ctx := context.Background()
+	_, _, err := s.Insert(ctx, []*resultsv1.EmaResult{
+		{Symbol: testSymbol, SecType: ticksv1.SecType_SEC_TYPE_INDEX, WindowStartMs: 300_000, LastPrice: 90},
+		{Symbol: testSymbol, SecType: ticksv1.SecType_SEC_TYPE_INDEX, WindowStartMs: 0, LastPrice: 100},
+	}, []*resultsv1.Advisory{
+		{Symbol: testSymbol, SecType: ticksv1.SecType_SEC_TYPE_INDEX, WindowStartMs: 0, Side: resultsv1.Side_SIDE_BUY, Warmup: true},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	symbols, err := s.Symbols(ctx)
+	if err != nil {
+		t.Fatal(err)
+	}
+	found := false
+	for _, symbol := range symbols {
+		if symbol.Symbol == testSymbol && symbol.SecType == ticksv1.SecType_SEC_TYPE_INDEX {
+			found = true
+		}
+	}
+	if !found {
+		t.Fatal("test symbol missing from Symbols")
+	}
+	results, advisories, err := s.History(ctx, testSymbol, 0, 300_001)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(results) != 2 || results[0].WindowStartMs != 0 || results[1].WindowStartMs != 300_000 || len(advisories) != 1 || !advisories[0].Warmup {
+		t.Fatalf("unexpected history: results=%v advisories=%v", results, advisories)
+	}
+	results, advisories, err = s.History(ctx, testSymbol, 0, 300_000)
+	if err != nil || len(results) != 1 || len(advisories) != 1 {
+		t.Fatalf("exclusive upper bound: results=%v advisories=%v err=%v", results, advisories, err)
+	}
+}
