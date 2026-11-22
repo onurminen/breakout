@@ -37,7 +37,7 @@ Results are shown live in a web UI, and the system measures its own throughput a
 
 ## Getting started
 
-Requirements: Go 1.27 or newer (see `go.mod`).
+Requirements: Go 1.27.3 or newer (see `go.mod`).
 
 For UI development, use Node.js 24 or newer. Start the API on port 8080, then run:
 
@@ -47,9 +47,9 @@ npm ci
 npm run dev
 ```
 
-Open the Vite URL printed in the terminal. It proxies `/api` and `/ws` to the API. To check or build the UI, run `npm test` and `npm run build` in `ui/`. The production build writes `ui/dist`; the API serves it at http://localhost:8080. The Compose API image builds the UI automatically. After a `.proto` change, regenerate both Go and TypeScript types from the repository root with `ui/node_modules/.bin/buf generate` (after `npm ci` in `ui/`).
+Open the Vite URL printed in the terminal. It proxies `/api` and `/ws` to the API. To check or build the UI, run `npm test` and `npm run build` in `ui/`. The production build writes `ui/dist`; the API serves it at http://localhost:8080. The Compose API image builds the UI automatically. After a `.proto` change, use the regeneration command below.
 
-Download the seven daily CSV files from the data set link above into `data/`. They are about 4–5 GB each and are ignored by git.
+Download the seven daily CSV files from the data set link above into `data/`. They are ignored by git.
 
 Run the tests:
 
@@ -121,7 +121,7 @@ Run an experiment from a clean stack (all containers are recreated); results go 
 go run ./tools/experiments e1    # also e2, e3, e2e
 ```
 
-Regenerate the Go code after changing a `.proto` file ([buf](https://buf.build/docs/installation/)):
+Regenerate the Go and TypeScript Protobuf types after changing a `.proto` file. First run `npm ci` in `ui/` to install the project-local [Buf CLI](https://buf.build/docs/cli/installation/), then run this command from the repository root:
 
 ```bash
 ui/node_modules/.bin/buf generate
