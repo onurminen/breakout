@@ -3,3 +3,8 @@
 
 # Compiled report
 report/*.pdf
+
+# UI build output and local dependencies
+ui/node_modules/
+ui/dist/
+ui/tsconfig.tsbuildinfo

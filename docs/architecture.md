@@ -92,7 +92,7 @@ All messages between services are Protobuf. The schemas are the source of truth:
 - [`ticks.proto`](../proto/breakout/ticks/v1/ticks.proto): `PriceEvent` and `Watermark`, wrapped in `TickMessage`, on `ticks`.
 - [`results.proto`](../proto/breakout/results/v1/results.proto): `EmaResult` on `ema-results` and `Advisory` on `advisories`.
 
-`buf generate` writes the Go code to `gen/go/`; it is committed, so building needs no buf. The browser gets JSON.
+`buf generate` writes Go code to `gen/go/` and TypeScript code to `ui/src/gen/`; both are committed, so building needs no buf. The browser gets ProtoJSON from the API and decodes it with the generated types.
 
 ## Kafka topics
 
@@ -132,9 +132,9 @@ Everything runs on one machine with Docker Compose ([`deploy/docker-compose.yml`
 | `ingestion` | built from `Dockerfile` | — | Replays the files in `data/`, mounted read-only; started only by `up ingestion` |
 | `engine` | built from `Dockerfile` | — | Any number of replicas (`up --scale engine=N engine`); started only when named |
 | `sink` | built from `Dockerfile` | — | Writes the result topics to Postgres; started only when named |
-| `api` | built from `Dockerfile` | 8080 | Serves history, symbols, KPIs, subscribed live results, and built UI files |
+| `api` | built from `Dockerfile.api` | 8080 | Serves history, symbols, KPIs, subscribed live results, and built UI files |
 
-The root `Dockerfile` builds any service in `cmd/` (`--build-arg SERVICE=…`) into a small static image.
+The root `Dockerfile` builds the ingestion, engine and sink services (`--build-arg SERVICE=…`) into small static images. `Dockerfile.api` builds the API and UI together.
 
 ## Configuration
 
@@ -161,7 +161,7 @@ Topic auto-creation is off, so a typo in a topic name fails loudly instead of cr
 
 ```
 breakout/
-├── README.md, go.mod, buf.yaml, buf.gen.yaml, Dockerfile
+├── README.md, go.mod, buf.yaml, buf.gen.yaml, Dockerfile, Dockerfile.api
 ├── docs/                    # this documentation
 ├── proto/                   # Protobuf schemas (done)
 ├── gen/go/                  # generated code, never edited by hand (done)
@@ -182,8 +182,5 @@ breakout/
 ├── deploy/                  # Compose file, Postgres, Prometheus and Grafana config (infrastructure done)
 ├── report/                  # Typst report; report/data/ holds the experiment results
 ├── data/                    # the CSV files, ignored by git
-│
-│   planned:
-├── internal/metrics/
-└── ui/                      # web UI
+└── ui/                      # React UI, generated Protobuf types, tests and build output
 ```

@@ -95,8 +95,7 @@ services:
   api:
     build:
       context: ..
-      args:
-        SERVICE: api
+      dockerfile: Dockerfile.api
     depends_on:
       kafka-init:
         condition: service_completed_successfully

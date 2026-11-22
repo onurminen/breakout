@@ -31,13 +31,23 @@ Results are shown live in a web UI, and the system measures its own throughput a
 | Engine service (`cmd/engine`) | Done: one goroutine per partition, results and advisories to Kafka, latency histograms |
 | Sink (`cmd/sink`) | Done: results and advisories to Postgres, offsets committed after each insert |
 | API (`cmd/api`) | Done: history and symbols over REST, KPIs, subscribed live results over WebSocket |
-| UI | Planned |
+| UI (`ui/`) | Done: searchable watchlist, live price and EMA charts, advisories, KPIs |
 | Metrics and dashboard (`deploy/`) | Done: every service scraped, consumer lag from `kafka-exporter`, Grafana dashboard provisioned |
 | Experiments (`tools/experiments`) | Done: E1–E3 and the end-to-end check, one command each; results in `report/data/` and [evaluation.md](docs/evaluation.md#results) |
 
 ## Getting started
 
 Requirements: Go 1.27 or newer (see `go.mod`).
+
+For UI development, use Node.js 24 or newer. Start the API on port 8080, then run:
+
+```bash
+cd ui
+npm ci
+npm run dev
+```
+
+Open the Vite URL printed in the terminal. It proxies `/api` and `/ws` to the API. To check or build the UI, run `npm test` and `npm run build` in `ui/`. The production build writes `ui/dist`; the API serves it at http://localhost:8080. The Compose API image builds the UI automatically. After a `.proto` change, regenerate both Go and TypeScript types from the repository root with `ui/node_modules/.bin/buf generate` (after `npm ci` in `ui/`).
 
 Download the seven daily CSV files from the data set link above into `data/`. They are about 4–5 GB each and are ignored by git.
 
@@ -79,7 +89,7 @@ Start the infrastructure (Docker with Compose). The API is at http://localhost:8
 docker compose -f deploy/docker-compose.yml up -d
 ```
 
-The API is also available from the host with `go run ./cmd/api`. Its REST routes are `GET /api/symbols`, `GET /api/history?symbol=PX1.FR&from=0&to=9999999999999` (epoch-millisecond bounds, start inclusive and end exclusive), and `GET /api/kpis`. `GET /ws` accepts `{"subscribe":["PX1.FR"]}` and `{"unsubscribe":["PX1.FR"]}`. It confirms subscriptions before sending `ema` and `advisory` messages for those symbols. The API serves the UI from `UI_DIR` once built; until then `/` returns 404.
+The API is also available from the host with `go run ./cmd/api`. Its REST routes are `GET /api/symbols`, `GET /api/history?symbol=PX1.FR&from=0&to=9999999999999` (epoch-millisecond bounds, start inclusive and end exclusive), and `GET /api/kpis`. `GET /ws` accepts `{"subscribe":["PX1.FR"]}` and `{"unsubscribe":["PX1.FR"]}`. It confirms subscriptions before sending `ema` and `advisory` messages for those symbols. The API serves the UI from `UI_DIR` once built; until then `/` returns 404. A production API image built by Compose includes the UI.
 
 Start the engine, with as many instances as wanted, and the sink inside Compose. Start the engine before ingestion: an instance that takes over a partition later re-reads it from the beginning and publishes its results again ([architecture.md](docs/architecture.md#kafka-topics)):
 
@@ -114,7 +124,7 @@ go run ./tools/experiments e1    # also e2, e3, e2e
 Regenerate the Go code after changing a `.proto` file ([buf](https://buf.build/docs/installation/)):
 
 ```bash
-buf generate
+ui/node_modules/.bin/buf generate
 ```
 
 Build the report (Typst 0.14 or newer):
