@@ -7,6 +7,58 @@ breakout is the course project for the course CS-E4780 Scalable Systems and Data
 
 Results are shown live in a web UI, and the system measures its own throughput and latency.
 
+## Try it out
+
+You need Docker with Compose, git and curl, and the ports 3000, 5432, 8080, 9090 and 9094 free. Run every command from the repository root.
+
+There are two options: **Monday only** (one file, 4.7 GB, replayed in about a minute) or **the whole week** (seven files, 25 GB, replayed in about 5 minutes). Steps 2 and 3 have a command for each; run only the one for your option.
+
+**1. Clone the repository.**
+
+```bash
+git clone https://github.com/onurminen/breakout.git
+cd breakout
+```
+
+**2. Download the data** into `data/`.
+
+Monday only:
+
+```bash
+curl -fLo data/debs2022-gc-trading-day-08-11-21.csv --create-dirs https://zenodo.org/records/6382482/files/debs2022-gc-trading-day-08-11-21.csv
+```
+
+The whole week:
+
+```bash
+for day in 08 09 10 11 12 13 14; do curl -fLo data/debs2022-gc-trading-day-$day-11-21.csv --create-dirs https://zenodo.org/records/6382482/files/debs2022-gc-trading-day-$day-11-21.csv; done
+```
+
+**3. Start everything.** The first start builds the images, which takes a few minutes. Ingestion then replays the data as fast as possible.
+
+Monday only:
+
+```bash
+docker compose -f deploy/docker-compose.yml --profile pipeline up -d
+```
+
+The whole week:
+
+```bash
+INGEST_FILES="/data/debs2022-gc-trading-day-08-11-21.csv /data/debs2022-gc-trading-day-09-11-21.csv /data/debs2022-gc-trading-day-10-11-21.csv /data/debs2022-gc-trading-day-11-11-21.csv /data/debs2022-gc-trading-day-12-11-21.csv /data/debs2022-gc-trading-day-13-11-21.csv /data/debs2022-gc-trading-day-14-11-21.csv" docker compose -f deploy/docker-compose.yml --profile pipeline up -d
+```
+
+**4. Look at the results.**
+
+- UI: http://localhost:8080. Search for a symbol under "Symbols", for example `PX1.FR`, and select it to see its price, EMA38 and EMA100, and its advisories.
+- Grafana dashboard: http://localhost:3000/d/breakout, showing throughput, latency, consumer lag, CPU and memory.
+
+**5. Stop everything and delete all data.** To replay again or to switch options, run this and then step 3.
+
+```bash
+docker compose -f deploy/docker-compose.yml --profile pipeline down
+```
+
 ## Documentation
 
 | Document | What it explains |
@@ -14,7 +66,7 @@ Results are shown live in a web UI, and the system measures its own throughput a
 | [docs/architecture.md](docs/architecture.md) | The services, what flows between them, Kafka topics, storage, configuration, technology |
 | [docs/data.md](docs/data.md) | The CSV files, the columns used, the data checks behind the constants, anomalies |
 | [docs/windowing.md](docs/windowing.md) | How EMAs and advisories are computed: windows, watermarks, grace period, late events, edge cases |
-| [docs/evaluation.md](docs/evaluation.md) | Metrics, latency definitions, tests and planned experiments |
+| [docs/evaluation.md](docs/evaluation.md) | Metrics, latency definitions, tests, experiments and their results |
 | [docs/decisions.md](docs/decisions.md) | Every design decision with the alternatives considered, plus open questions |
 | [docs/glossary.md](docs/glossary.md) | Short definitions of the terms used everywhere else |
 
@@ -35,11 +87,78 @@ Results are shown live in a web UI, and the system measures its own throughput a
 | Metrics and dashboard (`deploy/`) | Done: every service scraped, consumer lag from `kafka-exporter`, Grafana dashboard provisioned |
 | Experiments (`tools/experiments`) | Done: E1–E3 and the end-to-end check, one command each; results in `report/data/` and [evaluation.md](docs/evaluation.md#results) |
 
-## Getting started
+## Development
 
-Requirements: Go 1.27.3 or newer (see `go.mod`).
+Requirements: Go 1.27.3 or newer (see `go.mod`); Node.js 24 or newer for the UI and Protobuf generation; Typst 0.14 or newer for the report.
 
-For UI development, use Node.js 24 or newer. Start the API on port 8080, then run:
+The data checks, `tools/enginecheck` and the experiments need the whole week ([Try it out](#try-it-out), step 2). The CSV files in `data/` are ignored by git.
+
+### Tests and checks
+
+```bash
+go test ./...
+```
+
+The Postgres test runs against the Compose database and skips itself without `DATABASE_URL`:
+
+```bash
+DATABASE_URL=postgres://breakout:breakout@localhost:5432/breakout go test ./internal/store
+```
+
+Parse a whole day with the real parser and print how many lines were kept or dropped (the path must be absolute):
+
+```bash
+BREAKOUT_CSV=$PWD/data/debs2022-gc-trading-day-08-11-21.csv go test -run RealFile -v ./internal/csvparse
+```
+
+The data checks for the whole week, with the files in date order ([docs/data.md](docs/data.md#data-checks)):
+
+```bash
+go run ./tools/datacheck/grace data/debs2022-gc-trading-day-*.csv
+go run ./tools/datacheck/order data/debs2022-gc-trading-day-*.csv
+go run ./tools/datacheck/windows data/debs2022-gc-trading-day-*.csv
+```
+
+The whole week through the engine core without Kafka, counting results, advisories and late events:
+
+```bash
+go run ./tools/enginecheck data/debs2022-gc-trading-day-*.csv
+```
+
+### Services one at a time
+
+Without `--profile pipeline`, Compose starts only the infrastructure and the API: Kafka (port 9094 from the host), Postgres, Prometheus (http://localhost:9090), Grafana, cAdvisor, kafka-exporter and the API with the UI (http://localhost:8080).
+
+```bash
+docker compose -f deploy/docker-compose.yml up -d
+```
+
+Start the engine, with any number of instances, and the sink. Start the engine before ingestion: an instance that takes over a partition later re-reads it from the beginning and publishes its results again ([architecture.md](docs/architecture.md#kafka-topics)).
+
+```bash
+docker compose -f deploy/docker-compose.yml up -d --scale engine=4 engine sink
+```
+
+Replay the files listed under `command:` in the `ingestion` service, or replay from the host (files in date order; `REPLAY_SPEED=60` replays an hour per minute):
+
+```bash
+docker compose -f deploy/docker-compose.yml up -d ingestion
+go run ./cmd/ingestion data/debs2022-gc-trading-day-08-11-21.csv
+```
+
+The API also runs from the host with `go run ./cmd/api`. Its REST routes are `GET /api/symbols`, `GET /api/history?symbol=PX1.FR&from=0&to=9999999999999` (epoch-millisecond bounds, start inclusive and end exclusive), and `GET /api/kpis`. `GET /ws` accepts `{"subscribe":["PX1.FR"]}` and `{"unsubscribe":["PX1.FR"]}`, confirms subscriptions, and then sends `ema` and `advisory` messages for those symbols. The API serves the UI from `UI_DIR`; the Compose image includes the built UI.
+
+### Experiments
+
+Each experiment starts from a clean stack (all containers are recreated) and writes its results to `report/data/` ([evaluation.md](docs/evaluation.md#experiments)). `e2e` is the end-to-end check, which compares Postgres with `tools/enginecheck`.
+
+```bash
+go run ./tools/experiments e1    # also e2, e3, e2e
+```
+
+### UI
+
+With the API running on port 8080:
 
 ```bash
 cd ui
@@ -47,87 +166,17 @@ npm ci
 npm run dev
 ```
 
-Open the Vite URL printed in the terminal. It proxies `/api` and `/ws` to the API. To check or build the UI, run `npm test` and `npm run build` in `ui/`. The production build writes `ui/dist`; the API serves it at http://localhost:8080. The Compose API image builds the UI automatically. After a `.proto` change, use the regeneration command below.
+Open the Vite URL printed in the terminal; it proxies `/api` and `/ws` to the API. `npm test` runs the UI tests and `npm run build` writes the production build to `ui/dist`.
 
-Download the seven daily CSV files from the data set link above into `data/`. They are ignored by git.
+### Protobuf
 
-Run the tests:
-
-```bash
-go test ./...
-```
-
-Parse a whole day file with the real parser and print how many lines were kept or dropped (the path must be absolute):
-
-```bash
-BREAKOUT_CSV=$PWD/data/debs2022-gc-trading-day-08-11-21.csv go test -run RealFile -v ./internal/csvparse
-```
-
-Run the data checks for the whole week (pass the files in date order; see [docs/data.md](docs/data.md#data-checks)):
-
-```bash
-go run ./tools/datacheck/grace data/debs2022-gc-trading-day-*.csv
-```
-
-```bash
-go run ./tools/datacheck/order data/debs2022-gc-trading-day-*.csv
-```
-
-```bash
-go run ./tools/datacheck/windows data/debs2022-gc-trading-day-*.csv
-```
-
-Run the whole week through the engine core without Kafka and count results, advisories and late events:
-
-```bash
-go run ./tools/enginecheck data/debs2022-gc-trading-day-*.csv
-```
-
-Start the infrastructure (Docker with Compose). The API is at http://localhost:8080, the Grafana dashboard at http://localhost:3000/d/breakout, and Prometheus at http://localhost:9090:
-
-```bash
-docker compose -f deploy/docker-compose.yml up -d
-```
-
-The API is also available from the host with `go run ./cmd/api`. Its REST routes are `GET /api/symbols`, `GET /api/history?symbol=PX1.FR&from=0&to=9999999999999` (epoch-millisecond bounds, start inclusive and end exclusive), and `GET /api/kpis`. `GET /ws` accepts `{"subscribe":["PX1.FR"]}` and `{"unsubscribe":["PX1.FR"]}`. It confirms subscriptions before sending `ema` and `advisory` messages for those symbols. The API serves the UI from `UI_DIR` once built; until then `/` returns 404. A production API image built by Compose includes the UI.
-
-Start the engine, with as many instances as wanted, and the sink inside Compose. Start the engine before ingestion: an instance that takes over a partition later re-reads it from the beginning and publishes its results again ([architecture.md](docs/architecture.md#kafka-topics)):
-
-```bash
-docker compose -f deploy/docker-compose.yml up -d --scale engine=4 engine sink
-```
-
-Run the Postgres test against the Compose database (it skips itself without `DATABASE_URL`):
-
-```bash
-DATABASE_URL=postgres://breakout:breakout@localhost:5432/breakout go test ./internal/store
-```
-
-Replay one day into Kafka as fast as possible, from the host (files in date order; `REPLAY_SPEED=60` replays an hour per minute):
-
-```bash
-go run ./cmd/ingestion data/debs2022-gc-trading-day-08-11-21.csv
-```
-
-Or inside Compose, which replays the files listed under `command:` in the `ingestion` service:
-
-```bash
-docker compose -f deploy/docker-compose.yml up -d ingestion
-```
-
-Run an experiment from a clean stack (all containers are recreated); results go to `report/data/` ([evaluation.md](docs/evaluation.md#experiments)). `e2e` is the end-to-end check, which compares Postgres with `tools/enginecheck`:
-
-```bash
-go run ./tools/experiments e1    # also e2, e3, e2e
-```
-
-Regenerate the Go and TypeScript Protobuf types after changing a `.proto` file. First run `npm ci` in `ui/` to install the project-local [Buf CLI](https://buf.build/docs/cli/installation/), then run this command from the repository root:
+After changing a `.proto` file, regenerate the Go and TypeScript types. `npm ci` in `ui/` installs the project-local [Buf CLI](https://buf.build/docs/cli/installation/):
 
 ```bash
 ui/node_modules/.bin/buf generate
 ```
 
-Build the report (Typst 0.14 or newer):
+### Report
 
 ```bash
 typst compile report/main.typ
