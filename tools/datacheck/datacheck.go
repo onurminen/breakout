@@ -31,6 +31,11 @@ func Paths() []string {
 
 // Scan calls handle for every valid price event in the file, in file order.
 func Scan(path string, handle func(csvparse.Event)) {
+	ScanLines(path, func(event csvparse.Event, _ []byte) { handle(event) })
+}
+
+// ScanLines is Scan that also passes the raw line, which is only valid during the call.
+func ScanLines(path string, handle func(csvparse.Event, []byte)) {
 	file, err := os.Open(path)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -43,7 +48,7 @@ func Scan(path string, handle func(csvparse.Event)) {
 	for {
 		line, err := reader.ReadSlice('\n')
 		if event, reason := parser.Parse(line); reason == csvparse.OK {
-			handle(event)
+			handle(event, line)
 		}
 		if err == io.EOF {
 			return
