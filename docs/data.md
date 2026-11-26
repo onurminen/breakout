@@ -12,7 +12,7 @@ One week (08–14 November 2021) of tick data from Paris `.FR`, Amsterdam `.NL` 
 | 22 | `Last` | `7046.170000` | Price |
 | 24 | `Trading time` | `09:11:45.472` | Time of day of the event |
 
-Event time = `Date` + `Trading time`, as the assignment description prescribes. All other columns are ignored.
+Event time = `Date` + `Trading time` ([decisions.md](decisions.md#data-and-ingestion)). All other columns are ignored.
 
 ## Data checks
 
@@ -71,6 +71,22 @@ The check counts, per day and symbol, the windows that contain at least one pric
 | Fri 12-11 | 4,843 | 370,310 (76.5) | 73.5% | 19.8% |
 
 **Result:** empty windows are the normal case, even during trading (one in five). The engine skips them ([windowing.md](windowing.md#edge-cases)). The week produces about 1.86M results, one per window with a price.
+
+### Trading date (`tradingdate`)
+
+**Question:** how many price events have an empty `Trading date`?
+
+The check counts the price events whose `Trading date` column (27) is empty.
+
+| Day | Price events | Empty `Trading date` |
+|---|---|---|
+| Mon 08-11 | 11,794,520 | 10,873,721 (92.2%) |
+| Tue 09-11 | 11,900,121 | 10,906,107 (91.6%) |
+| Wed 10-11 | 12,068,273 | 10,933,690 (90.6%) |
+| Thu 11-11 | 11,835,403 | 10,915,180 (92.2%) |
+| Fri 12-11 | 11,793,353 | 10,850,929 (92.0%) |
+
+**Result:** about 92% of price events have no `Trading date`, so it cannot be the day of an event on its own.
 
 ## Anomalies
 

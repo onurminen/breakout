@@ -27,6 +27,7 @@ Why the system is built as it is. When a decision changes, update its row and th
 
 | Decision | Alternatives | Why |
 |---|---|---|
+| Day from `Date` | `Trading date`, as the assignment description names | `Trading date` is empty for about 92% of price events ([check](data.md#trading-date-tradingdate)) |
 | Price from `Last` | The `Close` column | The assignment's "Close" means the last price in the window |
 | Drop prices ≤ 0 | Keep them | A zero pulls both EMAs towards 0 |
 | Filter and shrink events in ingestion | Filter in the engine or in Kafka | 78% of lines are dropped before any serialization or network cost |

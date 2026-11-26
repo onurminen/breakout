@@ -117,6 +117,7 @@ The data checks for the whole week, with the files in date order ([docs/data.md]
 go run ./tools/datacheck/grace data/debs2022-gc-trading-day-*.csv
 go run ./tools/datacheck/order data/debs2022-gc-trading-day-*.csv
 go run ./tools/datacheck/windows data/debs2022-gc-trading-day-*.csv
+go run ./tools/datacheck/tradingdate data/debs2022-gc-trading-day-*.csv
 ```
 
 The whole week through the engine core without Kafka, counting results, advisories and late events:

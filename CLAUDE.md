@@ -39,7 +39,7 @@ Start with `README.md` (status, commands), then `docs/architecture.md` and `docs
 
 These follow the assignment description and should not change:
 
-- Event time = `Date` + `Trading time` (epoch ms, treated as UTC). Price = `Last`.
+- Price = `Last`.
 - Tumbling 5-minute windows starting at 00:00; a window's price is the event with the highest event time in it.
 - `EMA_j = price · 2/(1+j) + previous · (1 − 2/(1+j))`, starting from 0, for j = 38 and 100.
 - Buy when EMA38 crosses above EMA100, sell when it crosses below, with the strict and non-strict comparisons from the assignment.
@@ -51,6 +51,7 @@ Reasons are in `docs/decisions.md`. Data-backed facts come from `tools/datacheck
 
 **Data and windowing**
 
+- Event time = `Date` + `Trading time` (epoch ms, treated as UTC). The assignment names `Trading date`, but it is empty for about 92% of price events.
 - Files are replayed in date order and, within a file, in file order. Each symbol's events are already in event-time order, except Wednesday's 5,506 index events at 01:00, which arrive about 18 hours late and are dropped as late.
 - About 78% of lines are not price events; lines with `Last` ≤ 0 or unparsable fields are dropped and counted per reason.
 - Windows close on watermarks (highest event time sent, every 1 s of event time, to every partition, finally `MaxInt64`) plus a 1 s grace period.
