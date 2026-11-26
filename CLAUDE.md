@@ -77,5 +77,5 @@ go test ./internal/engine -run Crossovers -v            # one package or test (p
 go run ./tools/enginecheck data/debs2022-gc-trading-day-*.csv
 docker compose -f deploy/docker-compose.yml up -d       # Kafka :9094 from the host, kafka:9092 inside Compose
 buf generate                                            # after changing a .proto file
-typst compile report/main.typ
+typst compile --font-path report/fonts report/main.typ
 ```

@@ -179,6 +179,8 @@ ui/node_modules/.bin/buf generate
 
 ### Report
 
+Build the report (Typst 0.14 or newer) with the fonts in `report/fonts/`:
+
 ```bash
-typst compile report/main.typ
+typst compile --font-path report/fonts report/main.typ
 ```
