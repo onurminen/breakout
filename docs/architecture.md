@@ -10,7 +10,7 @@ flowchart LR
 
     subgraph ING["ingestion (Go)"]
         direction TB
-        i1["parse + filter<br/>drop ~78% non-price lines"] --> i2["normalize<br/>event time = Trading time"] --> i3["pace replay<br/>emit watermarks"]
+        i1["parse + filter<br/>drop ~79% non-price lines"] --> i2["normalize<br/>event time = Date + Trading time"] --> i3["pace replay<br/>emit watermarks"]
     end
 
     subgraph K1["Kafka: input"]
@@ -67,7 +67,7 @@ flowchart LR
 
 ## The path of one price
 
-1. **Ingestion** reads a CSV line. About 78% of lines are not price events and are dropped right here. A valid line becomes a small `PriceEvent`: symbol, security type, price and event time.
+1. **Ingestion** reads a CSV line. About 79% of lines are not price events and are dropped right here. A valid line becomes a small `PriceEvent`: symbol, security type, price and event time.
 2. Ingestion sends the event to the Kafka topic `ticks`. The symbol decides the partition, so all events of one symbol stay in one ordered log. Each time event time has advanced by one second, ingestion also sends a **watermark** to every partition: "everything up to time T has been sent".
 3. An **engine** instance reads that partition and puts the price into the symbol's current 5-minute window.
 4. When a watermark shows that the window has ended (plus a 1 s grace period), the engine updates EMA38 and EMA100 with the window's last price, checks for a crossover and publishes an `EmaResult`, plus an `Advisory` if the averages crossed.

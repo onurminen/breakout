@@ -1,9 +1,6 @@
 package csvparse
 
 import (
-	"bufio"
-	"io"
-	"os"
 	"strings"
 	"testing"
 )
@@ -95,40 +92,6 @@ func TestParseDate(t *testing.T) {
 	if _, ok := ParseDate([]byte("2021-11-08")); ok {
 		t.Error("ParseDate accepted wrong format")
 	}
-}
-
-// TestRealFile parses a whole day file when BREAKOUT_CSV holds its absolute path:
-//
-//	BREAKOUT_CSV=$PWD/data/debs2022-gc-trading-day-08-11-21.csv go test -run RealFile -v ./internal/csvparse
-func TestRealFile(t *testing.T) {
-	path := os.Getenv("BREAKOUT_CSV")
-	if path == "" {
-		t.Skip("set BREAKOUT_CSV to a day file")
-	}
-	file, err := os.Open(path)
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer file.Close()
-
-	parser := New()
-	var counts [BadLine + 1]int
-	reader := bufio.NewReaderSize(file, 1<<20)
-	for {
-		line, err := reader.ReadSlice('\n')
-		if len(line) > 0 {
-			_, reason := parser.Parse(line)
-			counts[reason]++
-		}
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			t.Fatal(err)
-		}
-	}
-	t.Logf("ok=%d skip=%d no_price=%d bad_price=%d bad_time=%d bad_line=%d",
-		counts[OK], counts[Skip], counts[NoPrice], counts[BadPrice], counts[BadTime], counts[BadLine])
 }
 
 func BenchmarkParse(b *testing.B) {

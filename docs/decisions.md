@@ -30,7 +30,7 @@ Why the system is built as it is. When a decision changes, update its row and th
 | Day from `Date` | `Trading date`, as the assignment description names | `Trading date` is empty for about 92% of price events ([check](data.md#trading-date-tradingdate)) |
 | Price from `Last` | The `Close` column | The assignment's "Close" means the last price in the window |
 | Drop prices ≤ 0 | Keep them | A zero pulls both EMAs towards 0 |
-| Filter and shrink events in ingestion | Filter in the engine or in Kafka | 78% of lines are dropped before any serialization or network cost |
+| Filter and shrink events in ingestion | Filter in the engine or in Kafka | 79% of lines are dropped before any serialization or network cost |
 | Send events in file order | Sort by event time first | Each symbol is already in order ([order check](data.md#order-within-each-symbol-order)); sorting 5 GB is batch processing; sorting would put Wednesday's 01:00 events into a 01:00 window and change later EMAs |
 | Keep repeated prices | Drop them | A repeat still means "the price is X now" and keeps a window from being empty |
 | Hand-written parser with zero allocations per line | Go's `encoding/csv` | `encoding/csv` allocates for every line |

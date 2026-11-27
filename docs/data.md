@@ -16,13 +16,32 @@ Event time = `Date` + `Trading time` ([decisions.md](decisions.md#data-and-inges
 
 ## Data checks
 
-Each constant or assumption that depends on the data has a check in `tools/datacheck/`. The checks read the events the parser accepts, in file order, and take the day files in date order:
+Each constant or assumption that depends on the data has a check in `tools/datacheck/`. The checks read the events the parser accepts (`pricedrops` reads every line), in file order, and take the day files in date order:
 
 ```bash
 go run ./tools/datacheck/grace data/debs2022-gc-trading-day-*.csv
 ```
 
-Saturday and Sunday have no valid price events and are left out below.
+Saturday and Sunday have no valid price events and are left out below, except in `pricedrops`.
+
+### Dropped lines (`pricedrops`)
+
+**Question:** how many lines become price events, and why are the others dropped?
+
+The check parses every line with the real parser and counts the result per reason ([How ingestion treats each line](#how-ingestion-treats-each-line)). Data lines exclude the 13 comment and header lines per file.
+
+| Day | Data lines | Price events | Empty `Last` | `Last` ≤ 0 or not a number | Dropped |
+|---|---|---|---|---|---|
+| Mon 08-11 | 53,994,554 | 11,794,520 | 42,137,822 | 62,212 | 78.2% |
+| Tue 09-11 | 58,811,870 | 11,900,121 | 46,849,511 | 62,238 | 79.8% |
+| Wed 10-11 | 64,591,844 | 12,068,273 | 52,461,331 | 62,240 | 81.3% |
+| Thu 11-11 | 55,547,846 | 11,835,403 | 43,650,192 | 62,251 | 78.7% |
+| Fri 12-11 | 56,111,183 | 11,793,353 | 44,255,568 | 62,262 | 79.0% |
+| Sat 13-11 | 33,398 | 0 | 28,219 | 5,179 | 100% |
+| Sun 14-11 | 26,113 | 0 | 26,113 | 0 | 100% |
+| **Week** | **289,116,808** | **59,391,670** | **229,408,756** | **316,382** | **79.5%** |
+
+**Result:** about 79% of lines carry no price and are dropped in ingestion. No line has an unparsable time or too few columns.
 
 ### Grace period (`grace`)
 
@@ -105,4 +124,4 @@ The check counts the price events whose `Trading date` column (27) is empty.
 | Fewer than 24 columns, or `SecType` not `E`/`I` | dropped, counted |
 | Anything else | becomes a price event |
 
-The parser's real-file test prints these counts ([README](../README.md#getting-started)); on all seven files the last two rows never occur. Repeated prices are kept.
+The `pricedrops` check counts these per day ([Dropped lines](#dropped-lines-pricedrops)); on all seven files the last two rows never occur. Repeated prices are kept.

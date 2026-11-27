@@ -132,15 +132,10 @@ The Postgres test runs against the Compose database and skips itself without `DA
 DATABASE_URL=postgres://breakout:breakout@localhost:5432/breakout go test ./internal/store
 ```
 
-Parse a whole day with the real parser and print how many lines were kept or dropped (the path must be absolute):
-
-```bash
-BREAKOUT_CSV=$PWD/data/debs2022-gc-trading-day-08-11-21.csv go test -run RealFile -v ./internal/csvparse
-```
-
 The data checks for the whole week, with the files in date order ([docs/data.md](docs/data.md#data-checks)):
 
 ```bash
+go run ./tools/datacheck/pricedrops data/debs2022-gc-trading-day-*.csv
 go run ./tools/datacheck/grace data/debs2022-gc-trading-day-*.csv
 go run ./tools/datacheck/order data/debs2022-gc-trading-day-*.csv
 go run ./tools/datacheck/windows data/debs2022-gc-trading-day-*.csv

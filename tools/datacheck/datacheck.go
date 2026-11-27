@@ -36,6 +36,17 @@ func Scan(path string, handle func(csvparse.Event)) {
 
 // ScanLines is Scan that also passes the raw line, which is only valid during the call.
 func ScanLines(path string, handle func(csvparse.Event, []byte)) {
+	parser := csvparse.New()
+	Lines(path, func(line []byte) {
+		if event, reason := parser.Parse(line); reason == csvparse.OK {
+			handle(event, line)
+		}
+	})
+}
+
+// Lines calls handle for every non-empty line of the file, in file order.
+// The line is only valid during the call.
+func Lines(path string, handle func([]byte)) {
 	file, err := os.Open(path)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
@@ -43,12 +54,11 @@ func ScanLines(path string, handle func(csvparse.Event, []byte)) {
 	}
 	defer file.Close()
 
-	parser := csvparse.New()
 	reader := bufio.NewReaderSize(file, 1<<20)
 	for {
 		line, err := reader.ReadSlice('\n')
-		if event, reason := parser.Parse(line); reason == csvparse.OK {
-			handle(event, line)
+		if len(line) > 0 {
+			handle(line)
 		}
 		if err == io.EOF {
 			return
