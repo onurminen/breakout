@@ -1,4 +1,4 @@
-= Contributions
+= Contributions <sec:contributions>
 
 Each team member must answer the following questions as individual contributions in the report:
 1. What are the most important decisions you and your 
@@ -9,7 +9,8 @@ the design and implementation?
 How do you characterize the team’s overall func-
 tionality?
 
-== Olli Nurminen
+== Olli Nurminen <subsec:olli>
+
 (1) The most important decision about the system design was
 to use event-driven service architecure instead of monolithic application.
 Responsibilities are split into separate services with Kafka as the boundary

@@ -33,3 +33,5 @@
 #include "conclusion.typ"
 
 #bibliography("refs.bib")
+
+#include "appendix.typ"

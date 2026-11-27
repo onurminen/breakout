@@ -1,4 +1,6 @@
-= Introduction
+#import "@preview/faithful-acmart:0.2.0": tabular, toprule, midrule, bottomrule
+
+= Introduction <sec:introduction>
 
 Modern financial markets produce vast amounts of data related to
 financial instruments such as individual stocks, exchange-traded funds
@@ -11,30 +13,21 @@ Gathering, analyzing, and interpreting this information allows market
 participants to make informed decisions regarding which types of trades
 they should and shouldn't engage in.
 
-Granular market data consists of a continuous stream of _tick
-events_. An individual tick event usually contains the following 
-information:
-- Financial instrument (_symbol_) that the event describes. The symbol
-  is a string such as "SPX".
-- Either the latest buy or sell price of that event, depending on the 
-  type of the event. If the event describes a sell event, then it 
-  contains the sell (bid) price of that event.
-- Trading volume of an event, which describes how many shares were 
-  bought
-  at a given price, for example.
-- Other metadata such as trade dates and timestamps.
-
-The goal of this course project is to utilize real-world tick data and
-compute useful indicators based on it. These indicators 
-can be utilized by traders to identify attractive trading 
-opportunities. 
-In this project, for each symbol, we are interested in two main 
-"queries":
+The goal of this course project is to utilize real-world market data and
+compute useful indicators based on it. These indicators can be utilized by
+traders to identify attractive trading opportunities. In this project,
+for each financial instrument (_symbol_), we are interested in two main
+"queries". The definitions for these queries can be found in
+@sec:appendix.
 + Exponential moving averages (EMAs) over 5-minute tumbling windows.  
 + Crossovers of two different EMAs of a given symbol, called _breakout 
   patterns_.
-The computation details for these queries are explained in section
-TODO.
+
+The focus of this project is on designing and implementing a system capable
+of processing high-volume data in an efficient manner. The goal is to
+produce correct outputs while maintaining a high level of throughput
+and low latencies. Furthermore, this project aims to visualize results
+in a way that would benefit a hypothetical market participant.
 
 The project dataset consists of the DEBS 2022 Grand Challenge Data
 Set@debs2022data, that contains tick data captured by the systems of 
@@ -48,19 +41,18 @@ project, we  are only interested in the following attributes:
 
 #figure(
   placement: none,
-  table(
-    columns: 3,
+  tabular(
     align: left,
-    stroke: (x, y) => (
-      left: if x > 0 { 0.5pt },
-      top: if y == 1 { 0.5pt },
-    ),
-    table.header[*Attribute*][*Example*][*Description*],
+    columns: 3,
+    toprule(),
+    [Attribute], [Example], [Description],
+    midrule(),
     [`ID`], [`PX1.FR`], [Symbol, including the exchange suffix],
     [`SecType`], [`I`], [Security type: either equity (`E`) or index (`I`)],
     [`Date`], [`08-11-2021`], [Day of the event],
     [`Last`], [`7046.170000`], [Last trade price],
     [`Trading time`], [`09:11:45.472`], [Timestamp of the event],
+    bottomrule(),
   ),
   caption: [Dataset attributes used by our system],
 )
@@ -71,19 +63,12 @@ that for valid price events, approximately 90% of the values for the
 `Trading date` column are empty across all data files. Consequently, we
 decided to use `Date` instead of `Trading date` when parsing and
 constructing event timestamps. The data-checking script is located in
-`tools/datacheck/tradingdate`. More information about helper scripts
-that inspect the source data is provided in section TODO.
+`tools/datacheck/tradingdate`.
 
-This project focuses on designing and implementing a system capable
-of processing high-volume data in an efficient manner. The goal is to
-produce correct outputs while maintaining a high level of throughput
-and low latencies. Furthermore, this project aims to visualize results
-in a way that would benefit a hypothetical market participant.
-
-This project report is structured as follows (TODO: add refs). Section
-2 documents the system architecture. Section 3 describes how this
+This project report is structured as follows. Section 2 (TODO: ref)
+documents the system architecture. @sec:implementation describes how this
 architecture was implemented in practice and which technologies were
-used. Section 4 evaluates the performance of our system under different
-loads and resource constraints. Section 5 details the project
-contributions of each team member, and section 6 concludes this project
-report.
+used. @sec:performance evaluates the performance of our system under
+different loads and resource constraints. @sec:contributions details the
+project contributions of each team member, and @sec:conclusion concludes
+this project report.

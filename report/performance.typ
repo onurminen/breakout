@@ -1,6 +1,6 @@
 #import "@preview/faithful-acmart:0.2.0": tabular, toprule, midrule, bottomrule
 
-= Performance Evaluation
+= Performance Evaluation <sec:performance>
 All measurements were collected locally on a single desktop computer
 with and AMD Ryzen 5 2600X
 processor with 6 physical CPU cores and 12 logical CPUs, running at up
@@ -11,7 +11,8 @@ CPU usage in this report is expressed in logical-CPU equivalents:
 wall-clock time. Docker limits use the same unit and do not reserve
 specific physical cores.
 
-== Correctness
+== Correctness <subsec:correctness>
+
 We test correctness on three levels.
 Firstly, we have a wide coverage of unit tests for each component of
 the system. The engine core responsible for the computations 
@@ -38,7 +39,8 @@ and compares both database tables row by row.
 This catches errors in serialization, topic partitioning,
 consumer behavior, persistence, and cross-day EMA state.
 
-== Scalability
+== Scalability <subsec:scalability>
+
 We performed three experiments with different purposes. 
 Each experiment tests multiple configurations and each 
 configuration was ran three times. We use the median results
@@ -135,7 +137,8 @@ varies between runs (median 4.1-14.5 ms).
   at different replay speeds, one engine],
 ) <latency-results>
 
-== Resource utilization
+== Resource utilization <subsec:resource-utilization>
+
 We ran one 10-minute live profile at 1× replay speed, covering
 09:00--09:10 on Monday. The profile ran ingestion, one engine, the sink,
 Kafka, Postgres, Prometheus, Grafana, and the Kafka exporter, the API and
