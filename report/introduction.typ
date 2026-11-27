@@ -65,7 +65,7 @@ decided to use `Date` instead of `Trading date` when parsing and
 constructing event timestamps. The data-checking script is located in
 `tools/datacheck/tradingdate`.
 
-This project report is structured as follows. Section 2 (TODO: ref)
+This project report is structured as follows. @sec:architecture
 documents the system architecture. @sec:implementation describes how this
 architecture was implemented in practice and which technologies were
 used. @sec:performance evaluates the performance of our system under
