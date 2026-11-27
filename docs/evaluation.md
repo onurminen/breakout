@@ -29,6 +29,10 @@ Both histograms have 80 exponential buckets from 100 µs to 60 s, each about 18%
 
 Each experiment is one command, `go run ./tools/experiments e1|e2|e3`. It starts from an empty stack, runs every setting three times, and writes to `report/data/`: `<experiment>-summary.csv` with one row per run, and one time-series file per run (`seconds,series,value`).
 
+For a quick manual check, `go run ./tools/experiments e3-fast` runs only E3's
+maximum-speed setting once. It writes separate `e3-fast-*` files and is not a
+replacement for the repeated E3 benchmark.
+
 | # | Experiment | What varies | Input | Reported |
 |---|---|---|---|---|
 | E1 | Engine scale-out | 1, 2, 4, 8 engine instances, no CPU limit | Whole week, pre-filled | events/s, CPU seconds and cores, peak memory of the engines |

@@ -77,6 +77,15 @@ go run ./tools/experiments e2
 go run ./tools/experiments e3
 ```
 
+For a quick maximum-throughput check, run one full-speed E3 pass instead of
+the complete three-run, four-speed benchmark:
+
+```bash
+go run ./tools/experiments e3-fast
+```
+
+It writes `e3-fast-summary.csv` and separate `e3-fast-*` time-series files.
+
 ## Documentation
 
 | Document | What it explains |

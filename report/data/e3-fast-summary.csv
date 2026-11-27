@@ -1,0 +1,2 @@
+speed,run,seconds,events,events_per_s,event_latency_p50,event_latency_p95,event_latency_p99,window_latency_p50,window_latency_p95,window_latency_p99,ingestion_cores,engine_cores,sink_cores,kafka_cores
+0,1,52.75,1.17299e+07,222367,0.00984875,0.0153634,0.018024,0.0102336,0.0157665,0.0182111,1.0374,0.65786,0.016402,0.827361

@@ -4,6 +4,7 @@
 //	go run ./tools/experiments e1   # engine scale-out: 1, 2, 4, 8 engines
 //	go run ./tools/experiments e2   # one engine with 0.5, 1, 2, 4 CPUs
 //	go run ./tools/experiments e3   # replay speed and latency
+//	go run ./tools/experiments e3-fast # one maximum-speed replay and latency run
 //	go run ./tools/experiments e2e  # end-to-end correctness check
 //
 // Every experiment starts from an empty stack (docker compose down). E1, E2 and
@@ -41,7 +42,7 @@ const topicRecordsQuery = `sum(kafka_topic_partition_current_offset{topic="ticks
 func main() {
 	log.SetFlags(log.Ltime)
 	if len(os.Args) != 2 {
-		fail("usage: go run ./tools/experiments e1|e2|e3|e2e")
+		fail("usage: go run ./tools/experiments e1|e2|e3|e3-fast|e2e")
 	}
 	if err := os.MkdirAll(outputDir, 0o755); err != nil {
 		fail("%v", err)
@@ -53,10 +54,12 @@ func main() {
 		prefilled("e2", []engineSetting{{1, "0.5"}, {1, "1"}, {1, "2"}, {1, "4"}})
 	case "e3":
 		replaySpeeds()
+	case "e3-fast":
+		replaySpeedFast()
 	case "e2e":
 		endToEnd()
 	default:
-		fail("unknown experiment %q; want e1, e2, e3 or e2e", os.Args[1])
+		fail("unknown experiment %q; want e1, e2, e3, e3-fast or e2e", os.Args[1])
 	}
 }
 
@@ -182,14 +185,28 @@ func replaySpeeds() {
 		"ingestion_cores", "engine_cores", "sink_cores", "kafka_cores"}
 	for _, speed := range []string{"1", "10", "60", "0"} {
 		for run := 1; run <= runsPerSetting; run++ {
-			writeCSV(summaryPath, header, [][]string{liveRun(speed, run)}, true)
+			writeCSV(summaryPath, header, [][]string{liveRun("e3", speed, run)}, true)
 		}
 	}
 	log.Printf("wrote %s", summaryPath)
 }
 
-func liveRun(speed string, run int) []string {
-	log.Printf("e3: speed %s, run %d", speed, run)
+// replaySpeedFast runs the maximum-speed E3 setting once. It is intended for
+// a quick evaluation check; the full E3 experiment remains the three-run,
+// four-speed benchmark.
+func replaySpeedFast() {
+	summaryPath := filepath.Join(outputDir, "e3-fast-summary.csv")
+	os.Remove(summaryPath)
+	header := []string{"speed", "run", "seconds", "events", "events_per_s",
+		"event_latency_p50", "event_latency_p95", "event_latency_p99",
+		"window_latency_p50", "window_latency_p95", "window_latency_p99",
+		"ingestion_cores", "engine_cores", "sink_cores", "kafka_cores"}
+	writeCSV(summaryPath, header, [][]string{liveRun("e3-fast", "0", 1)}, true)
+	log.Printf("wrote %s", summaryPath)
+}
+
+func liveRun(experiment, speed string, run int) []string {
+	log.Printf("%s: speed %s, run %d", experiment, speed, run)
 	cleanStart()
 	compose(nil, "up", "-d", "engine", "sink")
 	time.Sleep(10 * time.Second) // joining the group, including Kafka's initial rebalance delay
@@ -231,7 +248,7 @@ func liveRun(speed string, run int) []string {
 	}
 	events := at("sum(increase(engine_events_total" + window + "))")
 
-	writeTimeSeries(filepath.Join(outputDir, fmt.Sprintf("e3-speed%s-run%d.csv", speed, run)), []timeSeriesQuery{
+	writeTimeSeries(filepath.Join(outputDir, fmt.Sprintf("%s-speed%s-run%d.csv", experiment, speed, run)), []timeSeriesQuery{
 		{"events_per_s", "sum(rate(engine_events_total[15s]))"},
 		{"event_latency_p50", "histogram_quantile(0.5, sum by (le) (rate(engine_event_latency_seconds_bucket[30s])))"},
 		{"event_latency_p95", "histogram_quantile(0.95, sum by (le) (rate(engine_event_latency_seconds_bucket[30s])))"},
