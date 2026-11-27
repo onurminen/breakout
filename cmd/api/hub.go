@@ -11,7 +11,9 @@ import (
 	"github.com/coder/websocket"
 )
 
-const sendQueueSize = 64
+// A window close publishes one result per symbol at once, so a client
+// following thousands of symbols needs room for that burst.
+const sendQueueSize = 4096
 
 type outbound struct {
 	data []byte

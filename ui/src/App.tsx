@@ -12,7 +12,7 @@ import {
   type UTCTimestamp,
 } from 'lightweight-charts';
 import { Side, type Advisory, type EmaResult } from './gen/breakout/results/v1/results_pb';
-import { useMarketData } from './useMarketData';
+import { useMarketData, type Latest } from './useMarketData';
 import type { SymbolSnapshot } from './market';
 import './styles.css';
 
@@ -31,6 +31,13 @@ const dateTime = new Intl.DateTimeFormat('en-GB', {
 const axisTime = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
 const axisDay = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', day: '2-digit', month: 'short' });
 const number = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 });
+const precise = new Intl.NumberFormat('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 });
+const shortTime = new Intl.DateTimeFormat('en-GB', { timeZone: 'UTC', day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+const windowMs = 5n * 60n * 1000n;
+
+function windowLabel(startMs: bigint): string {
+  return `${shortTime.format(new Date(Number(startMs)))}–${axisTime.format(new Date(Number(startMs + windowMs)))}`;
+}
 
 function utc(ms: bigint): string {
   return `${dateTime.format(new Date(Number(ms)))} UTC`;
@@ -49,10 +56,12 @@ function timestamp(ms: bigint): UTCTimestamp {
   return (Number(ms) / 1000) as UTCTimestamp;
 }
 
-function SymbolPicker({ symbols, selected, onToggle, error }: {
+function SymbolPicker({ symbols, selected, onToggle, onSelectMany, onClear, error }: {
   symbols: SymbolOption[];
   selected: string[];
   onToggle: (symbol: string) => void;
+  onSelectMany: (symbols: string[]) => void;
+  onClear: () => void;
   error: string | null;
 }) {
   const [query, setQuery] = useState('');
@@ -61,11 +70,12 @@ function SymbolPicker({ symbols, selected, onToggle, error }: {
     symbol.toLowerCase().includes(query.trim().toLowerCase()) &&
     (filter === 'all' || secType === `SEC_TYPE_${filter.toUpperCase()}`));
   const visible = matching.slice(0, 100);
+  const chosen = new Set(selected);
 
   return <section className="panel picker" aria-labelledby="symbols-heading">
     <div className="panel-heading">
       <div><p className="eyebrow">Watchlist</p><h2 id="symbols-heading">Symbols</h2></div>
-      <span className="count">{selected.length} selected</span>
+      <span className="count">{number.format(selected.length)} selected</span>
     </div>
     <label className="search-label" htmlFor="symbol-search">Search symbols</label>
     <input id="symbol-search" className="search" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by ticker…" />
@@ -75,12 +85,16 @@ function SymbolPicker({ symbols, selected, onToggle, error }: {
           {option === 'all' ? 'All' : option === 'equity' ? 'Equities' : 'Indices'}
         </button>)}
     </div>
+    <div className="picker-actions">
+      <button type="button" className="filter" disabled={matching.length === 0} onClick={() => onSelectMany(matching.map(({ symbol }) => symbol))}>Select all {matching.length ? number.format(matching.length) : ''}</button>
+      <button type="button" className="filter" disabled={selected.length === 0} onClick={onClear}>Deselect all</button>
+    </div>
     {error && <p className="notice error" role="alert">{error}</p>}
     <div className="symbol-list">
       {!error && symbols.length === 0 && <p className="empty-small">No symbols stored yet. This list updates during a replay.</p>}
       {symbols.length > 0 && matching.length === 0 && <p className="empty-small">No matching symbols.</p>}
       {visible.map(({ symbol, secType }) => <label className="symbol-row" key={symbol}>
-        <input type="checkbox" checked={selected.includes(symbol)} onChange={() => onToggle(symbol)} />
+        <input type="checkbox" checked={chosen.has(symbol)} onChange={() => onToggle(symbol)} />
         <span className="ticker">{symbol}</span>
         <span className="symbol-type">{secType === 'SEC_TYPE_INDEX' ? 'Index' : 'Equity'}</span>
       </label>)}
@@ -172,17 +186,108 @@ function SymbolChart({ symbol, snapshot }: { symbol: string; snapshot: SymbolSna
   </article>;
 }
 
-function AdvisoryFeed({ selected, snapshots }: { selected: string[]; snapshots: Record<string, SymbolSnapshot> }) {
-  const advisories = useMemo(() => selected.flatMap((symbol) => [...(snapshots[symbol]?.advisories.values() ?? [])])
-    .sort((a, b) => Number(b.windowStartMs - a.windowStartMs)).slice(0, 50), [selected, snapshots]);
-  return <section className="panel feed" aria-labelledby="feed-heading">
-    <div className="panel-heading"><div><p className="eyebrow">Signals</p><h2 id="feed-heading">Advisories</h2></div><span className="count">Latest 50</span></div>
-    {advisories.length === 0 ? <p className="empty-small">{selected.length ? 'No advisories for your symbols yet.' : 'Select a symbol to follow its advisories.'}</p> :
-      <ol className="feed-list">{advisories.map((advisory: Advisory) => <li key={`${advisory.symbol}:${advisory.windowStartMs}`} className="feed-item">
-        <span className={advisory.side === Side.BUY ? 'signal buy' : 'signal sell'}>{advisory.side === Side.BUY ? 'Buy ↑' : 'Sell ↓'}</span>
-        <div className="feed-content"><strong>{advisory.symbol}</strong><time dateTime={new Date(Number(advisory.windowStartMs)).toISOString()}>{utc(advisory.windowStartMs)}</time></div>
-        {advisory.warmup && <span className="warmup" title="The first window starts the EMA from zero">Warm-up</span>}
-      </li>)}</ol>}
+function Pager({ page, pages, onPage }: { page: number; pages: number; onPage: (page: number) => void }) {
+  if (pages <= 1) return null;
+  return <div className="pager">
+    <button type="button" className="filter" disabled={page === 0} onClick={() => onPage(page - 1)}>Previous</button>
+    <span>Page {page + 1} of {pages}</span>
+    <button type="button" className="filter" disabled={page >= pages - 1} onClick={() => onPage(page + 1)}>Next</button>
+  </div>;
+}
+
+function usePaged<T>(items: T[], size: number) {
+  const [page, setPage] = useState(0);
+  const pages = Math.max(1, Math.ceil(items.length / size));
+  const current = Math.min(page, pages - 1);
+  return { rows: items.slice(current * size, (current + 1) * size), pager: <Pager page={current} pages={pages} onPage={setPage} /> };
+}
+
+function Signal({ advisory }: { advisory?: Advisory }) {
+  if (!advisory) return <span className="muted">—</span>;
+  return <span className="signal-cell">
+    <span className={advisory.side === Side.BUY ? 'signal buy' : 'signal sell'}>{advisory.side === Side.BUY ? 'Buy ↑' : 'Sell ↓'}</span>
+    {advisory.warmup && <span className="warmup" title="The first window starts the EMA from zero">Warm-up</span>}
+  </span>;
+}
+
+function Trend({ result }: { result?: EmaResult }) {
+  if (!result) return <span className="muted">—</span>;
+  return result.ema38 > result.ema100 ? <span className="trend up">▲ EMA38 above</span> : <span className="trend down">▼ EMA38 below</span>;
+}
+
+function OverviewTable({ selected, latest, focused, onFocus }: {
+  selected: string[];
+  latest: Record<string, Latest>;
+  focused: string | null;
+  onFocus: (symbol: string) => void;
+}) {
+  const sorted = useMemo(() => [...selected].sort(), [selected]);
+  const { rows, pager } = usePaged(sorted, 20);
+  return <section className="panel table-panel" aria-labelledby="overview-heading">
+    <div className="panel-heading"><div><p className="eyebrow">Selected symbols · live</p><h2 id="overview-heading">Overview</h2></div><span className="count">Select a row for its chart and windows</span></div>
+    <div className="table-scroll"><table className="data-table">
+      <thead><tr><th>Symbol</th><th>Latest window</th><th className="num">Last price</th><th className="num">EMA38</th><th className="num">EMA100</th><th>Trend</th><th>Last advisory</th></tr></thead>
+      <tbody>{rows.map((symbol) => {
+        const { result, advisory } = latest[symbol] ?? {};
+        return <tr key={symbol} className={symbol === focused ? 'focused' : undefined} onClick={() => onFocus(symbol)}>
+          <td><button type="button" className="row-link" aria-pressed={symbol === focused}>{symbol}</button></td>
+          <td>{result ? windowLabel(result.windowStartMs) : '—'}</td>
+          <td className="num">{result ? precise.format(result.lastPrice) : '—'}</td>
+          <td className="num">{result ? precise.format(result.ema38) : '—'}</td>
+          <td className="num">{result ? precise.format(result.ema100) : '—'}</td>
+          <td><Trend result={result} /></td>
+          <td><Signal advisory={advisory} />{advisory && <span className="muted"> {shortTime.format(new Date(Number(advisory.windowStartMs)))}</span>}</td>
+        </tr>;
+      })}</tbody>
+    </table></div>
+    {pager}
+    <p className="list-hint">Rows fill in as windows close during the replay.</p>
+  </section>;
+}
+
+function WindowTable({ symbol, snapshot }: { symbol: string; snapshot: SymbolSnapshot }) {
+  const [onlyAdvisories, setOnlyAdvisories] = useState(false);
+  const windows = useMemo(() => [...snapshot.results.values()]
+    .filter((result) => !onlyAdvisories || snapshot.advisories.has(result.windowStartMs))
+    .sort((a, b) => Number(b.windowStartMs - a.windowStartMs)), [snapshot, onlyAdvisories]);
+  const { rows, pager } = usePaged(windows, 25);
+  return <section className="panel table-panel" aria-labelledby="windows-heading">
+    <div className="panel-heading"><div><p className="eyebrow">Every window of {symbol}</p><h2 id="windows-heading">Windows</h2></div><span className="count">{number.format(windows.length)} windows</span></div>
+    <label className="check"><input type="checkbox" checked={onlyAdvisories} onChange={(event) => setOnlyAdvisories(event.target.checked)} /> Only windows with an advisory</label>
+    <div className="table-scroll"><table className="data-table">
+      <thead><tr><th>Window</th><th className="num">Last price</th><th className="num">EMA38</th><th className="num">EMA100</th><th>Advisory</th></tr></thead>
+      <tbody>{rows.map((result) => <tr key={String(result.windowStartMs)}>
+        <td>{windowLabel(result.windowStartMs)}</td>
+        <td className="num">{precise.format(result.lastPrice)}</td>
+        <td className="num">{precise.format(result.ema38)}</td>
+        <td className="num">{precise.format(result.ema100)}</td>
+        <td><Signal advisory={snapshot.advisories.get(result.windowStartMs)} /></td>
+      </tr>)}</tbody>
+    </table></div>
+    {windows.length === 0 && <p className="empty-small">{snapshot.loading ? 'Loading history…' : 'No windows yet.'}</p>}
+    {pager}
+  </section>;
+}
+
+function AdvisoryTable({ advisories, onFocus }: { advisories: Advisory[]; onFocus: (symbol: string) => void }) {
+  const sorted = useMemo(() => [...advisories].sort((a, b) =>
+    Number(b.windowStartMs - a.windowStartMs) || a.symbol.localeCompare(b.symbol)), [advisories]);
+  const { rows, pager } = usePaged(sorted, 50);
+  return <section className="panel table-panel" aria-labelledby="advisories-heading">
+    <div className="panel-heading"><div><p className="eyebrow">Selected symbols · live</p><h2 id="advisories-heading">Advisories</h2></div><span className="count">{number.format(sorted.length)} received</span></div>
+    <div className="table-scroll"><table className="data-table">
+      <thead><tr><th>Window</th><th>Symbol</th><th>Advisory</th><th className="num">EMA38</th><th className="num">EMA100</th></tr></thead>
+      <tbody>{rows.map((advisory) => <tr key={`${advisory.symbol}:${advisory.windowStartMs}`} onClick={() => onFocus(advisory.symbol)}>
+        <td>{windowLabel(advisory.windowStartMs)}</td>
+        <td><button type="button" className="row-link">{advisory.symbol}</button></td>
+        <td><Signal advisory={advisory} /></td>
+        <td className="num">{precise.format(advisory.ema38)}</td>
+        <td className="num">{precise.format(advisory.ema100)}</td>
+      </tr>)}</tbody>
+    </table></div>
+    {sorted.length === 0 && <p className="empty-small">No advisories since the symbols were selected.</p>}
+    {pager}
+    <p className="list-hint">Advisories that arrive live while the symbols are selected. A symbol's full history is in its Windows table.</p>
   </section>;
 }
 
@@ -195,9 +300,12 @@ export default function App() {
       return Array.isArray(saved) ? saved.filter((value): value is string => typeof value === 'string') : [];
     } catch { return []; }
   });
+  const [focused, setFocused] = useState<string | null>(null);
+  const [tab, setTab] = useState<'overview' | 'advisories'>('overview');
   const [kpis, setKpis] = useState<Kpis | null>(null);
   const [kpiError, setKpiError] = useState<string | null>(null);
-  const { snapshots, status } = useMarketData(selected);
+  const shown = focused !== null && selected.includes(focused) ? focused : [...selected].sort()[0] ?? null;
+  const { snapshot, latest, advisories, status } = useMarketData(selected, shown);
 
   useEffect(() => {
     try { localStorage.setItem('breakout:selected', JSON.stringify(selected)); } catch { /* Browsing still works without storage. */ }
@@ -238,15 +346,32 @@ export default function App() {
     setSelected((current) => current.includes(symbol) ? current.filter((item) => item !== symbol) : [...current, symbol]);
   }
 
+  function focus(symbol: string) {
+    setFocused(symbol);
+    setTab('overview');
+  }
+
   return <div className="app-shell">
     <header className="topbar"><div className="brand"><span className="brand-mark">↗</span><div><span className="brand-name">breakout</span><span className="brand-subtitle">Live market signals</span></div></div><div className={`connection ${status}`} role="status"><span className="status-dot" />{status === 'connected' ? 'Live connection' : status === 'connecting' ? 'Connecting…' : 'Reconnecting…'}</div></header>
     <main>
       <div className="intro"><div><p className="eyebrow">Streaming analytics</p><h1>Market overview</h1><p>Price, moving averages, and crossover signals as the replay runs.</p></div><span className="utc-badge">All times UTC</span></div>
       <KpiCards kpis={kpis} error={kpiError} />
-      <div className="workspace"><SymbolPicker symbols={symbols} selected={selected} onToggle={toggle} error={symbolsError} />
-        <section className="charts" aria-label="Selected symbol charts">
-          {selected.length === 0 ? <div className="panel empty-selection"><span className="empty-icon">⌁</span><h2>Choose a symbol</h2><p>Search the watchlist to see its price, EMA lines, and crossover signals.</p></div> : selected.map((symbol) => <SymbolChart key={symbol} symbol={symbol} snapshot={snapshots[symbol] ?? { results: new Map(), advisories: new Map(), persistedThroughMs: null, loading: true, error: null }} />)}
-        </section><AdvisoryFeed selected={selected} snapshots={snapshots} />
+      <div className="workspace"><SymbolPicker symbols={symbols} selected={selected} onToggle={toggle}
+        onSelectMany={(names) => setSelected((current) => [...new Set([...current, ...names])])} onClear={() => setSelected([])} error={symbolsError} />
+        <section className="charts" aria-label="Results">
+          {selected.length === 0 ? <div className="panel empty-selection"><span className="empty-icon">⌁</span><h2>Choose symbols</h2><p>Search the watchlist, or select all matching symbols, to follow their EMAs and advisories.</p></div> : <>
+            <div className="tabs" role="tablist">
+              {(['overview', 'advisories'] as const).map((name) => <button key={name} type="button" role="tab" aria-selected={tab === name} className={tab === name ? 'tab active' : 'tab'} onClick={() => setTab(name)}>
+                {name === 'overview' ? 'Overview' : `Advisories (${number.format(advisories.length)})`}
+              </button>)}
+            </div>
+            {tab === 'advisories' ? <AdvisoryTable advisories={advisories} onFocus={focus} /> : <>
+              <OverviewTable selected={selected} latest={latest} focused={shown} onFocus={setFocused} />
+              {shown && snapshot && <SymbolChart key={shown} symbol={shown} snapshot={snapshot} />}
+              {shown && snapshot && <WindowTable key={`windows:${shown}`} symbol={shown} snapshot={snapshot} />}
+            </>}
+          </>}
+        </section>
       </div>
     </main>
     <footer>Market data from the DEBS 2022 Grand Challenge · Charts by <a href="https://www.tradingview.com/" target="_blank" rel="noreferrer">TradingView</a></footer>

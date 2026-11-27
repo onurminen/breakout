@@ -82,7 +82,7 @@ flowchart LR
 | **engine** (N instances) | Assign events to windows, close windows on watermarks, compute EMAs, detect crossovers | Per-symbol EMA state, owned by one goroutine per partition |
 | **sink** | Read the result topics and write them to Postgres in batches | Kafka read position |
 | **api** | Push live results over WebSocket, filtered per client subscription; serve history from Postgres | Connected clients and their subscriptions |
-| **ui** | Symbol filter, price and EMA charts with crossover markers, advisory feed, KPIs | — |
+| **ui** | Symbol filter, live overview of the selected symbols, price and EMA chart with crossover markers and a per-window table for one symbol, advisories table, KPIs | — |
 | **Prometheus, Grafana, cAdvisor** | Collect metrics, show dashboards, measure container CPU and memory | Time series |
 
 ## Messages

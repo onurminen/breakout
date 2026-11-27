@@ -34,8 +34,8 @@ export class MarketConnection {
     const removed = [...this.selected].filter((symbol) => !next.has(symbol));
     this.selected = next;
     if (this.socket?.readyState === WebSocket.OPEN) {
-      if (removed.length) this.send({ unsubscribe: removed });
-      if (added.length) this.send({ subscribe: added });
+      this.send('unsubscribe', removed);
+      this.send('subscribe', added);
     }
   }
 
@@ -46,8 +46,9 @@ export class MarketConnection {
     this.socket = null;
   }
 
-  private send(value: { subscribe: string[] } | { unsubscribe: string[] }): void {
-    this.socket?.send(JSON.stringify(value));
+  // The API reads at most 16 KiB per message, so long lists go in chunks.
+  private send(action: 'subscribe' | 'unsubscribe', symbols: string[]): void {
+    for (let i = 0; i < symbols.length; i += 500) this.socket?.send(JSON.stringify({ [action]: symbols.slice(i, i + 500) }));
   }
 
   private connect(): void {
@@ -58,7 +59,7 @@ export class MarketConnection {
       if (this.socket !== socket) return;
       this.delayMs = 1000;
       this.callbacks.onStatus('connected');
-      if (this.selected.size) this.send({ subscribe: [...this.selected] });
+      this.send('subscribe', [...this.selected]);
     };
     socket.onmessage = (event) => {
       if (this.socket !== socket) return;

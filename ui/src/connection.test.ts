@@ -61,4 +61,14 @@ describe('market connection', () => {
     expect(live).toEqual([]);
     connection.stop();
   });
+
+  it('splits a long subscription into messages of at most 500 symbols', () => {
+    const socket = new FakeSocket();
+    const connection = new MarketConnection({ onStatus: () => {}, onConfirmed: () => {}, onLive: () => {} }, () => socket as unknown as WebSocket);
+    connection.setSymbols(Array.from({ length: 1200 }, (_, i) => `S${i}.ETR`));
+    connection.start();
+    socket.open();
+    expect(socket.sent.map((data) => JSON.parse(data).subscribe.length)).toEqual([500, 500, 200]);
+    connection.stop();
+  });
 });

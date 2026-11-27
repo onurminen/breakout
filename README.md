@@ -110,7 +110,7 @@ It writes `e3-fast-summary.csv` and separate `e3-fast-*` time-series files.
 | Engine service (`cmd/engine`) | Done: one goroutine per partition, results and advisories to Kafka, latency histograms |
 | Sink (`cmd/sink`) | Done: results and advisories to Postgres, offsets committed after each insert |
 | API (`cmd/api`) | Done: history and symbols over REST, KPIs, subscribed live results over WebSocket |
-| UI (`ui/`) | Done: searchable watchlist, live price and EMA charts, advisories, KPIs |
+| UI (`ui/`) | Done: searchable watchlist with select all, live overview table, chart and per-window table for one symbol, advisories table, KPIs |
 | Metrics and dashboard (`deploy/`) | Done: every service scraped, consumer lag from `kafka-exporter`, Grafana dashboard provisioned |
 | Experiments (`tools/experiments`) | Done: E1–E3 and the end-to-end check, one command each; results in `report/data/` and [evaluation.md](docs/evaluation.md#results) |
 
