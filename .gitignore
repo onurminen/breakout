@@ -2,7 +2,7 @@
 /data/
 
 # Compiled report
-report/*.pdf
+#report/*.pdf
 
 # UI build output and local dependencies
 ui/node_modules/
