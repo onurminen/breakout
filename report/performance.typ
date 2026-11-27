@@ -2,7 +2,7 @@
 
 = Performance Evaluation <sec:performance>
 All measurements were collected locally on a single desktop computer
-with and AMD Ryzen 5 2600X
+with an AMD Ryzen 5 2600X
 processor with 6 physical CPU cores and 12 logical CPUs, running at up
 to 4.25 GHz and 15.5 GiB of memory, under Arch Linux operating system.
 
@@ -133,7 +133,7 @@ varies between runs (median 4.1-14.5 ms).
     [max], [235k], [9.7 / 15.1 / 17.3], [10.9 / 15.8 / 18.0],
     bottomrule(),
   ),
-  caption: [E3: live throughput and latenct (p50 / p95 / p99, in ms)
+  caption: [E3: live throughput and latency (p50 / p95 / p99, in ms)
   at different replay speeds, one engine],
 ) <latency-results>
 

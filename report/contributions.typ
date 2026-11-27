@@ -6,7 +6,7 @@ questions stated in the project assignment description.
 == Olli Nurminen <subsec:olli>
 
 + The most important decision about the system design was
-  to use event-driven service architecure instead of monolithic application.
+  to use event-driven service architecture instead of monolithic application.
   Responsibilities are split into separate services with Kafka as the boundary
   between them. This is useful because each component has a different scaling
   and failure profile. A monolithic design would have been simpler to implement 
@@ -20,7 +20,7 @@ questions stated in the project assignment description.
   because wrong decisions effect EMA values and therefore the buy/sell signals.
 + My main contributions to the project were implementing the ingestion service
   for replaying the CSV files into Kafka with watermarks and pacing,
-  the enginer service which runs the engine core per partition in a Kafka
+  the engine service which runs the engine core per partition in a Kafka
   consumer group, and the sink, which writes the results to Postgres.
   I also added the Grafana dashboard, consumer lag metrics,
   built the experiment runner and the end-to-end check,
