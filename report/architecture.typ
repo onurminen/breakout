@@ -119,7 +119,7 @@ and how we characterize an event as being late.
 === Grace Period & Late Events <subsubsec:grace-period-late-events>
 
 Even though events may (mostly) arrive in the correct order, it might be that
-some events belonging to window $w_t$ might arrive only after this window
+some events belonging to window $w_i$ might arrive only after this window
 has closed. Thus, we wanted to measure the amount of such delayed events,
 and how significant the delays were. We measured this with the
 `tools/datacheck/grace` script. The script introduces the concept of a
@@ -169,19 +169,19 @@ instead.
 
 === Maintaining EMA State <subsubsec:ema-state>
 
-For simplicity, let us consider computing the $"EMA"_(s,w_t)^38$ of window
-$w_t$ for symbol $s$. In accordance with @eq:ema, to compute
-$"EMA"_(s,w_t)^38$, we need the closing price of window $w_t$ and the
-EMA of the previous window. Thus, an engine computing $"EMA"_(s,w_t)^(38)$
-needs to maintain the following states: 1) $"EMA"_(s,w_(t-1))^(38)$,
+For simplicity, let us consider computing the $"EMA"_(s,w_i)^38$ of window
+$w_i$ for symbol $s$. In accordance with @eq:ema, to compute
+$"EMA"_(s,w_i)^38$, we need the closing price of window $w_i$ and the
+EMA of the previous window. Thus, an engine computing $"EMA"_(s,w_i)^(38)$
+needs to maintain the following states: 1) $"EMA"_(s,w_(i-1))^(38)$,
 2) the latest price $p_s$ it has observed for $s$, and 3) the current
 watermark indicating the latest timestamp until which all events have
 been published by the ingestion service. When the engine consumes price
 events from its partition, it needs to continuously update $p_s$. Upon
 receiving a watermark that closes the open window, the engine computes
-$"EMA"_(s,w_t)^(38)$ with the latest price of the window, and publishes
+$"EMA"_(s,w_i)^(38)$ with the latest price of the window, and publishes
 it to `ema-results`. Furthermore, it compares the obtained result with
-$"EMA"_(s,w_t)^(100)$, and publishes an advisory if the conditions
+$"EMA"_(s,w_i)^(100)$, and publishes an advisory if the conditions
 indicated in @eq:bullish or @eq:bearish are met. Computation for other
 symbols and smoothing factors is done analogously, such that the states
 are stored in maps keyed by their symbols.

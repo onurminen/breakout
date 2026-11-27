@@ -25,6 +25,9 @@
   abstract: include "abstract.typ",
 )
 
+// Only URLs: references and citations are links too
+#show link: it => if type(it.dest) == str { text(fill: blue, it) } else { it }
+
 #include "introduction.typ"
 #include "architecture.typ"
 #include "implementation.typ"

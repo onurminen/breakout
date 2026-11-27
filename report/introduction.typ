@@ -29,6 +29,8 @@ produce correct outputs while maintaining a high level of throughput
 and low latencies. Furthermore, this project aims to visualize results
 in a way that would benefit a hypothetical market participant.
 
+The source code of this project is available on
+#link("https://github.com/onurminen/breakout")[GitHub].
 The project dataset consists of the DEBS 2022 Grand Challenge Data
 Set@debs2022data, that contains tick data captured by the systems of 
 Infront Financial Technology GmbH during the week from November 8th until 
