@@ -59,6 +59,24 @@ INGEST_FILES="/data/debs2022-gc-trading-day-08-11-21.csv /data/debs2022-gc-tradi
 docker compose -f deploy/docker-compose.yml --profile pipeline down
 ```
 
+### Experiments
+
+Each experiment starts from a clean stack (all containers are recreated) and writes its results to `report/data/` ([evaluation.md](docs/evaluation.md#experiments)). `e2e` is the end-to-end check, which compares Postgres with `tools/enginecheck`.
+Experiment 1 takes couple of minutes, experiment 2 15 minutes
+and experiment 3 around 90 minutes.
+
+```bash
+go run ./tools/experiments e1
+```
+
+```bash
+go run ./tools/experiments e2
+```
+
+```bash
+go run ./tools/experiments e3
+```
+
 ## Documentation
 
 | Document | What it explains |
@@ -148,14 +166,6 @@ go run ./cmd/ingestion data/debs2022-gc-trading-day-08-11-21.csv
 ```
 
 The API also runs from the host with `go run ./cmd/api`. Its REST routes are `GET /api/symbols`, `GET /api/history?symbol=PX1.FR&from=0&to=9999999999999` (epoch-millisecond bounds, start inclusive and end exclusive), and `GET /api/kpis`. `GET /ws` accepts `{"subscribe":["PX1.FR"]}` and `{"unsubscribe":["PX1.FR"]}`, confirms subscriptions, and then sends `ema` and `advisory` messages for those symbols. The API serves the UI from `UI_DIR`; the Compose image includes the built UI.
-
-### Experiments
-
-Each experiment starts from a clean stack (all containers are recreated) and writes its results to `report/data/` ([evaluation.md](docs/evaluation.md#experiments)). `e2e` is the end-to-end check, which compares Postgres with `tools/enginecheck`.
-
-```bash
-go run ./tools/experiments e1    # also e2, e3, e2e
-```
 
 ### UI
 
