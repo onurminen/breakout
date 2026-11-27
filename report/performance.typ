@@ -1,8 +1,6 @@
-= Performance Evaluation
-All measurements were ran locally on a PC with 
-AMD Ryzen 5 2600x with 12 cores @ 4.25GHz and 15.54 GiB of memory
-running Arch Linux operating system.
+#import "@preview/faithful-acmart:0.2.0": tabular, toprule, midrule, bottomrule
 
+= Performance Evaluation
 All measurements were collected locally on a single desktop computer
 with and AMD Ryzen 5 2600X
 processor with 6 physical CPU cores and 12 logical CPUs, running at up
@@ -138,25 +136,42 @@ varies between runs (median 4.1-14.5 ms).
 ) <latency-results>
 
 == Resource utilization
-Processing the whole week costs the engines about
-110 CPU-seconds in E1, independent of the number
-of instances: additional instances cost almost no CPU, 
-but each needs its own memory, so memory grows from 0.6 GB 
-for one engine to 2.5 GB for eight. With a CPU limit (E2), 
-the same work takes only 77–84 CPU-seconds. An engine
-without a limit spreads over about seven cores and 
-spends more CPU on the same work, presumably in Go's 
-scheduler and garbage collector, but we have not verified this. 
-For a fixed CPU budget, a limited engine is thus the more 
-efficient choice, while an unlimited one finishes sooner.
+We ran one 10-minute live profile at 1× replay speed, covering
+09:00--09:10 on Monday. The profile ran ingestion, one engine, the sink,
+Kafka, Postgres, Prometheus, Grafana, and the Kafka exporter, the API and
+UI were not started. Table <resource-profile> shows the results. Average CPU is
+reported in logical-CPU equivalents, peak memory is the largest cAdvisor
+working-set value, and network and block I/O are totals over the 10-minute
+interval.
 
-In the live pipeline (E3), the services use little CPU at real-time 
-speed, at 1×, ingestion and the engine use about 0.02 cores each, 
-while Kafka needs about 0.5 cores regardless of the load. At 60×, 
-ingestion uses 0.15 cores and the engine 0.12. As fast as possible, 
-ingestion uses 1.1 cores, the engine 0.7, Kafka 0.85 and the sink 
-less than 0.02. Ingestion is the bottleneck, its parser alone
-handles about 870,000 events/s on one core, so most of its time 
-goes into encoding and sending events, not parsing. The engine 
-on its own would need less than one core for the rate that 
-ingestion can deliver.
+#figure(
+  tabular(
+    columns: 5,
+    toprule(),
+    [Service], [CPU], [Memory], [Network], [Block I/O],
+    midrule(),
+    [Ingestion], [0.015], [114.0], [3.78 / 15.09], [106.81 / 0.00],
+    [Engine], [0.020], [191.4], [24.85 / 18.23], [-- / --],
+    [Sink], [0.001], [48.1], [0.51 / 0.99], [0.00 / 0.00],
+    [Kafka], [0.424], [1051.4], [25.03 / 30.04], [0.09 / 35.97],
+    [Postgres], [0.001], [33.2], [0.61 / 0.01], [0.00 / 15.64],
+    [Prometheus], [0.015], [114.7], [33.18 / 1.82], [0.09 / 8.09],
+    [Grafana], [0.002], [101.2], [0.01 / 0.00], [0.24 / 0.45],
+    [Kafka exp.], [0.004], [18.9], [2.37 / 2.75], [0.05 / 0.00],
+    bottomrule(),
+  ),
+  caption: [Resource utilization in one 10-minute, 1× live replay. CPU is
+  average logical CPUs; memory, network RX / TX, and block read / write are
+  in MiB. Network and block-I/O pairs are interval totals. The engine's
+  block-I/O counters were not exposed by cAdvisor.],
+) <resource-profile>
+
+Kafka has the largest resource footprint in this profile, using 0.424
+logical CPUs on average and peaking at about 1 GiB of working-set memory.
+Prometheus receives the most network traffic because it scrapes every
+container, while ingestion's block reads primarily reflect reading the CSV
+input file. The engine's filesystem counters were not exposed by cAdvisor,
+so they are shown as dashes rather than assumed to be zero. Finally, these
+block-I/O figures are container filesystem counters, not direct measurements
+of physical disk traffic: page cache, Docker overlay storage, and mounted
+volumes affect their interpretation.
