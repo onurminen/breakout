@@ -66,7 +66,7 @@ performance metrics, as well as the WebSocket functionality for subscribing to
 specific symbols. I also implemented the database queries for historical data
 and wrote tests for both the API and the database queries.
 
-I also did some frontend work. I implemented the symbol search and selection, price and
+In the frontend, I implemented the symbol search and selection, price and
 EMA charts, buy and sell advisories and the visualization of throughput and
 latency. I also included the frontend build in the API Docker image, added
 TypeScript type generation from Protobuf, integrated the API with Docker Compose
