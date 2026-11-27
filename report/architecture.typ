@@ -25,15 +25,19 @@ interface with other services is kept up-to-date. This also allows
 swapping out a service entirely, e.g. replacing our Go API with a
 TypeScript API.
 
-The architecture of _breakout_ is visualized in @figure:architecture found
-in the appendix. We introduce each component briefly below, so that
-terminology used in the following subsections is familiar.
+The architecture of _breakout_ is visualized in @figure:architecture.
+We introduce each component briefly below, so that terminology used in
+the following subsections is familiar.
+
 + *Ingestion.* Parses CSV files and produces price events.
 + *Engine.* Computes EMAs, buy/sell advisories and publishes them.
 + *Sink.* Reads computed EMAs and advisories and stores them in
   persistent storage.
 + *API and UI.* Serve and display EMA calculation results and
   advisories, respectively.
+
+In the following, we discuss the design considerations behind each of
+these components.
 
 == Ingestion <subsec:ingestion>
 
